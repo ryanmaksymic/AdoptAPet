@@ -24,6 +24,7 @@
   [super viewDidLoad];
   
   NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
+  //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?animal=bird&location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
   
   [NetworkManager fetchPetDataFromURL:url completionHandler:^(NSArray<Pet *> *pets) {
     
