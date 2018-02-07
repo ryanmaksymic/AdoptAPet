@@ -37,13 +37,17 @@
       return;
     }
     
-    //NSMutableArray<Pet *> * pets = [@[] mutableCopy];
+    NSMutableArray<Pet *> * pets = [@[] mutableCopy];
     
-    NSLog(@"%@", results);
+    //NSLog(@"%@", results);
     
-    //for (NSDictionary * result in results)
+    for (NSDictionary * result in results)
     {
-      //[pets addObject:[[Pet alloc] initWithJSON:result]];
+      Pet * pet = [[Pet alloc] initWithJSON:result];
+      
+      [pets addObject:pet];
+      
+      NSLog(@"Pet: %@", pet);
     }
     
     //completion(pets);
