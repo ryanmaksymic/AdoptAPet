@@ -7,6 +7,7 @@
 //
 
 #import "Pet.h"
+#import "Contact.h"
 
 @implementation Pet
 
@@ -22,11 +23,11 @@
     // animal:
     if ([json[@"animal"][@"$t"] isEqualToString:@"Dog"])
     {
-      _animal = PetAnimalDog;
+      _animal = PetTypeDog;
     }
     else if ([json[@"animal"][@"$t"] isEqualToString:@"Cat"])
     {
-      _animal = PetAnimalCat;
+      _animal = PetTypeCat;
     }
     
     // breeds:
@@ -119,7 +120,13 @@
     }
     
     // contact:
-    
+    _contact = [[Contact alloc] init];
+    _contact.phone = [json[@"contact"][@"phone"] count] > 0 ? json[@"contact"][@"phone"][@"$t"] : @"";
+    _contact.email = [json[@"contact"][@"email"] count] > 0 ? json[@"contact"][@"email"][@"$t"] : @"";
+    _contact.address1 = [json[@"contact"][@"address1"] count] > 0 ? json[@"contact"][@"address1"][@"$t"] : @"";
+    _contact.address2 = [json[@"contact"][@"address2"] count] > 0 ? json[@"contact"][@"address1"][@"$t"] : @"";
+    _contact.state = [json[@"contact"][@"state"] count] > 0 ? json[@"contact"][@"state"][@"$t"] : @"";
+    _contact.zip = [json[@"contact"][@"zip"] count] > 0 ? json[@"contact"][@"zip"][@"$t"] : @"";
     
     // idNUmber:
     
@@ -154,7 +161,7 @@
 
 - (NSString *)animalString
 {
-  if (self.animal == PetAnimalDog)
+  if (self.animal == PetTypeDog)
   {
     return @"dog";
   }
@@ -223,6 +230,20 @@
   return result;
 }
 
+- (NSString *)contactString
+{
+  NSMutableString * result = [@"" mutableCopy];
+  
+  [result appendFormat:@"%@\n", self.contact.phone];
+  [result appendFormat:@"%@\n", self.contact.email];
+  [result appendFormat:@"%@\n", self.contact.address1];
+  [result appendFormat:@"%@\n", self.contact.address2];
+  [result appendFormat:@"%@\n", self.contact.state];
+  [result appendFormat:@"%@\n", self.contact.zip];
+  
+  return result;
+}
+
 - (NSString *)description
 {
   NSMutableString * result = [@"" mutableCopy];
@@ -234,6 +255,7 @@
   [result appendFormat:@"\nSex: %@", [self sexString]];
   [result appendFormat:@"\nDescription: %@", self.petDescription];
   [result appendFormat:@"\nOptions:\n%@", [self optionsString]];
+  [result appendFormat:@"\nContact:\n%@", [self contactString]];
   //[result appendFormat:@"\nPhoto URLS:\n%@", [self photoURLsString]];
   
   return result;

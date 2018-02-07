@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+@class Contact;
 
-typedef NS_ENUM(NSUInteger, PetAnimal)
+typedef NS_ENUM(NSUInteger, PetType)
 {
-  PetAnimalDog,
-  PetAnimalCat
+  PetTypeDog,
+  PetTypeCat
 };
 
 typedef NS_ENUM(NSUInteger, PetSex)
@@ -43,13 +44,13 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @interface Pet : NSObject
 
 @property (nonatomic) NSString * name;
-@property (nonatomic) PetAnimal animal;
+@property (nonatomic) PetType animal;
 @property (nonatomic) NSArray<NSString *> * breeds;
 @property (nonatomic) BOOL mix;
 @property (nonatomic) PetSex sex;
 @property (nonatomic) NSString * petDescription;
 @property (nonatomic) NSArray * options;
-@property (nonatomic) NSArray<NSString *> * contact;
+@property (nonatomic) Contact * contact;
 @property (nonatomic) NSString * idNumber;
 @property (nonatomic) NSDate * lastUpdated;
 @property (nonatomic) NSArray<NSURL *> * photoURLs;
