@@ -19,6 +19,16 @@
     _name = json[@"name"][@"$t"];
     
     
+    NSMutableArray * tempPhotoURLs = [@[] mutableCopy];
+    
+    for (NSDictionary * photo in json[@"media"][@"photos"][@"photo"])
+    {
+      [tempPhotoURLs addObject:[NSURL URLWithString:photo[@"$t"]]];
+    }
+    
+    _photoURLs = tempPhotoURLs;
+    
+    
     if ([json[@"animal"][@"$t"] isEqualToString:@"Dog"])
     {
       _animal = PetAnimalDog;
@@ -49,6 +59,19 @@
   return self;
 }
 
+
+- (NSString *) photoURLsString
+{
+  NSMutableString * result = [@"" mutableCopy];
+  
+  for (NSURL * url in self.photoURLs)
+  {
+    [result appendFormat:@"%@\n", url];
+  }
+  
+  return result;
+}
+
 - (NSString *)animalString
 {
   if (self.animal == PetAnimalDog)
@@ -65,7 +88,7 @@
   
   for (NSString * breed in self.breeds)
   {
-    [result appendFormat:@"%@ ", breed];
+    [result appendFormat:@"%@  ", breed];
   }
   
   return result;
@@ -73,7 +96,14 @@
 
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"%@ the %@%@", self.name, [self breedsString], [self animalString]];
+  NSMutableString * result = [@"" mutableCopy];
+  
+  [result appendFormat:@"\nName: %@", self.name];
+  [result appendFormat:@"\nAnimal: %@", [self animalString]];
+  [result appendFormat:@"\nBreeds: %@", [self breedsString]];
+  [result appendFormat:@"\nPhoto URLS:\n%@", [self photoURLsString]];
+  
+  return result;
 }
 
 @end
