@@ -138,7 +138,12 @@
     NSMutableArray * tempPhotoURLs = [@[] mutableCopy];
     for (NSDictionary * photo in json[@"media"][@"photos"][@"photo"])
     {
-      [tempPhotoURLs addObject:[NSURL URLWithString:photo[@"$t"]]];
+      NSString * photoURLString = photo[@"$t"];
+      // Full-size photos have names ending in "-x":
+      if ([photoURLString containsString:@"-x"])
+      {
+        [tempPhotoURLs addObject:[NSURL URLWithString:photoURLString]];
+      }
     }
     _photoURLs = tempPhotoURLs;
   }
@@ -256,7 +261,7 @@
   [result appendFormat:@"\nDescription: %@", self.petDescription];
   [result appendFormat:@"\nOptions:\n%@", [self optionsString]];
   [result appendFormat:@"\nContact:\n%@", [self contactString]];
-  //[result appendFormat:@"\nPhoto URLS:\n%@", [self photoURLsString]];
+  [result appendFormat:@"\nPhoto URLS:\n%@", [self photoURLsString]];
   
   return result;
 }
