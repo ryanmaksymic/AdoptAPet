@@ -29,7 +29,7 @@
     
     NSError * jsonError = nil;
     
-    NSDictionary * results = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError][@"petfinder"][@"pets"];
+    NSDictionary * results = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError][@"petfinder"][@"pets"][@"pet"];
     
     if (jsonError)
     {

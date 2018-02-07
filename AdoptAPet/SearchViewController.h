@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SearchViewController.h
 //  AdoptAPet
 //
 //  Created by Ryan Maksymic on 2018-02-07.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
-
+@interface SearchViewController : UIViewController
 
 @end
-
