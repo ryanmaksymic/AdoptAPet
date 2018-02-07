@@ -1,0 +1,58 @@
+//
+//  NetworkManager.m
+//  AdoptAPet
+//
+//  Created by Ryan Maksymic on 2018-02-07.
+//  Copyright © 2018 Ryan Maksymic. All rights reserved.
+//
+
+#import "NetworkManager.h"
+#import "Pet.h"
+
+@implementation NetworkManager
+
++ (void)fetchPetDataFromURL:(NSURL *)url completionHandler:(void (^)(NSArray<Pet *> * pets))completion
+{
+  NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];
+  
+  NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+  
+  NSURLSession * session = [NSURLSession sessionWithConfiguration:configuration];
+  
+  NSURLSessionDataTask * dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    
+    if (error)
+    {
+      NSLog(@"error: %@", error.localizedDescription);
+      return;
+    }
+    
+    NSError * jsonError = nil;
+    
+    NSDictionary * results = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError][@"petfinder"][@"pets"];
+    
+    if (jsonError)
+    {
+      NSLog(@"jsonError: %@", jsonError.localizedDescription);
+      return;
+    }
+    
+    //NSMutableArray<Pet *> * pets = [@[] mutableCopy];
+    
+    NSLog(@"%@", results);
+    
+    //for (NSDictionary * result in results)
+    {
+      //[pets addObject:[[Pet alloc] initWithJSON:result]];
+    }
+    
+    //completion(pets);
+    
+    [session invalidateAndCancel];
+    
+  }];
+  
+  [dataTask resume];
+}
+
+@end
