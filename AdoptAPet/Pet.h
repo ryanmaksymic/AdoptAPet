@@ -43,7 +43,6 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @interface Pet : NSObject
 
 @property (nonatomic) NSString * name;
-@property (nonatomic) NSArray<NSURL *> * photoURLs;
 @property (nonatomic) PetAnimal animal;
 @property (nonatomic) NSArray<NSString *> * breeds;
 @property (nonatomic) BOOL mix;
@@ -53,6 +52,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @property (nonatomic) NSArray<NSString *> * contact;
 @property (nonatomic) NSString * idNumber;
 @property (nonatomic) NSDate * lastUpdated;
+@property (nonatomic) NSArray<NSURL *> * photoURLs;
 
 - (instancetype)initWithJSON:(NSDictionary *)json;
 
