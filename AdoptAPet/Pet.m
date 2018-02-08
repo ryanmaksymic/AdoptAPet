@@ -129,18 +129,20 @@
     _contact.zip = [json[@"contact"][@"zip"] count] > 0 ? json[@"contact"][@"zip"][@"$t"] : @"";
     
     // idNUmber:
-    
+    _idNumber = json[@"id"][@"$t"];
     
     // lastUpdated:
-    
+    NSString * dateString = [json[@"lastUpdate"][@"$t"] componentsSeparatedByString:@"T"].firstObject;
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    _lastUpdated = [dateFormatter dateFromString:dateString];
     
     // photoURLs:
     NSMutableArray * tempPhotoURLs = [@[] mutableCopy];
     for (NSDictionary * photo in json[@"media"][@"photos"][@"photo"])
     {
       NSString * photoURLString = photo[@"$t"];
-      // Full-size photos have names ending in "-x":
-      if ([photoURLString containsString:@"-x"])
+      if ([photoURLString containsString:@"-x"])  // Full-size photos have names ending in "-x"
       {
         [tempPhotoURLs addObject:[NSURL URLWithString:photoURLString]];
       }
@@ -151,18 +153,6 @@
   return self;
 }
 
-
-- (NSString *) photoURLsString
-{
-  NSMutableString * result = [@"" mutableCopy];
-  
-  for (NSURL * url in self.photoURLs)
-  {
-    [result appendFormat:@"%@\n", url];
-  }
-  
-  return result;
-}
 
 - (NSString *)animalString
 {
@@ -249,19 +239,42 @@
   return result;
 }
 
+- (NSString *)photoURLsString
+{
+  NSMutableString * result = [@"" mutableCopy];
+  
+  for (NSURL * url in self.photoURLs)
+  {
+    [result appendFormat:@"%@\n", url];
+  }
+  
+  return result;
+}
+
+- (NSString *)lastUpdatedString
+{
+  NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"MM-dd-yyyy"];
+  return [dateFormatter stringFromDate:self.lastUpdated];
+}
+
 - (NSString *)description
 {
   NSMutableString * result = [@"" mutableCopy];
   
-  [result appendFormat:@"\nName: %@", self.name];
-  [result appendFormat:@"\nAnimal: %@", [self animalString]];
-  [result appendFormat:@"\nBreeds: %@", [self breedsString]];
-  [result appendFormat:@"\nMix: %@", [self mixString]];
-  [result appendFormat:@"\nSex: %@", [self sexString]];
-  [result appendFormat:@"\nDescription: %@", self.petDescription];
-  [result appendFormat:@"\nOptions:\n%@", [self optionsString]];
-  [result appendFormat:@"\nContact:\n%@", [self contactString]];
-  [result appendFormat:@"\nPhoto URLS:\n%@", [self photoURLsString]];
+  [result appendString:@"\n\n* * * * * * * * - - - - - - - -"];
+  [result appendFormat:@"\n\nPet #%@", self.idNumber];
+  [result appendFormat:@"\n\nName: %@", self.name];
+  [result appendFormat:@"\n\nAnimal: %@", [self animalString]];
+  [result appendFormat:@"\n\nBreeds: %@", [self breedsString]];
+  [result appendFormat:@"\n\nMix: %@", [self mixString]];
+  [result appendFormat:@"\n\nSex: %@", [self sexString]];
+  [result appendFormat:@"\n\nDescription: %@", self.petDescription];
+  [result appendFormat:@"\n\nOptions:\n%@", [self optionsString]];
+  [result appendFormat:@"\n\nContact:\n%@", [self contactString]];
+  [result appendFormat:@"\n\nLast updated: %@", [self lastUpdatedString]];
+  [result appendFormat:@"\n\nPhoto URLs:\n%@", [self photoURLsString]];
+  [result appendString:@"\n- - - - - - - - * * * * * * * *\n"];
   
   return result;
 }

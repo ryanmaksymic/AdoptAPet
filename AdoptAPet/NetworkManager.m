@@ -47,7 +47,7 @@
       
       [pets addObject:pet];
       
-      NSLog(@"Pet: %@", pet);
+      NSLog(@"%@", pet);
     }
     
     //completion(pets);
