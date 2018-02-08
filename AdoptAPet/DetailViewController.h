@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Pet.h"
 
 @interface DetailViewController : UIViewController
+
+@property (weak, nonatomic) Pet *pet;
 
 @end

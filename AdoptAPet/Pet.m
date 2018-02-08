@@ -236,35 +236,36 @@
   {
     if (option == PetOptionSpecialNeeds)
     {
-      [result appendString:@"Special Needs\n"];
+      [result appendString:@"Special Needs ∙ "];
     }
     else if (option.integerValue == PetOptionNoDogs)
     {
-      [result appendString:@"No Dogs\n"];
+      [result appendString:@"No Dogs ∙ "];
     }
     else if (option.integerValue == PetOptionNoCats)
     {
-      [result appendString:@"No Cats\n"];
+      [result appendString:@"No Cats ∙ "];
     }
     else if (option.integerValue == PetOptionNoKids)
     {
-      [result appendString:@"No Kids\n"];
+      [result appendString:@"No Kids ∙ "];
     }
     else if (option.integerValue == PetOptionNoClaws)
     {
-      [result appendString:@"No Claws\n"];
+      [result appendString:@"No Claws ∙ "];
     }
     else if (option.integerValue == PetOptionHasShots)
     {
-      [result appendString:@"Has Shots\n"];
+      [result appendString:@"Has Shots ∙ "];
     }
     else if (option.integerValue == PetOptionHousebroken)
     {
-      [result appendString:@"Housebroken\n"];
+      [result appendString:@"Housebroken ∙ "];
     }
   }
-  
-  return result;
+
+    NSString *resultFormatted = [result substringToIndex:[result length]-3];
+    return resultFormatted;
 }
 
 - (NSString *)contactString

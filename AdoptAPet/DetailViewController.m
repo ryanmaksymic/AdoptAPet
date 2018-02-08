@@ -10,12 +10,21 @@
 #import "DetailCollectionViewCell.h"
 #import "NetworkManager.h"
 #import "Pet.h"
+#import "Contact.h"
 
 @interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (weak, nonatomic) Pet *pet;
 @property (strong, nonatomic) NSArray<NSString *> *detailPhotos;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *breadLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sexLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *optionsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contactLabel;
 
 @end
 
@@ -23,9 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.collectionView.delegate = self;
 //    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"thumb_default_pet"]];
-    self.navigationItem.title = @"TEST";
     
 //    UIBarButtonItem *favButton = [[UIBarButtonItem alloc]
 //                                   initWithImage:[UIImage imageNamed:@"fav_button"]
@@ -35,13 +42,31 @@
 //    self.navigationItem.rightBarButtonItem = favButton;
     
 
-    
-    [self loadPhotos];
+
+    [self loadInfo];
 }
 
-- (void)loadPhotos {
+- (void)loadInfo {
     
     self.detailPhotos = @[@"thumb_default_pet", @"fav_button", @"thumb_default_pet"];
+
+    self.collectionView.delegate = self;
+    self.descriptionLabel.text = self.pet.petDescription;
+    self.sizeLabel.text = [self.pet sizeString];
+    self.sexLabel.text = [self.pet sexString];
+    self.breadLabel.text = [NSString stringWithFormat:@"%@ %@", [self.pet breedsString], self.pet.mix ? @" | Mixed" : @""];
+    self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", self.pet.contact.city, self.pet.contact.state];
+    self.dateLabel.text = [NSString stringWithFormat:@"Last updated: %@", [self.pet lastUpdatedString]];
+    self.optionsLabel.text = [self.pet optionsString];
+    self.contactLabel.text = [self.pet contactString];
+    
+
+}
+
+- (void)setPet:(Pet *)pet {
+    _pet = pet;
+
+    self.navigationItem.title = pet.name;
     
 }
 

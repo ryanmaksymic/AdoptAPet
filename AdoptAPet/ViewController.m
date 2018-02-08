@@ -11,6 +11,7 @@
 #import "Pet.h"
 #import "NetworkManager.h"
 #import "PetTableViewCell.h"
+#import "DetailViewController.h"
 
 @interface ViewController ()
 
@@ -58,6 +59,15 @@
   cell.lastUpdatedLabel.text = [NSString stringWithFormat:@"Last updated: %@", [self.pets[indexPath.row] lastUpdatedString]];
   
   return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"petDetail"]) {
+        DetailViewController *detail = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Pet *pet = self.pets[indexPath.row];
+        detail.pet = pet;
+    }
 }
 
 @end
