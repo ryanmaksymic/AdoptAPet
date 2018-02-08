@@ -24,7 +24,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.collectionView.delegate = self;
+//    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"thumb_default_pet"]];
     self.navigationItem.title = @"TEST";
+    
+//    UIBarButtonItem *favButton = [[UIBarButtonItem alloc]
+//                                   initWithImage:[UIImage imageNamed:@"fav_button"]
+//                                   style:UIBarButtonItemStyleDone
+//                                   target:self
+//                                   action:@selector(addFavorite)];
+//    self.navigationItem.rightBarButtonItem = favButton;
+    
+
+    
     [self loadPhotos];
 }
 
