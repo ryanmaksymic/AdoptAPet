@@ -7,8 +7,15 @@
 //
 
 #import "DetailViewController.h"
+#import "DetailCollectionViewCell.h"
+#import "NetworkManager.h"
+#import "Pet.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (weak, nonatomic) Pet *pet;
+@property (strong, nonatomic) NSArray<NSString *> *detailPhotos;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -16,12 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.collectionView.delegate = self;
+    self.navigationItem.title = @"TEST";
+    [self loadPhotos];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loadPhotos {
+    
+    self.detailPhotos = @[@"thumb_default_pet", @"fav_button", @"thumb_default_pet"];
+    
 }
 
 /*
@@ -33,5 +43,29 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    DetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imageCell" forIndexPath:indexPath];
+    
+    cell.photo.image = [UIImage imageNamed:[self.detailPhotos objectAtIndex:indexPath.row]];
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.detailPhotos.count ? self.detailPhotos.count : 0;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return self.collectionView.frame.size;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0.0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0.0;
+}
 
 @end
