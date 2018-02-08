@@ -39,8 +39,6 @@
     
     NSMutableArray<Pet *> * pets = [@[] mutableCopy];
     
-    //NSLog(@"%@", results);
-    
     for (NSDictionary * result in results)
     {
       Pet * pet = [[Pet alloc] initWithJSON:result];
@@ -50,7 +48,7 @@
       NSLog(@"%@", pet);
     }
     
-    //completion(pets);
+    completion(pets);
     
     [session invalidateAndCancel];
     

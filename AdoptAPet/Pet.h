@@ -57,4 +57,12 @@ typedef NS_ENUM(NSUInteger, PetOption)
 
 - (instancetype)initWithJSON:(NSDictionary *)json;
 
+- (NSString *)animalString;
+- (NSString *)breedsString;
+- (NSString *)mixString;
+- (NSString *)sexString;
+- (NSString *)optionsString;
+- (NSString *)contactString;
+- (NSString *)lastUpdatedString;
+
 @end

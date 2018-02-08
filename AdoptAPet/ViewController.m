@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Pet.h"
 #import "NetworkManager.h"
+#import "PetTableViewCell.h"
 
 @interface ViewController ()
 
@@ -28,21 +29,32 @@
   
   [NetworkManager fetchPetDataFromURL:url completionHandler:^(NSArray<Pet *> *pets) {
     
-    //self.pets = pets;
+    self.pets = pets;
     
-    NSLog(@"Pet data downloaded!");
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      
+      [self.tableView reloadData];
+      
+    }];
     
   }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 1;
+  return self.pets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"petCell"];
+  PetTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"petCell"];
+  
+  cell.nameLabel.text = self.pets[indexPath.row].name;
+  //cell.sizeLabel.text =
+  cell.sexLabel.text = [self.pets[indexPath.row] sexString];
+  cell.breedsLabel.text = [self.pets[indexPath.row] breedsString];
+  //cell.locationLabel.text =
+  cell.lastUpdatedLabel.text = [NSString stringWithFormat:@"Last updated: %@", [self.pets[indexPath.row] lastUpdatedString]];
   
   return cell;
 }

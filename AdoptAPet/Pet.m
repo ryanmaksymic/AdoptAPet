@@ -170,7 +170,12 @@
   
   for (NSString * breed in self.breeds)
   {
-    [result appendFormat:@"%@  ", breed];
+    [result appendFormat:@"%@", breed];
+    
+    if (breed != self.breeds.lastObject)
+    {
+      [result appendString:@" / "];
+    }
   }
   
   return result;
@@ -183,7 +188,7 @@
 
 - (NSString *)sexString
 {
-  return self.sex == PetSexMale ? @"male" : @"female";
+  return self.sex == PetSexMale ? @"Male" : @"Female";
 }
 
 - (NSString *)optionsString
