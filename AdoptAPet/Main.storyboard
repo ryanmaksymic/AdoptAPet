@@ -104,7 +104,7 @@
                                     <outlet property="petImageView" destination="9hX-5D-8bp" id="Tlh-Jl-G0c"/>
                                     <outlet property="sexLabel" destination="O3D-A0-BGd" id="Rbn-OM-oxU"/>
                                     <outlet property="sizeLabel" destination="1nV-zw-MsM" id="GoO-cb-gDY"/>
-                                    <segue destination="jm0-rU-WI4" kind="show" id="1ka-pV-ego"/>
+                                    <segue destination="jm0-rU-WI4" kind="show" identifier="petDetail" id="1ka-pV-ego"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

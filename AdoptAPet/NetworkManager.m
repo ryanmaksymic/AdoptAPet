@@ -57,4 +57,31 @@
   [dataTask resume];
 }
 
++ (void)fetchImageFileFromURL:(NSURL *)url completionHandler:(void (^)(UIImage * image))completion
+{
+  NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+  
+  NSURLSession * session = [NSURLSession sessionWithConfiguration:configuration];
+  
+  NSURLSessionDownloadTask * downloadTask = [session downloadTaskWithURL:url completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    
+    if (error)
+    {
+      NSLog(@"error: %@", error.localizedDescription);
+      return;
+    }
+    
+    NSData * data = [NSData dataWithContentsOfURL:location];
+    
+    UIImage * image = [UIImage imageWithData:data];
+    
+    completion(image);
+    
+    [session invalidateAndCancel];
+    
+  }];
+  
+  [downloadTask resume];
+}
+
 @end

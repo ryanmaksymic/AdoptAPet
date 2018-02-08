@@ -96,6 +96,8 @@
 				FE7200C2202B6DD5003217B9 /* ViewController.h */,
 				FE7200C3202B6DD5003217B9 /* ViewController.m */,
 				FE7200DB202B852B003217B9 /* Main.storyboard */,
+				07A55DED202BD37A00E3D39A /* DetailCollectionViewCell.h */,
+				07A55DEC202BD37A00E3D39A /* DetailCollectionViewCell.m */,
 				FE7200E7202B88E5003217B9 /* DetailViewController.h */,
 				FE7200E8202B88E5003217B9 /* DetailViewController.m */,
 				07A55DED202BD37A00E3D39A /* DetailCollectionViewCell.h */,
