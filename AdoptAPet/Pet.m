@@ -266,8 +266,12 @@
     }
   }
 
-    NSString *resultFormatted = [result substringToIndex:[result length]-3];
-    return resultFormatted;
+    if ([result length] > 3) {
+        NSString *resultFormatted = [result substringToIndex:[result length]-3];
+        return resultFormatted;
+    }
+    
+    return result;
 }
 
 - (NSString *)contactString

@@ -14,7 +14,7 @@
 
 @interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (strong, nonatomic) NSArray<NSString *> *detailPhotos;
+//@property (strong, nonatomic) NSArray<NSString *> *detailPhotos;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -48,8 +48,6 @@
 
 - (void)loadInfo {
     
-    self.detailPhotos = @[@"thumb_default_pet", @"fav_button", @"thumb_default_pet"];
-
     self.collectionView.delegate = self;
     self.descriptionLabel.text = self.pet.petDescription;
     self.sizeLabel.text = [self.pet sizeString];
@@ -83,13 +81,27 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     DetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imageCell" forIndexPath:indexPath];
     
-    cell.photo.image = [UIImage imageNamed:[self.detailPhotos objectAtIndex:indexPath.row]];
+    if (self.pet.photos.count-1 < indexPath.item) {
+        [NetworkManager fetchImageFileFromURL:self.pet.photoURLs[indexPath.row] completionHandler:^(UIImage * image) {
+            self.pet.photos[indexPath.row] = image;
+
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                
+                cell.photo.image = self.pet.photos[indexPath.item];
+                
+                
+            }];
+        }];
+    } else {
+        cell.photo.image = self.pet.photos[indexPath.item];
+    }
     
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.detailPhotos.count ? self.detailPhotos.count : 0;
+    NSLog(@"TOTAL: %li", self.pet.photoURLs.count ? self.pet.photoURLs.count : 1);
+    return self.pet.photoURLs.count ? self.pet.photoURLs.count : 1;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
