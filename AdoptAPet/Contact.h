@@ -14,6 +14,7 @@
 @property (nonatomic) NSString * email;
 @property (nonatomic) NSString * address1;
 @property (nonatomic) NSString * address2;
+@property (nonatomic) NSString * city;
 @property (nonatomic) NSString * state;
 @property (nonatomic) NSString * zip;
 

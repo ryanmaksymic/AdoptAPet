@@ -55,6 +55,24 @@
       _mix = NO;
     }
     
+    // size:
+    if ([json[@"size"][@"$t"] isEqualToString:@"S"])
+    {
+      _size = PetSizeSmall;
+    }
+    else if ([json[@"size"][@"$t"] isEqualToString:@"M"])
+    {
+      _size = PetSizeMedium;
+    }
+    else if ([json[@"size"][@"$t"] isEqualToString:@"L"])
+    {
+      _size = PetSizeLarge;
+    }
+    else if ([json[@"size"][@"$t"] isEqualToString:@"XL"])
+    {
+      _size = PetSizeExtraLarge;
+    }
+    
     // sex:
     if ([json[@"sex"][@"$t"] isEqualToString:@"M"])
     {
@@ -125,6 +143,7 @@
     _contact.email = [json[@"contact"][@"email"] count] > 0 ? json[@"contact"][@"email"][@"$t"] : @"";
     _contact.address1 = [json[@"contact"][@"address1"] count] > 0 ? json[@"contact"][@"address1"][@"$t"] : @"";
     _contact.address2 = [json[@"contact"][@"address2"] count] > 0 ? json[@"contact"][@"address1"][@"$t"] : @"";
+    _contact.city = [json[@"contact"][@"city"] count] > 0 ? json[@"contact"][@"city"][@"$t"] : @"";
     _contact.state = [json[@"contact"][@"state"] count] > 0 ? json[@"contact"][@"state"][@"$t"] : @"";
     _contact.zip = [json[@"contact"][@"zip"] count] > 0 ? json[@"contact"][@"zip"][@"$t"] : @"";
     
@@ -142,7 +161,7 @@
     for (NSDictionary * photo in json[@"media"][@"photos"][@"photo"])
     {
       NSString * photoURLString = photo[@"$t"];
-      if ([photoURLString containsString:@"-x"])  // Full-size photos have names ending in "-x"
+      if ([photoURLString containsString:@"-x"])  // Full-size photos have file names ending in "-x"
       {
         [tempPhotoURLs addObject:[NSURL URLWithString:photoURLString]];
       }
@@ -184,6 +203,24 @@
 - (NSString *)mixString
 {
   return self.mix ? @"YES" : @"NO";
+}
+
+- (NSString *)sizeString
+{
+  if (self.size == PetSizeSmall)
+  {
+    return @"Small";
+  }
+  else if (self.size == PetSizeMedium)
+  {
+    return @"Medium";
+  }
+  else if (self.size == PetSizeLarge)
+  {
+    return @"Large";
+  }
+
+    return @"Extra Large";
 }
 
 - (NSString *)sexString
@@ -238,6 +275,7 @@
   [result appendFormat:@"%@\n", self.contact.email];
   [result appendFormat:@"%@\n", self.contact.address1];
   [result appendFormat:@"%@\n", self.contact.address2];
+  [result appendFormat:@"%@\n", self.contact.city];
   [result appendFormat:@"%@\n", self.contact.state];
   [result appendFormat:@"%@\n", self.contact.zip];
   

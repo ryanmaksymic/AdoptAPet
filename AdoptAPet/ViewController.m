@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Contact.h"
 #import "Pet.h"
 #import "NetworkManager.h"
 #import "PetTableViewCell.h"
@@ -50,10 +51,10 @@
   PetTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"petCell"];
   
   cell.nameLabel.text = self.pets[indexPath.row].name;
-  //cell.sizeLabel.text =
+  cell.sizeLabel.text = [self.pets[indexPath.row] sizeString];
   cell.sexLabel.text = [self.pets[indexPath.row] sexString];
   cell.breedsLabel.text = [self.pets[indexPath.row] breedsString];
-  //cell.locationLabel.text =
+  cell.locationLabel.text = [NSString stringWithFormat:@"%@, %@", self.pets[indexPath.row].contact.city, self.pets[indexPath.row].contact.state];
   cell.lastUpdatedLabel.text = [NSString stringWithFormat:@"Last updated: %@", [self.pets[indexPath.row] lastUpdatedString]];
   
   return cell;

@@ -47,6 +47,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @property (nonatomic) PetType animal;
 @property (nonatomic, strong) NSArray<NSString *> * breeds;
 @property (nonatomic) BOOL mix;
+@property (nonatomic) PetSize size;
 @property (nonatomic) PetSex sex;
 @property (nonatomic, strong) NSString * petDescription;
 @property (nonatomic, strong) NSArray * options;
@@ -60,6 +61,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 - (NSString *)animalString;
 - (NSString *)breedsString;
 - (NSString *)mixString;
+- (NSString *)sizeString;
 - (NSString *)sexString;
 - (NSString *)optionsString;
 - (NSString *)contactString;

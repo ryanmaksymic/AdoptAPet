@@ -20,6 +20,7 @@
     _email = @"";
     _address1 = @"";
     _address2 = @"";
+    _city = @"";
     _state = @"";
     _zip = @"";
   }
