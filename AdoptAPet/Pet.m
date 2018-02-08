@@ -161,13 +161,15 @@
     for (NSDictionary * photo in json[@"media"][@"photos"][@"photo"])
     {
       NSString * photoURLString = photo[@"$t"];
-      if ([photoURLString containsString:@"-x"])  // Full-size photos have file names ending in "-x"
+      if ([photo[@"@size"] isEqualToString: @"x"])  // Full-size photos have "size" key's value set to "x"
       {
         [tempPhotoURLs addObject:[NSURL URLWithString:photoURLString]];
       }
     }
     _photoURLs = tempPhotoURLs;
   }
+  
+  _photos = [@[] mutableCopy];
   
   return self;
 }
@@ -219,8 +221,8 @@
   {
     return @"Large";
   }
-
-    return @"Extra Large";
+  
+  return @"Extra Large";
 }
 
 - (NSString *)sexString
