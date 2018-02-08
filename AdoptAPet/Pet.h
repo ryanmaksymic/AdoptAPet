@@ -55,6 +55,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @property (nonatomic, strong) NSString * idNumber;
 @property (nonatomic, strong) NSDate * lastUpdated;
 @property (nonatomic, strong) NSArray<NSURL *> * photoURLs;
+@property (nonatomic, strong) NSMutableArray<UIImage *> * photos;
 
 - (instancetype)initWithJSON:(NSDictionary *)json;
 

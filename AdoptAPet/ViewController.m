@@ -25,8 +25,8 @@
 {
   [super viewDidLoad];
   
-  NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
-  //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?animal=bird&location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
+  //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
+  NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?animal=dog&location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
   
   [NetworkManager fetchPetDataFromURL:url completionHandler:^(NSArray<Pet *> *pets) {
     
@@ -56,6 +56,27 @@
   cell.breedsLabel.text = [self.pets[indexPath.row] breedsString];
   cell.locationLabel.text = [NSString stringWithFormat:@"%@, %@", self.pets[indexPath.row].contact.city, self.pets[indexPath.row].contact.state];
   cell.lastUpdatedLabel.text = [NSString stringWithFormat:@"Last updated: %@", [self.pets[indexPath.row] lastUpdatedString]];
+  
+  if ([self.pets[indexPath.row].photoURLs count] == 0 && [self.pets[indexPath.row].photos count] == 0)
+  {
+    self.pets[indexPath.row].photos[0] = [UIImage imageNamed:@"thumb_default_pet"];
+  }
+  else if ([self.pets[indexPath.row].photoURLs count] > 0 && [self.pets[indexPath.row].photos count] == 0)
+  {
+    [NetworkManager fetchImageFileFromURL:self.pets[indexPath.row].photoURLs.firstObject completionHandler:^(UIImage * image) {
+      
+      self.pets[indexPath.row].photos[0] = image;
+      
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+      }];
+      
+    }];
+  }
+  
+  cell.petImageView.image = self.pets[indexPath.row].photos.firstObject;
   
   return cell;
 }
