@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @interface Pet : NSObject
 
 @property (nonatomic, strong) NSString * name;
-@property (nonatomic) PetType animal;
+@property (nonatomic) PetType type;
 @property (nonatomic, strong) NSArray<NSString *> * breeds;
 @property (nonatomic) BOOL mix;
 @property (nonatomic) PetSize size;

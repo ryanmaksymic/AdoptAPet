@@ -20,14 +20,14 @@
     // name:
     _name = json[@"name"][@"$t"];
     
-    // animal:
+    // type:
     if ([json[@"animal"][@"$t"] isEqualToString:@"Dog"])
     {
-      _animal = PetTypeDog;
+      _type = PetTypeDog;
     }
     else if ([json[@"animal"][@"$t"] isEqualToString:@"Cat"])
     {
-      _animal = PetTypeCat;
+      _type = PetTypeCat;
     }
     
     // breeds:
@@ -191,7 +191,7 @@
 
 - (NSString *)animalString
 {
-  if (self.animal == PetTypeDog)
+  if (self.type == PetTypeDog)
   {
     return @"dog";
   }
