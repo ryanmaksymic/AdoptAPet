@@ -10,6 +10,7 @@
 		07929B49202D01EC00BBD1FC /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07929B48202D01EC00BBD1FC /* Map.storyboard */; };
 		07929B4C202D029700BBD1FC /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07929B4B202D029700BBD1FC /* MapViewController.m */; };
 		07A55DEE202BD37B00E3D39A /* DetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A55DEC202BD37A00E3D39A /* DetailCollectionViewCell.m */; };
+		FE308D2F202CFD180045A811 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308D2E202CFD180045A811 /* SearchResultsViewController.m */; };
 		FE7200C1202B6DD5003217B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200C0202B6DD5003217B9 /* AppDelegate.m */; };
 		FE7200C4202B6DD5003217B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200C3202B6DD5003217B9 /* ViewController.m */; };
 		FE7200C7202B6DD5003217B9 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7200C5202B6DD5003217B9 /* Search.storyboard */; };
@@ -32,6 +33,8 @@
 		07929B4B202D029700BBD1FC /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		07A55DEC202BD37A00E3D39A /* DetailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCollectionViewCell.m; sourceTree = "<group>"; };
 		07A55DED202BD37A00E3D39A /* DetailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCollectionViewCell.h; sourceTree = "<group>"; };
+		FE308D2D202CFD180045A811 /* SearchResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultsViewController.h; sourceTree = "<group>"; };
+		FE308D2E202CFD180045A811 /* SearchResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
 		FE7200BC202B6DD5003217B9 /* AdoptAPet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdoptAPet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7200BF202B6DD5003217B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE7200C0202B6DD5003217B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				FE7200DD202B8538003217B9 /* Detail.storyboard */,
 				FE7200E4202B88B8003217B9 /* SearchViewController.h */,
 				FE7200E5202B88B8003217B9 /* SearchViewController.m */,
+				FE308D2D202CFD180045A811 /* SearchResultsViewController.h */,
+				FE308D2E202CFD180045A811 /* SearchResultsViewController.m */,
 				FE7200C5202B6DD5003217B9 /* Search.storyboard */,
 				FE7200C8202B6DD5003217B9 /* Assets.xcassets */,
 				FE7200CA202B6DD5003217B9 /* LaunchScreen.storyboard */,
@@ -198,6 +203,7 @@
 				FE7200EC202B8906003217B9 /* PetTableViewCell.m in Sources */,
 				FE7200C4202B6DD5003217B9 /* ViewController.m in Sources */,
 				FE7200CF202B6DD5003217B9 /* main.m in Sources */,
+				FE308D2F202CFD180045A811 /* SearchResultsViewController.m in Sources */,
 				FE7200C1202B6DD5003217B9 /* AppDelegate.m in Sources */,
 				FE7200E6202B88B8003217B9 /* SearchViewController.m in Sources */,
 				07A55DEE202BD37B00E3D39A /* DetailCollectionViewCell.m in Sources */,

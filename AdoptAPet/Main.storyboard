@@ -166,11 +166,11 @@
             </objects>
             <point key="canvasLocation" x="-2479" y="-120"/>
         </scene>
-        <!--Item-->
+        <!--Nearby-->
         <scene sceneID="wo6-mj-6X7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dy6-id-efo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rzZ-aA-pZB"/>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="location" id="rzZ-aA-pZB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7bA-xc-6ed">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -187,6 +187,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="location" width="30" height="30"/>
         <image name="thumb_default_pet" width="310" height="310"/>
     </resources>
 </document>

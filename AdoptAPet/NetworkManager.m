@@ -11,6 +11,8 @@
 
 @implementation NetworkManager
 
+// TODO: Make method that fetches pet data using given search terms
+
 + (void)fetchPetDataFromURL:(NSURL *)url completionHandler:(void (^)(NSArray<Pet *> * pets))completion
 {
   NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];

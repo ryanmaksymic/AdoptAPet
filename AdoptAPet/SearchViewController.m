@@ -10,28 +10,41 @@
 
 @interface SearchViewController ()
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl * petTypeSegmentedControl;
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * sexButtons;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * sizeButtons;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * ageButtons;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * optionsButtons;
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *allFilterButtons;
+
 @end
+
 
 @implementation SearchViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  
+  
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)buttonToggled:(UIButton *)sender
+{
+  sender.selected = !sender.selected;
+  
+  NSLog(@"Button #%ld", sender.tag);
+
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"showSearchResults"])
+  {
+    // TODO: Collect search terms
+  }
 }
-*/
 
 @end
