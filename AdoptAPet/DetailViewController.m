@@ -33,18 +33,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"thumb_default_pet"]];
     
 //    UIBarButtonItem *favButton = [[UIBarButtonItem alloc]
 //                                   initWithImage:[UIImage imageNamed:@"fav_button"]
 //                                   style:UIBarButtonItemStyleDone
 //                                   target:self
-//                                   action:@selector(addFavorite)];
+//                                  action:@selector(addFavorite)];
 //    self.navigationItem.rightBarButtonItem = favButton;
     
 
 
     [self loadInfo];
+}
+
+- (void)addFavorite {
+    self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"fav_button2"];
 }
 
 - (void)loadInfo {

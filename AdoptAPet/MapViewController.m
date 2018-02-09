@@ -27,14 +27,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *loc = @"M5T 2V4";
     
-    [self getGeoInformations:loc  completionHandler:^(CLLocationCoordinate2D locationCoordinates) {
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self.mapView setRegion:MKCoordinateRegionMake(locationCoordinates, MKCoordinateSpanMake(0.02, 0.02))];
-            [self loadShelters:loc];
-        }];
-    } ];
+    self.locationManager = [[CLLocationManager alloc] init];
+
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.mapView setShowsUserLocation:YES];
+    [self.locationManager setDelegate:self];
+
+    NSString *loc = @"M9R3N4";
+    [self loadFilterLocation:loc];
+    [self loadShelters:loc];
+
 }
 
 - (void)getGeoInformations:(NSString *)location completionHandler:(void (^)(CLLocationCoordinate2D))completion {
@@ -57,16 +60,40 @@
     // #3 - Anything here will be called during view did load, but BEFORE the completion handler of the geocoding process is called.
 }
 
+- (void)loadFilterLocation:(NSString *)location {
+    [self getGeoInformations:location  completionHandler:^(CLLocationCoordinate2D locationCoordinates) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.mapView setRegion:MKCoordinateRegionMake(locationCoordinates, MKCoordinateSpanMake(0.2, 0.2))];
+        }];
+    } ];
+}
+
 - (void)loadShelters:(NSString *)location {
     [NetworkManager fetchShelterDataFromLocation:location completionHandler:^(NSArray<Contact *> *contacts) {
         self.shelters = contacts;
 
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.mapView addAnnotations:self.shelters];
-            [self.mapView showAnnotations:self.shelters animated:YES];
+            //[self.mapView showAnnotations:self.shelters animated:YES];
         }];
 
     }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
+        [self.locationManager requestLocation];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *currentLocation = locations[0];
+ //   [self.mapView setRegion:MKCoordinateRegionMake(currentLocation.coordinate, MKCoordinateSpanMake(0.06, 0.06))];
+
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"ERROR\nERROR\nERROR\nERROR\nERROR\nERROR\nERROR\n");
 }
 
 @end
