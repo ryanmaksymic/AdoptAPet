@@ -18,6 +18,9 @@
 
 @end
 
+// TODO: Load 25 new pets when user gets to bottom of table
+
+// TODO: Separate into resuable list view controller
 
 @implementation ViewController
 
@@ -25,8 +28,8 @@
 {
   [super viewDidLoad];
   
-  //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
-  NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?animal=dog&location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
+  NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
+  //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?animal=dog&location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
   
   [NetworkManager fetchPetDataFromURL:url completionHandler:^(NSArray<Pet *> *pets) {
     

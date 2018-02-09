@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		07A55DEE202BD37B00E3D39A /* DetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A55DEC202BD37A00E3D39A /* DetailCollectionViewCell.m */; };
 		FE308D2F202CFD180045A811 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308D2E202CFD180045A811 /* SearchResultsViewController.m */; };
-		FE308D31202D06220045A811 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE308D30202D06220045A811 /* Map.storyboard */; };
 		FE7200C1202B6DD5003217B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200C0202B6DD5003217B9 /* AppDelegate.m */; };
 		FE7200C4202B6DD5003217B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200C3202B6DD5003217B9 /* ViewController.m */; };
 		FE7200C7202B6DD5003217B9 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7200C5202B6DD5003217B9 /* Search.storyboard */; };
@@ -31,7 +30,6 @@
 		07A55DED202BD37A00E3D39A /* DetailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCollectionViewCell.h; sourceTree = "<group>"; };
 		FE308D2D202CFD180045A811 /* SearchResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultsViewController.h; sourceTree = "<group>"; };
 		FE308D2E202CFD180045A811 /* SearchResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
-		FE308D30202D06220045A811 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		FE7200BC202B6DD5003217B9 /* AdoptAPet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdoptAPet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7200BF202B6DD5003217B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE7200C0202B6DD5003217B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				FE308D2D202CFD180045A811 /* SearchResultsViewController.h */,
 				FE308D2E202CFD180045A811 /* SearchResultsViewController.m */,
 				FE7200C5202B6DD5003217B9 /* Search.storyboard */,
-				FE308D30202D06220045A811 /* Map.storyboard */,
 				FE7200C8202B6DD5003217B9 /* Assets.xcassets */,
 				FE7200CA202B6DD5003217B9 /* LaunchScreen.storyboard */,
 				FE7200CD202B6DD5003217B9 /* Info.plist */,
@@ -183,7 +180,6 @@
 				FE7200DC202B852B003217B9 /* Main.storyboard in Resources */,
 				FE7200DE202B8538003217B9 /* Detail.storyboard in Resources */,
 				FE7200C7202B6DD5003217B9 /* Search.storyboard in Resources */,
-				FE308D31202D06220045A811 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

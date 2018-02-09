@@ -36,9 +36,9 @@ typedef NS_ENUM(NSUInteger, PetOption)
   PetOptionNoDogs,
   PetOptionNoCats,
   PetOptionNoKids,
-  PetOptionNoClaws,
+  PetOptionNoClaws,  // TODO: Get rid of; no longer in API
   PetOptionHasShots,
-  PetOptionHousebroken
+  PetOptionHousebroken  // TODO: Changed "housebroken" to "housetrained"; API changed
 };
 
 @interface Pet : NSObject
@@ -56,6 +56,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @property (nonatomic, strong) NSDate * lastUpdated;
 @property (nonatomic, strong) NSArray<NSURL *> * photoURLs;
 @property (nonatomic, strong) NSMutableArray<UIImage *> * photos;
+// TODO: Add age property
 
 - (instancetype)initWithJSON:(NSDictionary *)json;
 
