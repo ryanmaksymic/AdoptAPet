@@ -11,10 +11,11 @@
 
 @interface PetSearch : NSObject
 
+@property (nonatomic, copy) NSString * locationZip;
 @property (nonatomic) PetType type;
-@property (nonatomic) NSMutableArray * sexes;
-@property (nonatomic) NSMutableArray * sizes;
-@property (nonatomic) NSMutableArray * ages;
-@property (nonatomic) NSMutableArray * options;
+@property (nonatomic) NSArray * sexes;
+@property (nonatomic) NSArray * sizes;
+@property (nonatomic) NSArray * ages;
+@property (nonatomic) NSArray * options;
 
 @end

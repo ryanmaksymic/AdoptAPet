@@ -10,19 +10,4 @@
 
 @implementation PetSearch
 
-- (instancetype)init
-{
-  self = [super init];
-  
-  if (self)
-  {
-    _sexes = [@[] mutableCopy];
-    _sizes = [@[] mutableCopy];
-    _ages = [@[] mutableCopy];
-    _options = [@[] mutableCopy];
-  }
-  
-  return self;
-}
-
 @end
