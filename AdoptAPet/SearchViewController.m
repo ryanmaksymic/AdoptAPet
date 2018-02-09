@@ -10,6 +10,14 @@
 
 @interface SearchViewController ()
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl * petTypeSegmentedControl;
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * sexButtons;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * sizeButtons;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * ageButtons;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * optionsButtons;
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *allFilterButtons;
 
 @end
 
@@ -19,11 +27,24 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  
 }
 
 - (IBAction)buttonToggled:(UIButton *)sender
 {
   sender.selected = !sender.selected;
+  
+  NSLog(@"Button #%ld", sender.tag);
+
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"showSearchResults"])
+  {
+    // TODO: Collect search terms
+  }
 }
 
 @end
