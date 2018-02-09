@@ -73,6 +73,24 @@
       _size = PetSizeExtraLarge;
     }
     
+    // age:
+    if ([json[@"age"][@"$t"] isEqualToString:@"Baby"])
+    {
+      _age = PetAgeBaby;
+    }
+    else if ([json[@"age"][@"$t"] isEqualToString:@"Young"])
+    {
+      _age = PetAgeYoung;
+    }
+    else if ([json[@"age"][@"$t"] isEqualToString:@"Adult"])
+    {
+      _age = PetAgeAdult;
+    }
+    else if ([json[@"age"][@"$t"] isEqualToString:@"Senior"])
+    {
+      _age = PetAgeSenior;
+    }
+    
     // sex:
     if ([json[@"sex"][@"$t"] isEqualToString:@"M"])
     {
@@ -116,17 +134,13 @@
           {
             [tempOptions addObject:[NSNumber numberWithInt:PetOptionNoKids]];
           }
-          else if ([option[@"$t"] isEqualToString:@"noClaws"])
-          {
-            [tempOptions addObject:[NSNumber numberWithInt:PetOptionNoClaws]];
-          }
           else if ([option[@"$t"] isEqualToString:@"hasShots"])
           {
             [tempOptions addObject:[NSNumber numberWithInt:PetOptionHasShots]];
           }
-          else if ([option[@"$t"] isEqualToString:@"housebroken"])
+          else if ([option[@"$t"] isEqualToString:@"housetrained"])
           {
-            [tempOptions addObject:[NSNumber numberWithInt:PetOptionHousebroken]];
+            [tempOptions addObject:[NSNumber numberWithInt:PetOptionHousetrained]];
           }
         }
         _options = tempOptions;
@@ -225,6 +239,24 @@
   return @"Extra Large";
 }
 
+- (NSString *)ageString
+{
+  if (self.age == PetAgeBaby)
+  {
+    return @"Baby";
+  }
+  else if (self.age == PetAgeYoung)
+  {
+    return @"Young";
+  }
+  else if (self.age == PetAgeAdult)
+  {
+    return @"Adult";
+  }
+  
+  return @"Senior";
+}
+
 - (NSString *)sexString
 {
   return self.sex == PetSexMale ? @"Male" : @"Female";
@@ -252,17 +284,13 @@
     {
       [result appendString:@"No Kids ∙ "];
     }
-    else if (option.integerValue == PetOptionNoClaws)
-    {
-      [result appendString:@"No Claws ∙ "];
-    }
     else if (option.integerValue == PetOptionHasShots)
     {
       [result appendString:@"Has Shots ∙ "];
     }
-    else if (option.integerValue == PetOptionHousebroken)
+    else if (option.integerValue == PetOptionHousetrained)
     {
-      [result appendString:@"Housebroken ∙ "];
+      [result appendString:@"Housetrained ∙ "];
     }
   }
 

@@ -16,12 +16,6 @@ typedef NS_ENUM(NSUInteger, PetType)
   PetTypeCat
 };
 
-typedef NS_ENUM(NSUInteger, PetSex)
-{
-  PetSexMale,
-  PetSexFemale
-};
-
 typedef NS_ENUM(NSUInteger, PetSize)
 {
   PetSizeSmall,
@@ -30,15 +24,27 @@ typedef NS_ENUM(NSUInteger, PetSize)
   PetSizeExtraLarge
 };
 
+typedef NS_ENUM(NSUInteger, PetAge) {
+  PetAgeBaby,
+  PetAgeYoung,
+  PetAgeAdult,
+  PetAgeSenior
+};
+
+typedef NS_ENUM(NSUInteger, PetSex)
+{
+  PetSexMale,
+  PetSexFemale
+};
+
 typedef NS_ENUM(NSUInteger, PetOption)
 {
   PetOptionSpecialNeeds,
   PetOptionNoDogs,
   PetOptionNoCats,
   PetOptionNoKids,
-  PetOptionNoClaws,  // TODO: Get rid of; no longer in API
   PetOptionHasShots,
-  PetOptionHousebroken  // TODO: Changed "housebroken" to "housetrained"; API changed
+  PetOptionHousetrained
 };
 
 @interface Pet : NSObject
@@ -48,6 +54,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @property (nonatomic, strong) NSArray<NSString *> * breeds;
 @property (nonatomic) BOOL mix;
 @property (nonatomic) PetSize size;
+@property (nonatomic) PetAge age;
 @property (nonatomic) PetSex sex;
 @property (nonatomic, strong) NSString * petDescription;
 @property (nonatomic, strong) NSArray * options;
@@ -56,7 +63,6 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @property (nonatomic, strong) NSDate * lastUpdated;
 @property (nonatomic, strong) NSArray<NSURL *> * photoURLs;
 @property (nonatomic, strong) NSMutableArray<UIImage *> * photos;
-// TODO: Add age property
 
 - (instancetype)initWithJSON:(NSDictionary *)json;
 
@@ -64,6 +70,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 - (NSString *)breedsString;
 - (NSString *)mixString;
 - (NSString *)sizeString;
+- (NSString *)ageString;
 - (NSString *)sexString;
 - (NSString *)optionsString;
 - (NSString *)contactString;

@@ -56,6 +56,7 @@
   
   cell.nameLabel.text = self.pets[indexPath.row].name;
   cell.sizeLabel.text = [self.pets[indexPath.row] sizeString];
+  cell.ageLabel.text = [self.pets[indexPath.row] ageString];
   cell.sexLabel.text = [self.pets[indexPath.row] sexString];
   cell.breedsLabel.text = [self.pets[indexPath.row] breedsString];
   cell.locationLabel.text = [NSString stringWithFormat:@"%@, %@", self.pets[indexPath.row].contact.city, self.pets[indexPath.row].contact.state];
