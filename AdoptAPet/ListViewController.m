@@ -19,7 +19,8 @@
 
 @end
 
-// TODO: Load 25 new pets when user gets to bottom of table
+// TODO: Load new batch of pets when user gets to bottom of table
+// TODO: Organized pets array by lastUpdated -- most recent first
 
 @implementation ListViewController
 
@@ -27,8 +28,9 @@
 {
   [super viewDidLoad];
   
-  NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
+  //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
   //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?animal=dog&location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
+  NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json&count=100"];
   
   [NetworkManager fetchPetDataFromURL:url completionHandler:^(NSArray<Pet *> *pets) {
     
@@ -46,6 +48,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return self.pets.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 527.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,12 +92,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"petDetail"]) {
-        DetailViewController *detail = [segue destinationViewController];
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Pet *pet = self.pets[indexPath.row];
-        detail.pet = pet;
-    }
+  if ([segue.identifier isEqualToString:@"petDetail"]) {
+    DetailViewController *detail = [segue destinationViewController];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    Pet *pet = self.pets[indexPath.row];
+    detail.pet = pet;
+  }
 }
 
 @end
