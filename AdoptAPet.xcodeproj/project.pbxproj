@@ -361,10 +361,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S4M5EG9HS8;
+				DEVELOPMENT_TEAM = J29799KDDY;
 				INFOPLIST_FILE = AdoptAPet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryanmaksymic.AdoptAPet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fernandozanei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -375,10 +375,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S4M5EG9HS8;
+				DEVELOPMENT_TEAM = J29799KDDY;
 				INFOPLIST_FILE = AdoptAPet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryanmaksymic.AdoptAPet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fernandozanei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
