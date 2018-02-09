@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ListViewController.h
 //  AdoptAPet
 //
 //  Created by Ryan Maksymic on 2018-02-07.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
+@interface ListViewController : UITableViewController
 
 
 @end

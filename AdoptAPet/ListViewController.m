@@ -1,19 +1,19 @@
 //
-//  ViewController.m
+//  ListViewController.m
 //  AdoptAPet
 //
 //  Created by Ryan Maksymic on 2018-02-07.
 //  Copyright © 2018 Ryan Maksymic. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ListViewController.h"
 #import "Contact.h"
 #import "Pet.h"
 #import "NetworkManager.h"
 #import "PetTableViewCell.h"
 #import "DetailViewController.h"
 
-@interface ViewController ()
+@interface ListViewController ()
 
 @property (nonatomic) NSArray<Pet *> * pets;
 
@@ -23,7 +23,7 @@
 
 // TODO: Separate into resuable list view controller
 
-@implementation ViewController
+@implementation ListViewController
 
 - (void)viewDidLoad
 {
