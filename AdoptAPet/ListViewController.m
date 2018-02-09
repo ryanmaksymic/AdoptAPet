@@ -21,8 +21,6 @@
 
 // TODO: Load 25 new pets when user gets to bottom of table
 
-// TODO: Separate into resuable list view controller
-
 @implementation ListViewController
 
 - (void)viewDidLoad

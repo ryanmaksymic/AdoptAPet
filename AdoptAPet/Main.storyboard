@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="-1666" y="-121"/>
         </scene>
-        <!--View Controller-->
+        <!--Nearby View Controller-->
         <scene sceneID="QWs-mu-ZLe">
             <objects>
-                <viewController id="hJc-wb-2Zm" sceneMemberID="viewController">
+                <viewController id="hJc-wb-2Zm" customClass="NearbyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XK8-9D-wj1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,6 +45,9 @@
                         <viewLayoutGuide key="safeArea" id="14j-g1-ySf"/>
                     </view>
                     <navigationItem key="navigationItem" id="4i5-0B-ugJ"/>
+                    <connections>
+                        <outlet property="listView" destination="jZ2-TS-Czq" id="a3F-Fz-FQf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZbQ-RU-Ngs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

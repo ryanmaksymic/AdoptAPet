@@ -312,7 +312,7 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="478"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="YHK-mW-yry" kind="embed" id="NLe-MW-YJQ"/>
+                                    <segue destination="6U7-ZU-dDS" kind="embed" id="FlZ-4v-0xK"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -333,40 +333,13 @@
                     <connections>
                         <outlet property="listView" destination="gY5-OQ-MeT" id="rcx-aI-IZs"/>
                         <outlet property="mapView" destination="8Zc-SF-U7C" id="2k8-D6-UyW"/>
+                        <outlet property="searchTermsLabel" destination="LEi-qg-whB" id="Vqs-VU-J38"/>
                         <outlet property="viewModeSegmentedControl" destination="j6E-jj-FGR" id="Unx-78-EUh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zea-eT-mgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1240.8" y="117.39130434782609"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="vQu-y8-v5n">
-            <objects>
-                <tableViewController id="YHK-mW-yry" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fBC-VQ-gD8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="petCell" id="aTw-kz-P2i">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aTw-kz-P2i" id="qqT-2y-GOh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="YHK-mW-yry" id="eEC-9K-y8f"/>
-                            <outlet property="delegate" destination="YHK-mW-yry" id="NgL-GT-BGf"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lFu-UY-3hN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2039" y="-215"/>
         </scene>
         <!--Search-->
         <scene sceneID="w8l-5U-Tk4">
@@ -386,6 +359,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vlj-MH-VXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-324" y="118"/>
+        </scene>
+        <!--List-->
+        <scene sceneID="dbm-eT-Nq9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="List" id="6U7-ZU-dDS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mkd-K5-qzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1829" y="-133"/>
         </scene>
         <!--Map-->
         <scene sceneID="LvT-IT-dxJ">

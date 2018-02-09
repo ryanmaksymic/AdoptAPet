@@ -26,6 +26,8 @@
 		FE7200EC202B8906003217B9 /* PetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200EB202B8906003217B9 /* PetTableViewCell.m */; };
 		FE7200EF202BBCAD003217B9 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200EE202BBCAD003217B9 /* Contact.m */; };
 		FEAEE84B202E209B00A37593 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAEE84A202E209B00A37593 /* List.storyboard */; };
+		FEAEE84E202E25EF00A37593 /* PetSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAEE84D202E25EF00A37593 /* PetSearch.m */; };
+		FEAEE851202E276100A37593 /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAEE850202E276100A37593 /* NearbyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,10 @@
 		FE7200ED202BBCAD003217B9 /* Contact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		FE7200EE202BBCAD003217B9 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		FEAEE84A202E209B00A37593 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
+		FEAEE84C202E25EF00A37593 /* PetSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PetSearch.h; sourceTree = "<group>"; };
+		FEAEE84D202E25EF00A37593 /* PetSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PetSearch.m; sourceTree = "<group>"; };
+		FEAEE84F202E276100A37593 /* NearbyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NearbyViewController.h; sourceTree = "<group>"; };
+		FEAEE850202E276100A37593 /* NearbyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NearbyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +105,15 @@
 				FE7200EE202BBCAD003217B9 /* Contact.m */,
 				FE7200D8202B7978003217B9 /* Pet.h */,
 				FE7200D9202B7978003217B9 /* Pet.m */,
+				FEAEE84C202E25EF00A37593 /* PetSearch.h */,
+				FEAEE84D202E25EF00A37593 /* PetSearch.m */,
 				FE7200D5202B7943003217B9 /* NetworkManager.h */,
 				FE7200D6202B7943003217B9 /* NetworkManager.m */,
+				FEAEE84F202E276100A37593 /* NearbyViewController.h */,
+				FEAEE850202E276100A37593 /* NearbyViewController.m */,
+				FE7200DB202B852B003217B9 /* Main.storyboard */,
 				FE7200EA202B8906003217B9 /* PetTableViewCell.h */,
 				FE7200EB202B8906003217B9 /* PetTableViewCell.m */,
-				FE7200DB202B852B003217B9 /* Main.storyboard */,
 				FE7200C2202B6DD5003217B9 /* ListViewController.h */,
 				FE7200C3202B6DD5003217B9 /* ListViewController.m */,
 				FEAEE84A202E209B00A37593 /* List.storyboard */,
@@ -112,10 +122,10 @@
 				FE7200E7202B88E5003217B9 /* DetailViewController.h */,
 				FE7200E8202B88E5003217B9 /* DetailViewController.m */,
 				FE7200DD202B8538003217B9 /* Detail.storyboard */,
-				FE7200E4202B88B8003217B9 /* SearchViewController.h */,
-				FE7200E5202B88B8003217B9 /* SearchViewController.m */,
 				FE308D2D202CFD180045A811 /* SearchResultsViewController.h */,
 				FE308D2E202CFD180045A811 /* SearchResultsViewController.m */,
+				FE7200E4202B88B8003217B9 /* SearchViewController.h */,
+				FE7200E5202B88B8003217B9 /* SearchViewController.m */,
 				FE7200C5202B6DD5003217B9 /* Search.storyboard */,
 				07929B4A202D029700BBD1FC /* MapViewController.h */,
 				07929B4B202D029700BBD1FC /* MapViewController.m */,
@@ -203,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEAEE84E202E25EF00A37593 /* PetSearch.m in Sources */,
 				FE7200D7202B7943003217B9 /* NetworkManager.m in Sources */,
 				FE7200EC202B8906003217B9 /* PetTableViewCell.m in Sources */,
 				FE7200C4202B6DD5003217B9 /* ListViewController.m in Sources */,
@@ -215,6 +226,7 @@
 				FE7200EF202BBCAD003217B9 /* Contact.m in Sources */,
 				FE7200E9202B88E5003217B9 /* DetailViewController.m in Sources */,
 				07929B4C202D029700BBD1FC /* MapViewController.m in Sources */,
+				FEAEE851202E276100A37593 /* NearbyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
