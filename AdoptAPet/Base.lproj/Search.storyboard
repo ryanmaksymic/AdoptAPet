@@ -25,6 +25,9 @@
                                     <segment title="Dogs"/>
                                     <segment title="Cats"/>
                                 </segments>
+                                <connections>
+                                    <action selector="petTypeSegmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Y5d-bX-iqS"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIj-vO-fhX">
                                 <rect key="frame" x="16" y="72" width="343" height="21"/>
@@ -85,7 +88,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PQk-UH-QPi"/>
+                                            <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Px5-cp-ftz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeY-bl-uJx">
@@ -96,8 +99,13 @@
                                         <state key="selected" backgroundImage="bluebox">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qti-mh-OAT"/>
+                                            <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N2w-3b-3La"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -252,12 +260,21 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJw-5c-rbn">
-                                <rect key="frame" x="149" y="551" width="78" height="33"/>
+                                <rect key="frame" x="91" y="530" width="194" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="&lt; Collect Search Terms &gt;"/>
+                                <connections>
+                                    <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aWU-IP-6kt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD8-h7-gp1">
+                                <rect key="frame" x="148" y="571" width="78" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Find A Pet"/>
                                 <connections>
-                                    <segue destination="jKf-zj-WFL" kind="show" identifier="showSearchResults" id="be9-ie-ftj"/>
+                                    <segue destination="jKf-zj-WFL" kind="show" id="6l3-50-oo0"/>
                                 </connections>
                             </button>
                         </subviews>

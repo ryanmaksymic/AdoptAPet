@@ -25,15 +25,24 @@
   return self;
 }
 
+
 - (NSString *)typeString
 {
-  // TODO: This
+  if (self.type == PetTypeDog)
+  {
+    return @"Dog";
+  }
   
-  return @"Dog";
+  return @"Cat";
 }
 
 - (NSString *)sexesString
 {
+  if ([self.sexes count] == 0)
+  {
+    return @"Any Sex";
+  }
+  
   NSMutableString * result = [@"" mutableCopy];
   
   if ([self.sexes containsObject:[NSNumber numberWithInteger:PetSexMale]])
