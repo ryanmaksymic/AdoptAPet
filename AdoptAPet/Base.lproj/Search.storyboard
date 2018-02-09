@@ -25,9 +25,6 @@
                                     <segment title="Dogs"/>
                                     <segment title="Cats"/>
                                 </segments>
-                                <connections>
-                                    <action selector="petTypeSegmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Y5d-bX-iqS"/>
-                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIj-vO-fhX">
                                 <rect key="frame" x="16" y="72" width="343" height="21"/>
@@ -79,14 +76,11 @@
                                 <rect key="frame" x="16" y="253" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEz-MK-UsN">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEz-MK-UsN">
                                         <rect key="frame" x="105" y="0.0" width="55" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Male"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Px5-cp-ftz"/>
                                         </connections>
@@ -96,14 +90,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Female"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N2w-3b-3La"/>
                                         </connections>
@@ -115,14 +101,11 @@
                                 <rect key="frame" x="16" y="330" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pu-15-5yp">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pu-15-5yp">
                                         <rect key="frame" x="19" y="0.0" width="55" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Small"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oYY-AP-iac"/>
                                         </connections>
@@ -132,9 +115,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Extra Large"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aUO-0M-EXz"/>
                                         </connections>
@@ -144,9 +124,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Large"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0d-i8-LQw"/>
                                         </connections>
@@ -156,9 +133,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Medium"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Il-G4-SFo"/>
                                         </connections>
@@ -170,14 +144,11 @@
                                 <rect key="frame" x="16" y="407" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2J-bi-Vxh">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2J-bi-Vxh">
                                         <rect key="frame" x="42" y="0.0" width="55" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Baby"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jYf-al-cHS"/>
                                         </connections>
@@ -187,9 +158,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Senior"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aOQ-dG-PYn"/>
                                         </connections>
@@ -199,9 +167,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Adult"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="blL-7o-R2S"/>
                                         </connections>
@@ -211,9 +176,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Young"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="stZ-58-FGJ"/>
                                         </connections>
@@ -232,14 +194,11 @@
                                 <rect key="frame" x="16" y="484" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oG-jJ-s2u">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oG-jJ-s2u">
                                         <rect key="frame" x="70" y="0.0" width="84" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Has Shots"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ikD-LZ-U4p"/>
                                         </connections>
@@ -249,9 +208,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Housetrained"/>
-                                        <state key="selected" backgroundImage="bluebox">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <connections>
                                             <action selector="buttonToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kC2-VG-t9n"/>
                                         </connections>
@@ -282,7 +238,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="search" id="Q9C-1m-fFx"/>
-                    <navigationItem key="navigationItem" title="Search" id="gJc-oQ-Y05"/>
+                    <navigationItem key="navigationItem" title="Search" id="gJc-oQ-Y05">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="f9f-oa-tvQ"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="petTypeSegmentedControl" destination="NFl-MZ-jTu" id="Yem-Er-XMo"/>
@@ -291,12 +249,13 @@
                         <outletCollection property="sizeButtons" destination="NAl-wq-nSq" id="uut-kk-Cg3"/>
                         <outletCollection property="ageButtons" destination="Cko-Wg-egu" id="Jp6-DK-vZq"/>
                         <outletCollection property="optionsButtons" destination="GKX-dT-ysk" id="t5w-Lj-SsC"/>
-                        <outletCollection property="allFilterButtons" destination="IEz-MK-UsN" id="B0U-SU-vN7"/>
-                        <outletCollection property="allFilterButtons" destination="NeY-bl-uJx" id="N4q-Ir-bXK"/>
-                        <outletCollection property="allFilterButtons" destination="JRL-To-o77" id="8r6-We-dEP"/>
-                        <outletCollection property="allFilterButtons" destination="1Pu-15-5yp" id="yK8-Xq-Ofz"/>
-                        <outletCollection property="allFilterButtons" destination="aDY-Is-1z8" id="lqo-DF-r5A"/>
-                        <outletCollection property="allFilterButtons" destination="NAl-wq-nSq" id="RQ0-jK-Fcv"/>
+                        <outletCollection property="sizeButtons" destination="JRL-To-o77" id="ENG-5V-Uw1"/>
+                        <outletCollection property="sizeButtons" destination="aDY-Is-1z8" id="YOe-Hs-AYq"/>
+                        <outletCollection property="sizeButtons" destination="1Pu-15-5yp" id="SSq-Fg-tGk"/>
+                        <outletCollection property="ageButtons" destination="IMG-61-iYt" id="ewk-Sa-aER"/>
+                        <outletCollection property="ageButtons" destination="3Ue-pT-oEB" id="Zsy-g0-dVA"/>
+                        <outletCollection property="ageButtons" destination="x2J-bi-Vxh" id="Dpc-DT-vhA"/>
+                        <outletCollection property="optionsButtons" destination="9oG-jJ-s2u" id="Dmi-9x-lyG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -395,7 +354,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bluebox" width="100" height="100"/>
         <image name="search" width="30" height="30"/>
     </resources>
 </document>
