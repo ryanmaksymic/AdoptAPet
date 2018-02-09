@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *optionsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
+// TODO: Add ageLabel
 
 @end
 
