@@ -13,9 +13,15 @@
 
 @property (nonatomic, copy) NSString * locationZip;
 @property (nonatomic) PetType type;
-@property (nonatomic) NSArray * sexes;
-@property (nonatomic) NSArray * sizes;
-@property (nonatomic) NSArray * ages;
-@property (nonatomic) NSArray * options;
+@property (nonatomic) NSMutableSet * sexes;
+@property (nonatomic) NSMutableSet * sizes;
+@property (nonatomic) NSMutableSet * ages;
+@property (nonatomic) NSMutableSet * options;
+
+- (NSString *)typeString;
+- (NSString *)sexesString;
+- (NSString *)sizesString;
+- (NSString *)agesString;
+- (NSString *)optionsString;
 
 @end
