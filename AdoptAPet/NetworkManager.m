@@ -8,10 +8,14 @@
 
 #import "NetworkManager.h"
 #import "Pet.h"
+#import "PetSearch.h"
 
 @implementation NetworkManager
 
-// TODO: Make method that fetches pet data using given search terms
++ (void)fetchPetsWithSearchTerms:(PetSearch *)searchTerms completionHandler:(void (^)(NSArray<Pet *> * pets))completion
+{
+  // TODO: Fetch pets with search terms
+}
 
 + (void)fetchPetDataFromURL:(NSURL *)url completionHandler:(void (^)(NSArray<Pet *> * pets))completion
 {
@@ -47,7 +51,7 @@
       
       [pets addObject:pet];
       
-      NSLog(@"%@", pet);
+      //NSLog(@"%@", pet);
     }
     
     completion(pets);

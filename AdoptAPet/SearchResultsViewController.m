@@ -11,6 +11,7 @@
 @interface SearchResultsViewController ()
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl * viewModeSegmentedControl;
+@property (weak, nonatomic) IBOutlet UILabel * searchTermsLabel;
 @property (weak, nonatomic) IBOutlet UIView * listView;
 @property (weak, nonatomic) IBOutlet UIView * mapView;
 
@@ -22,8 +23,6 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  
 }
 
 @end
