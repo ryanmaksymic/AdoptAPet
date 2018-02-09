@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YCj-pk-L0Z">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="HZu-LI-uD7">
+            <objects>
+                <viewController id="YCj-pk-L0Z" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PNi-mF-MPK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y0t-eG-XnG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Y0t-eG-XnG" firstAttribute="top" secondItem="vcL-UI-vbC" secondAttribute="top" id="0VB-vO-TRT"/>
+                            <constraint firstItem="vcL-UI-vbC" firstAttribute="bottom" secondItem="Y0t-eG-XnG" secondAttribute="bottom" id="Q3x-81-cCG"/>
+                            <constraint firstItem="Y0t-eG-XnG" firstAttribute="leading" secondItem="vcL-UI-vbC" secondAttribute="leading" id="dSY-do-vZO"/>
+                            <constraint firstItem="vcL-UI-vbC" firstAttribute="trailing" secondItem="Y0t-eG-XnG" secondAttribute="trailing" id="wp5-0P-Wcg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vcL-UI-vbC"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Y0t-eG-XnG" id="DlV-F6-uJV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EVK-cG-l6p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1434" y="400"/>
+        </scene>
+    </scenes>
+</document>
