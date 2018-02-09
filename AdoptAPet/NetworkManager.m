@@ -9,6 +9,7 @@
 #import "NetworkManager.h"
 #import "Pet.h"
 #import "PetSearch.h"
+#import "Contact.h"
 
 @implementation NetworkManager
 
