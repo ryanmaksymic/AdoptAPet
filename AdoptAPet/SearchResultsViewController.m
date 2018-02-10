@@ -7,6 +7,8 @@
 //
 
 #import "SearchResultsViewController.h"
+#import "Pet.h"
+#import "ListViewController.h"
 
 @interface SearchResultsViewController ()
 
@@ -23,6 +25,23 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"embedList"])
+  {
+    ListViewController * lvc = (ListViewController *)segue.destinationViewController;
+    
+    lvc.pets = self.pets;
+    
+    //[lvc.tableView reloadData];  // TODO: Necessary?
+  }
+  
+  if ([segue.identifier isEqualToString:@"embedMap"])
+  {
+    // TODO: Load map data here
+  }
 }
 
 @end

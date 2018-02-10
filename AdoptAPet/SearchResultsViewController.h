@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Pet;
 
 @interface SearchResultsViewController : UIViewController
+
+@property (nonatomic) NSArray<Pet *> * pets;
 
 @end
