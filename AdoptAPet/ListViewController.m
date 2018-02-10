@@ -16,8 +16,6 @@
 
 @interface ListViewController ()
 
-@property (nonatomic) NSArray<Pet *> * pets;
-
 @end
 
 // TODO: Load new batch of pets when user gets to bottom of table
@@ -28,22 +26,6 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
-  //NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?animal=dog&location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json"];
-  NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json&count=100"];
-  
-  [NetworkManager fetchPetDataFromURLs:@[url] completionHandler:^(NSArray<Pet *> *pets) {
-    
-    self.pets = pets;
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      
-      [self.tableView reloadData];
-      
-    }];
-    
-  }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
