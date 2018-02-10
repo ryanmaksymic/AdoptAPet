@@ -34,8 +34,6 @@
     ListViewController * lvc = (ListViewController *)segue.destinationViewController;
     
     lvc.pets = self.pets;
-    
-    //[lvc.tableView reloadData];  // TODO: Necessary?
   }
   
   if ([segue.identifier isEqualToString:@"embedMap"])

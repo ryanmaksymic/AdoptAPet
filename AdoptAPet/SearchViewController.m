@@ -110,8 +110,11 @@
     
     self.pets = pets;
     
-    // TODO: Fix this transition:
-    [self performSegueWithIdentifier:@"showSearchResults" sender:nil];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      
+      [self performSegueWithIdentifier:@"showSearchResults" sender:nil];
+      
+    }];
     
   }];
 }
