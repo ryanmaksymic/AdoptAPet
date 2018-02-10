@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "DetailCollectionViewCell.h"
 #import "NetworkManager.h"
+#import "DataManager.h"
 #import "Pet.h"
 #import "Contact.h"
 
@@ -34,19 +35,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    UIBarButtonItem *favButton = [[UIBarButtonItem alloc]
-//                                   initWithImage:[UIImage imageNamed:@"fav_button"]
-//                                   style:UIBarButtonItemStyleDone
-//                                   target:self
-//                                  action:@selector(addFavorite)];
-//    self.navigationItem.rightBarButtonItem = favButton;
+    UIBarButtonItem *favButton = [[UIBarButtonItem alloc]
+                                   initWithImage:[UIImage imageNamed:@"fav_button"]
+                                   style:UIBarButtonItemStyleDone
+                                   target:self
+                                  action:@selector(favorite)];
+    self.navigationItem.rightBarButtonItem = favButton;
     
 
 
     [self loadInfo];
 }
 
-- (void)addFavorite {
+- (void)favorite {
+    [DataManager savePet:self.pet];
     self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"fav_button2"];
 }
 

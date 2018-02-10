@@ -29,15 +29,16 @@
     
     
     self.locationManager = [[CLLocationManager alloc] init];
-
+    
     [self.locationManager requestWhenInUseAuthorization];
     [self.mapView setShowsUserLocation:YES];
     [self.locationManager setDelegate:self];
-
+    [self.mapView setDelegate:self];
+    [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"reuse"];
     NSString *loc = @"M9R3N4";
     [self loadFilterLocation:loc];
     [self loadShelters:loc];
-
+    
 }
 
 - (void)getGeoInformations:(NSString *)location completionHandler:(void (^)(CLLocationCoordinate2D))completion {
@@ -56,8 +57,6 @@
                                                                                 [str_longitude floatValue]);
         completion(locationCoordinates);
     }];
-    
-    // #3 - Anything here will be called during view did load, but BEFORE the completion handler of the geocoding process is called.
 }
 
 - (void)loadFilterLocation:(NSString *)location {
@@ -71,14 +70,16 @@
 - (void)loadShelters:(NSString *)location {
     [NetworkManager fetchShelterDataFromLocation:location completionHandler:^(NSArray<Contact *> *contacts) {
         self.shelters = contacts;
-
+        
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.mapView addAnnotations:self.shelters];
             //[self.mapView showAnnotations:self.shelters animated:YES];
         }];
-
+        
     }];
 }
+
+# pragma mark - Location Manager
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
@@ -87,13 +88,53 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    CLLocation *currentLocation = locations[0];
- //   [self.mapView setRegion:MKCoordinateRegionMake(currentLocation.coordinate, MKCoordinateSpanMake(0.06, 0.06))];
-
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"ERROR\nERROR\nERROR\nERROR\nERROR\nERROR\nERROR\n");
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+
+    if (![annotation isKindOfClass:[Contact class]]) {
+        return nil;
+    }
+    MKMarkerAnnotationView *marker = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"reuse" forAnnotation:annotation];
+    
+    if (marker == nil) {
+        marker = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"reuse"];
+    }
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    marker.rightCalloutAccessoryView = button;
+    
+    
+    
+    marker.canShowCallout = YES;
+    return marker;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
+
