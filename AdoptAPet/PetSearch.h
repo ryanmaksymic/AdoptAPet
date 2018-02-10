@@ -18,6 +18,8 @@
 @property (nonatomic) NSMutableSet * ages;
 @property (nonatomic) NSMutableSet * options;
 
+- (NSURL *)generatePetSearchURLs;
+
 - (NSString *)typeString;
 - (NSString *)sexesString;
 - (NSString *)sizesString;

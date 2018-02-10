@@ -26,6 +26,38 @@
 }
 
 
+- (NSURL *)generatePetSearchURLs
+{
+  NSMutableString * urlString = [@"http://api.petfinder.com/pet.find?key=67a4b38197ee28774594388ab415505a&format=json" mutableCopy];
+  
+  [urlString appendString:@"&count=50"];  // TODO: Sort out how many to retrieve
+  
+  // location:
+  [urlString appendFormat:@"&location=%@", [self.locationZip stringByReplacingOccurrencesOfString:@" " withString:@""]];
+  
+  // type:
+  NSString * typeArgument = self.type == PetTypeDog ? @"&animal=dog" : @"&animal=cat";
+  [urlString appendString:typeArgument];
+  
+  // TODO: The rest of this...
+  
+  // sex:
+  
+  
+  // size:
+  
+  // age:
+  
+  // options:
+  
+  NSLog(@"Search URL: %@", urlString);
+  
+  return [NSURL URLWithString:urlString];
+}
+
+
+#pragma mark - String output methods
+
 - (NSString *)typeString
 {
   if (self.type == PetTypeDog)
