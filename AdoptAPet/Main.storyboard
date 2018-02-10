@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-1666" y="-121"/>
         </scene>
-        <!--Adopt•A•Pet-->
+        <!--🐾 Adopt•A•Pet 🐾-->
         <scene sceneID="QWs-mu-ZLe">
             <objects>
                 <viewController id="hJc-wb-2Zm" customClass="NearbyViewController" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="14j-g1-ySf"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Adopt•A•Pet" id="4i5-0B-ugJ"/>
+                    <navigationItem key="navigationItem" title="🐾 Adopt•A•Pet 🐾" id="4i5-0B-ugJ"/>
                     <connections>
                         <outlet property="listView" destination="jZ2-TS-Czq" id="a3F-Fz-FQf"/>
                     </connections>
@@ -69,6 +69,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.27447596192359924" green="0.27452921867370605" blue="0.27447256445884705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Dy6-id-efo" kind="relationship" relationship="viewControllers" id="8uo-1z-TPa"/>
@@ -102,4 +103,5 @@
     <resources>
         <image name="location" width="30" height="30"/>
     </resources>
+    <color key="tintColor" red="0.27447596190000001" green="0.27452921870000002" blue="0.27447256450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

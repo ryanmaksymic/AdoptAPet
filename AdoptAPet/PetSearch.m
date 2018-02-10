@@ -156,6 +156,11 @@
 
 - (NSString *)optionsString
 {
+  if ([self.options count] == 0)
+  {
+    return @"No Options";
+  }
+  
   NSMutableString * result = [@"" mutableCopy];
   
   if ([self.options containsObject:[NSNumber numberWithInteger:PetOptionHasShots]])

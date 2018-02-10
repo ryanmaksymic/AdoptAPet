@@ -35,7 +35,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return 527.0;
+  //return 527.0;
+  return 534.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -43,9 +44,7 @@
   PetTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"petCell"];
   
   cell.nameLabel.text = self.pets[indexPath.row].name;
-  cell.sizeLabel.text = [self.pets[indexPath.row] sizeString];
-  cell.ageLabel.text = [self.pets[indexPath.row] ageString];
-  cell.sexLabel.text = [self.pets[indexPath.row] sexString];
+  cell.sizeAgeSexLabel.text = [NSString stringWithFormat:@"%@-Sized %@ %@", [self.pets[indexPath.row] sizeString], [self.pets[indexPath.row] ageString], [self.pets[indexPath.row] sexString]];
   cell.breedsLabel.text = [self.pets[indexPath.row] breedsString];
   cell.locationLabel.text = [NSString stringWithFormat:@"%@, %@", self.pets[indexPath.row].contact.city, self.pets[indexPath.row].contact.state];
   cell.lastUpdatedLabel.text = [NSString stringWithFormat:@"Last updated: %@", [self.pets[indexPath.row] lastUpdatedString]];

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Adopt•A•Pet-->
+        <!--🐾 Adopt•A•Pet 🐾-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SearchViewController" sceneMemberID="viewController">
@@ -236,7 +236,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="search" id="Q9C-1m-fFx"/>
-                    <navigationItem key="navigationItem" title="Adopt•A•Pet" id="gJc-oQ-Y05">
+                    <navigationItem key="navigationItem" title="🐾 Adopt•A•Pet 🐾" id="gJc-oQ-Y05">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="f9f-oa-tvQ"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -272,30 +272,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-SF-U7C">
-                                <rect key="frame" x="0.0" y="134" width="375" height="484"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-OQ-MeT">
-                                <rect key="frame" x="0.0" y="134" width="375" height="484"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <connections>
                                     <segue destination="6U7-ZU-dDS" kind="embed" identifier="embedList" id="FlZ-4v-0xK"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxn-An-ERb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="70"/>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxn-An-ERb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="63"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dogs / Male, Female / Small, Medium, Large, Extra Large / Baby, Young, Adult, Senior / No Claws, Has Shots, Housetrained" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEi-qg-whB">
-                                        <rect key="frame" x="8" y="8" width="359" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="47"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="LEi-qg-whB" secondAttribute="bottom" constant="8" id="O0r-EO-sTU"/>
-                                    <constraint firstItem="LEi-qg-whB" firstAttribute="top" secondItem="wxn-An-ERb" secondAttribute="top" constant="8" id="Z6n-Ej-bgi"/>
-                                    <constraint firstItem="LEi-qg-whB" firstAttribute="leading" secondItem="wxn-An-ERb" secondAttribute="leading" constant="8" id="iKP-IN-W1v"/>
-                                    <constraint firstAttribute="trailing" secondItem="LEi-qg-whB" secondAttribute="trailing" constant="8" id="ofA-Yz-vSb"/>
+                                    <constraint firstAttribute="trailing" secondItem="LEi-qg-whB" secondAttribute="trailing" constant="8" id="KYc-FP-Mkf"/>
+                                    <constraint firstItem="LEi-qg-whB" firstAttribute="top" secondItem="wxn-An-ERb" secondAttribute="top" constant="8" id="j7X-cP-JEP"/>
+                                    <constraint firstItem="LEi-qg-whB" firstAttribute="leading" secondItem="wxn-An-ERb" secondAttribute="leading" constant="8" id="jmK-C8-p24"/>
+                                    <constraint firstAttribute="bottom" secondItem="LEi-qg-whB" secondAttribute="bottom" constant="8" id="rfO-jf-IRE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -304,13 +304,13 @@
                             <constraint firstItem="gY5-OQ-MeT" firstAttribute="leading" secondItem="CX6-2e-Ox5" secondAttribute="leading" id="09y-lz-L9P"/>
                             <constraint firstItem="8Zc-SF-U7C" firstAttribute="trailing" secondItem="CX6-2e-Ox5" secondAttribute="trailing" id="3gv-Zi-Idh"/>
                             <constraint firstItem="8Zc-SF-U7C" firstAttribute="bottom" secondItem="CX6-2e-Ox5" secondAttribute="bottom" id="4u0-vB-Su6"/>
-                            <constraint firstItem="8Zc-SF-U7C" firstAttribute="top" secondItem="wxn-An-ERb" secondAttribute="bottom" id="53p-yC-87m"/>
+                            <constraint firstItem="gY5-OQ-MeT" firstAttribute="top" secondItem="CX6-2e-Ox5" secondAttribute="top" id="5fQ-Lh-tcr"/>
                             <constraint firstItem="wxn-An-ERb" firstAttribute="trailing" secondItem="CX6-2e-Ox5" secondAttribute="trailing" id="8Ns-01-DqI"/>
                             <constraint firstItem="8Zc-SF-U7C" firstAttribute="leading" secondItem="CX6-2e-Ox5" secondAttribute="leading" id="97y-ub-QtJ"/>
                             <constraint firstItem="wxn-An-ERb" firstAttribute="leading" secondItem="CX6-2e-Ox5" secondAttribute="leading" id="PPJ-cK-n7g"/>
                             <constraint firstItem="gY5-OQ-MeT" firstAttribute="bottom" secondItem="CX6-2e-Ox5" secondAttribute="bottom" id="VTt-xq-zHU"/>
+                            <constraint firstItem="8Zc-SF-U7C" firstAttribute="top" secondItem="CX6-2e-Ox5" secondAttribute="top" id="eTE-tS-kXX"/>
                             <constraint firstItem="wxn-An-ERb" firstAttribute="top" secondItem="CX6-2e-Ox5" secondAttribute="top" id="miG-Vk-f8c"/>
-                            <constraint firstItem="gY5-OQ-MeT" firstAttribute="top" secondItem="wxn-An-ERb" secondAttribute="bottom" id="paH-jC-KeI"/>
                             <constraint firstItem="gY5-OQ-MeT" firstAttribute="trailing" secondItem="CX6-2e-Ox5" secondAttribute="trailing" id="plW-Gw-v6W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CX6-2e-Ox5"/>
@@ -318,7 +318,7 @@
                     <navigationItem key="navigationItem" id="BdO-z1-zsM">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="j6E-jj-FGR">
-                            <rect key="frame" x="130" y="7" width="147" height="30"/>
+                            <rect key="frame" x="184.5" y="7" width="147" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="List View"/>
@@ -376,4 +376,5 @@
     <resources>
         <image name="search" width="30" height="30"/>
     </resources>
+    <color key="tintColor" red="0.27447596190000001" green="0.27452921870000002" blue="0.27447256450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

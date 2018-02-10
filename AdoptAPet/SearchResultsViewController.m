@@ -25,6 +25,8 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  self.searchTermsLabel.text = self.searchTerms;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

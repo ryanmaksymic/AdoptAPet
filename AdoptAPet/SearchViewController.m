@@ -128,6 +128,10 @@
     SearchResultsViewController * srvc = (SearchResultsViewController *)segue.destinationViewController;
     
     srvc.pets = self.pets;
+    
+    srvc.searchTerms = [NSString stringWithFormat:@"%@ / %@ / %@ / %@ / %@", [self.petSearch typeString], [self.petSearch sexesString], [self.petSearch sizesString], [self.petSearch agesString], [self.petSearch optionsString]];
+    
+    // Dogs / Male, Female / Small, Medium, Large, Extra Large / Baby, Young, Adult, Senior / No Claws, Has Shots, Housetrained
   }
 }
 
