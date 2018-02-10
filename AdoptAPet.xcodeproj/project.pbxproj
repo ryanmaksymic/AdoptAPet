@@ -18,7 +18,6 @@
 		FE308D2F202CFD180045A811 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308D2E202CFD180045A811 /* SearchResultsViewController.m */; };
 		FE7200C1202B6DD5003217B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200C0202B6DD5003217B9 /* AppDelegate.m */; };
 		FE7200C4202B6DD5003217B9 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200C3202B6DD5003217B9 /* ListViewController.m */; };
-		FE7200C7202B6DD5003217B9 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7200C5202B6DD5003217B9 /* Search.storyboard */; };
 		FE7200C9202B6DD5003217B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE7200C8202B6DD5003217B9 /* Assets.xcassets */; };
 		FE7200CC202B6DD5003217B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7200CA202B6DD5003217B9 /* LaunchScreen.storyboard */; };
 		FE7200CF202B6DD5003217B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200CE202B6DD5003217B9 /* main.m */; };
@@ -59,7 +58,6 @@
 		FE7200C0202B6DD5003217B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FE7200C2202B6DD5003217B9 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		FE7200C3202B6DD5003217B9 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		FE7200C6202B6DD5003217B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
 		FE7200C8202B6DD5003217B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE7200CB202B6DD5003217B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE7200CD202B6DD5003217B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 				FE308D2E202CFD180045A811 /* SearchResultsViewController.m */,
 				FE7200E4202B88B8003217B9 /* SearchViewController.h */,
 				FE7200E5202B88B8003217B9 /* SearchViewController.m */,
-				FE7200C5202B6DD5003217B9 /* Search.storyboard */,
 				07929B4A202D029700BBD1FC /* MapViewController.h */,
 				07929B4B202D029700BBD1FC /* MapViewController.m */,
 				07929B48202D01EC00BBD1FC /* Map.storyboard */,
@@ -256,7 +253,6 @@
 				FE7200C9202B6DD5003217B9 /* Assets.xcassets in Resources */,
 				FE7200DC202B852B003217B9 /* Main.storyboard in Resources */,
 				FE7200DE202B8538003217B9 /* Detail.storyboard in Resources */,
-				FE7200C7202B6DD5003217B9 /* Search.storyboard in Resources */,
 				07929B49202D01EC00BBD1FC /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,14 +339,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FE7200C5202B6DD5003217B9 /* Search.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FE7200C6202B6DD5003217B9 /* Base */,
-			);
-			name = Search.storyboard;
-			sourceTree = "<group>";
-		};
 		FE7200CA202B6DD5003217B9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
