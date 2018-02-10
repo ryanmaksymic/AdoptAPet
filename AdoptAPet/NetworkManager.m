@@ -13,9 +13,9 @@
 
 @implementation NetworkManager
 
-+ (void)fetchPetDataFromURLs:(NSArray<NSURL *> *)urls completionHandler:(void (^)(NSArray<Pet *> * pets))completion;
++ (void)fetchPetDataFromURL:(NSURL *)url completionHandler:(void (^)(NSArray<Pet *> * pets))completion
 {
-  NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:urls.firstObject];
+  NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];
   
   NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
   

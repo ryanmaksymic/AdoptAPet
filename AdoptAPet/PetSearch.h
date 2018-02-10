@@ -13,17 +13,12 @@
 
 @property (nonatomic, copy) NSString * locationZip;
 @property (nonatomic) PetType type;
-@property (nonatomic) NSMutableSet * sexes;
-@property (nonatomic) NSMutableSet * sizes;
-@property (nonatomic) NSMutableSet * ages;
+@property (nonatomic) PetSex sex;
+@property (nonatomic) PetSize size;
+@property (nonatomic) PetAge age;
 @property (nonatomic) NSMutableSet * options;
 
-- (NSURL *)generatePetSearchURLs;
-
-- (NSString *)typeString;
-- (NSString *)sexesString;
-- (NSString *)sizesString;
-- (NSString *)agesString;
-- (NSString *)optionsString;
+- (NSURL *)generatePetSearchURL;
+- (NSString *)searchTermsString;
 
 @end
