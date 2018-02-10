@@ -23,16 +23,15 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  // TODO: Get random dog and cat data and load into listView; alternate between dog and cat (?)
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  if ([segue.identifier isEqualToString:@"transition"])
+  if ([segue.identifier isEqualToString:@"embedList"])
   {
     ListViewController * lvc = (ListViewController *)segue.destinationViewController;
     
+    // TODO: Get random dog and cat data and load into listView; alternate between dog and cat (?)
     NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json&count=100"];
     
     [NetworkManager fetchPetDataFromURLs:@[url] completionHandler:^(NSArray<Pet *> *pets) {
