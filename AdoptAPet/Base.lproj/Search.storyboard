@@ -33,7 +33,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City or Postal Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-VB-6Gc">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="M5T 2V4" borderStyle="roundedRect" placeholder="City or Postal Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-VB-6Gc">
                                 <rect key="frame" x="16" y="101" width="319" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -50,6 +50,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OL-Wj-Zbp">
                                 <rect key="frame" x="343" y="105" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UlB-p0-8EK"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sex" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-89-H4c">
                                 <rect key="frame" x="16" y="224" width="343" height="21"/>
@@ -215,24 +218,19 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJw-5c-rbn">
-                                <rect key="frame" x="91" y="530" width="194" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="&lt; Collect Search Terms &gt;"/>
-                                <connections>
-                                    <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aWU-IP-6kt"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD8-h7-gp1">
-                                <rect key="frame" x="148" y="571" width="78" height="33"/>
+                                <rect key="frame" x="148" y="566" width="78" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Find A Pet"/>
                                 <connections>
-                                    <segue destination="jKf-zj-WFL" kind="show" id="6l3-50-oo0"/>
+                                    <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6ey-7w-e5e"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Swg-8e-E6X">
+                                <rect key="frame" x="177" y="538" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -243,6 +241,8 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Swg-8e-E6X" id="l98-r3-O6X"/>
+                        <outlet property="locationTextField" destination="IKa-VB-6Gc" id="Z1S-AO-lSc"/>
                         <outlet property="petTypeSegmentedControl" destination="NFl-MZ-jTu" id="Yem-Er-XMo"/>
                         <outletCollection property="sexButtons" destination="NeY-bl-uJx" id="cGI-ZP-1ck"/>
                         <outletCollection property="sexButtons" destination="IEz-MK-UsN" id="Pag-ey-gFF"/>
@@ -256,6 +256,7 @@
                         <outletCollection property="ageButtons" destination="3Ue-pT-oEB" id="Zsy-g0-dVA"/>
                         <outletCollection property="ageButtons" destination="x2J-bi-Vxh" id="Dpc-DT-vhA"/>
                         <outletCollection property="optionsButtons" destination="9oG-jJ-s2u" id="Dmi-9x-lyG"/>
+                        <segue destination="jKf-zj-WFL" kind="show" identifier="showSearchResults" id="mCa-m5-zWD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -270,12 +271,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-SF-U7C">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-SF-U7C">
                                 <rect key="frame" x="0.0" y="140" width="375" height="478"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="FcF-lI-0Ye" kind="embed" id="iLD-a5-ggq"/>
-                                </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dogs / Male, Female / Small, Medium, Large, Extra Large / Baby, Young, Adult, Senior / No Claws, Has Shots, Housetrained" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEi-qg-whB">
                                 <rect key="frame" x="16" y="64" width="343" height="68"/>
@@ -284,15 +282,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-OQ-MeT">
-                                <rect key="frame" x="0.0" y="140" width="375" height="478"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-OQ-MeT">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <connections>
-                                    <segue destination="6U7-ZU-dDS" kind="embed" id="FlZ-4v-0xK"/>
+                                    <segue destination="6U7-ZU-dDS" kind="embed" identifier="embedList" id="FlZ-4v-0xK"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gY5-OQ-MeT" firstAttribute="bottom" secondItem="CX6-2e-Ox5" secondAttribute="bottom" id="0AF-gM-t3K"/>
+                            <constraint firstItem="gY5-OQ-MeT" firstAttribute="top" secondItem="CX6-2e-Ox5" secondAttribute="top" id="9dw-JM-OEi"/>
+                            <constraint firstItem="gY5-OQ-MeT" firstAttribute="leading" secondItem="CX6-2e-Ox5" secondAttribute="leading" id="Eni-zO-8aQ"/>
+                            <constraint firstItem="gY5-OQ-MeT" firstAttribute="trailing" secondItem="CX6-2e-Ox5" secondAttribute="trailing" id="FiF-dR-JTu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CX6-2e-Ox5"/>
                     </view>
                     <navigationItem key="navigationItem" id="BdO-z1-zsM">
