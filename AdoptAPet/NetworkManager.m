@@ -13,14 +13,9 @@
 
 @implementation NetworkManager
 
-+ (void)fetchPetsWithSearchTerms:(PetSearch *)searchTerms completionHandler:(void (^)(NSArray<Pet *> * pets))completion
++ (void)fetchPetDataFromURLs:(NSArray<NSURL *> *)urls completionHandler:(void (^)(NSArray<Pet *> * pets))completion;
 {
-  // TODO: Fetch pets with search terms
-}
-
-+ (void)fetchPetDataFromURL:(NSURL *)url completionHandler:(void (^)(NSArray<Pet *> * pets))completion
-{
-  NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];
+  NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:urls.firstObject];
   
   NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
   
@@ -93,52 +88,52 @@
 
 + (void)fetchShelterDataFromLocation:(NSString *)location completionHandler:(void (^)(NSArray<Contact *> * contacts))completion
 {
-    NSString *urlString = [NSString stringWithFormat:@"http://api.petfinder.com/shelter.find?location=%@&key=67a4b38197ee28774594388ab415505a&format=json", location];
-    NSLog(@"%@", urlString);
-    NSURL * url = [NSURL URLWithString:urlString];
+  NSString *urlString = [NSString stringWithFormat:@"http://api.petfinder.com/shelter.find?location=%@&key=67a4b38197ee28774594388ab415505a&format=json", location];
+  NSLog(@"%@", urlString);
+  NSURL * url = [NSURL URLWithString:urlString];
+  
+  NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];
+  
+  NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+  
+  NSURLSession * session = [NSURLSession sessionWithConfiguration:configuration];
+  
+  NSURLSessionDataTask * dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
     
-    NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];
-
-    NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    if (error)
+    {
+      NSLog(@"error: %@", error.localizedDescription);
+      return;
+    }
     
-    NSURLSession * session = [NSURLSession sessionWithConfiguration:configuration];
+    NSError * jsonError = nil;
     
-    NSURLSessionDataTask * dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        if (error)
-        {
-            NSLog(@"error: %@", error.localizedDescription);
-            return;
-        }
-        
-        NSError * jsonError = nil;
-        
-        NSDictionary * results = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError][@"petfinder"][@"shelters"][@"shelter"];
-        
-        if (jsonError)
-        {
-            NSLog(@"jsonError: %@", jsonError.localizedDescription);
-            return;
-        }
-        
-        NSMutableArray<Contact *> * contacts = [@[] mutableCopy];
-        
-        for (NSDictionary * result in results)
-        {
-            Contact * cont = [[Contact alloc] initWithJSON:result];
-            
-            [contacts addObject:cont];
-            
-            NSLog(@"%@", cont);
-        }
-        
-        completion(contacts);
-        
-        [session invalidateAndCancel];
-        
-    }];
+    NSDictionary * results = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError][@"petfinder"][@"shelters"][@"shelter"];
     
-    [dataTask resume];
+    if (jsonError)
+    {
+      NSLog(@"jsonError: %@", jsonError.localizedDescription);
+      return;
+    }
+    
+    NSMutableArray<Contact *> * contacts = [@[] mutableCopy];
+    
+    for (NSDictionary * result in results)
+    {
+      Contact * cont = [[Contact alloc] initWithJSON:result];
+      
+      [contacts addObject:cont];
+      
+      NSLog(@"%@", cont);
+    }
+    
+    completion(contacts);
+    
+    [session invalidateAndCancel];
+    
+  }];
+  
+  [dataTask resume];
 }
 
 @end
