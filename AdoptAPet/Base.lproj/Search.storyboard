@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search-->
+        <!--Adopt•A•Pet-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SearchViewController" sceneMemberID="viewController">
@@ -236,7 +236,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="search" id="Q9C-1m-fFx"/>
-                    <navigationItem key="navigationItem" title="Search" id="gJc-oQ-Y05">
+                    <navigationItem key="navigationItem" title="Adopt•A•Pet" id="gJc-oQ-Y05">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="f9f-oa-tvQ"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -301,7 +301,7 @@
                     <navigationItem key="navigationItem" id="BdO-z1-zsM">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="j6E-jj-FGR">
-                            <rect key="frame" x="114" y="7" width="147" height="30"/>
+                            <rect key="frame" x="130" y="7" width="147" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="List View"/>

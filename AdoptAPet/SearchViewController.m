@@ -33,6 +33,8 @@
 {
   [super viewDidLoad];
   
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+  
   self.petSearch = [[PetSearch alloc] init];
   self.petSearch.type = PetTypeDog;
 }
