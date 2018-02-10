@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Pet;
 
 @interface ListViewController : UITableViewController
 
+@property (nonatomic) NSArray<Pet *> * pets;
 
 @end
-

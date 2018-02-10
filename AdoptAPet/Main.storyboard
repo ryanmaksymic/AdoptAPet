@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-1666" y="-121"/>
         </scene>
-        <!--Nearby View Controller-->
+        <!--Adopt•A•Pet-->
         <scene sceneID="QWs-mu-ZLe">
             <objects>
                 <viewController id="hJc-wb-2Zm" customClass="NearbyViewController" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZ2-TS-Czq">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <connections>
-                                    <segue destination="DDe-Wt-mrE" kind="embed" id="G0l-3K-aA3"/>
+                                    <segue destination="DDe-Wt-mrE" kind="embed" identifier="embedList" id="G0l-3K-aA3"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -44,7 +44,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="14j-g1-ySf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4i5-0B-ugJ"/>
+                    <navigationItem key="navigationItem" title="Adopt•A•Pet" id="4i5-0B-ugJ"/>
                     <connections>
                         <outlet property="listView" destination="jZ2-TS-Czq" id="a3F-Fz-FQf"/>
                     </connections>

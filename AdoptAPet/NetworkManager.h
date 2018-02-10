@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@class Pet;
 @class Contact;
+@class Pet;
+@class PetSearch;
 
 @interface NetworkManager : NSObject
 
-+ (void)fetchPetDataFromURL:(NSURL *)url completionHandler:(void (^)(NSArray<Pet *> * pets))completion;
++ (void)fetchPetDataFromURLs:(NSArray<NSURL *> *)urls completionHandler:(void (^)(NSArray<Pet *> * pets))completion;
 + (void)fetchImageFileFromURL:(NSURL *)url completionHandler:(void (^)(UIImage * image))completion;
 + (void)fetchShelterDataFromLocation:(NSString *)location completionHandler:(void (^)(NSArray<Contact *> * contacts))completion;
 
