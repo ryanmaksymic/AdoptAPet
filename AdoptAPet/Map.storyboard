@@ -33,11 +33,20 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Y0t-eG-XnG" id="DlV-F6-uJV"/>
+                        <segue destination="yAM-gw-nR7" kind="show" identifier="showList" id="gPI-1F-p7z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVK-cG-l6p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1434" y="400"/>
+        </scene>
+        <!--List-->
+        <scene sceneID="ZFt-TA-qio">
+            <objects>
+                <viewControllerPlaceholder storyboardName="List" id="yAM-gw-nR7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4nf-vf-r0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-791" y="399"/>
         </scene>
     </scenes>
 </document>

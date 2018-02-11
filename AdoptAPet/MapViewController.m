@@ -10,6 +10,7 @@
 #import "NetworkManager.h"
 #import "Pet.h"
 #import "Contact.h"
+#import "ListViewController.h"
 @import MapKit;
 @import CoreLocation;
 
@@ -25,66 +26,66 @@
 @implementation MapViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
-    self.locationManager = [[CLLocationManager alloc] init];
-    
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.mapView setShowsUserLocation:YES];
-    [self.locationManager setDelegate:self];
-    [self.mapView setDelegate:self];
-    [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"reuse"];
-    NSString *loc = @"M9R3N4";
-    [self loadFilterLocation:loc];
-    [self loadShelters:loc];
-    
+  [super viewDidLoad];
+  
+  
+  self.locationManager = [[CLLocationManager alloc] init];
+  
+  [self.locationManager requestWhenInUseAuthorization];
+  [self.mapView setShowsUserLocation:YES];
+  [self.locationManager setDelegate:self];
+  [self.mapView setDelegate:self];
+  [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"reuse"];
+  NSString *loc = @"M9R3N4";
+  [self loadFilterLocation:loc];
+  [self loadShelters:loc];
+  
 }
 
 - (void)getGeoInformations:(NSString *)location completionHandler:(void (^)(CLLocationCoordinate2D))completion {
-    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
-    [geoCoder geocodeAddressString:location completionHandler:^(NSArray* placemarks, NSError* error){
-        
-        if(error) {
-            NSLog(@"Error");
-            return;
-        }
-        
-        CLPlacemark *placemark = [placemarks lastObject];
-        NSString *str_latitude = [NSString stringWithFormat: @"%f", placemark.location.coordinate.latitude];
-        NSString *str_longitude = [NSString stringWithFormat: @"%f", placemark.location.coordinate.longitude];
-        CLLocationCoordinate2D locationCoordinates = CLLocationCoordinate2DMake([str_latitude floatValue],
-                                                                                [str_longitude floatValue]);
-        completion(locationCoordinates);
-    }];
+  CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+  [geoCoder geocodeAddressString:location completionHandler:^(NSArray* placemarks, NSError* error){
+    
+    if(error) {
+      NSLog(@"Error");
+      return;
+    }
+    
+    CLPlacemark *placemark = [placemarks lastObject];
+    NSString *str_latitude = [NSString stringWithFormat: @"%f", placemark.location.coordinate.latitude];
+    NSString *str_longitude = [NSString stringWithFormat: @"%f", placemark.location.coordinate.longitude];
+    CLLocationCoordinate2D locationCoordinates = CLLocationCoordinate2DMake([str_latitude floatValue],
+                                                                            [str_longitude floatValue]);
+    completion(locationCoordinates);
+  }];
 }
 
 - (void)loadFilterLocation:(NSString *)location {
-    [self getGeoInformations:location  completionHandler:^(CLLocationCoordinate2D locationCoordinates) {
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self.mapView setRegion:MKCoordinateRegionMake(locationCoordinates, MKCoordinateSpanMake(0.2, 0.2))];
-        }];
-    } ];
+  [self getGeoInformations:location  completionHandler:^(CLLocationCoordinate2D locationCoordinates) {
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self.mapView setRegion:MKCoordinateRegionMake(locationCoordinates, MKCoordinateSpanMake(0.2, 0.2))];
+    }];
+  } ];
 }
 
 - (void)loadShelters:(NSString *)location {
-    [NetworkManager fetchShelterDataFromLocation:location completionHandler:^(NSArray<Contact *> *contacts) {
-        self.shelters = contacts;
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self.mapView addAnnotations:self.shelters];
-            //[self.mapView showAnnotations:self.shelters animated:YES];
-        }];
-        
+  [NetworkManager fetchShelterDataFromLocation:location completionHandler:^(NSArray<Contact *> *contacts) {
+    self.shelters = contacts;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self.mapView addAnnotations:self.shelters];
+      //[self.mapView showAnnotations:self.shelters animated:YES];
     }];
+    
+  }];
 }
 
 # pragma mark - Location Manager
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
-        [self.locationManager requestLocation];
-    }
+  if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
+    [self.locationManager requestLocation];
+  }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -94,47 +95,37 @@
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-
-    if (![annotation isKindOfClass:[Contact class]]) {
-        return nil;
-    }
-    MKMarkerAnnotationView *marker = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"reuse" forAnnotation:annotation];
-    
-    if (marker == nil) {
-        marker = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"reuse"];
-    }
-    
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    marker.rightCalloutAccessoryView = button;
-    
-    
-    
-    marker.canShowCallout = YES;
-    return marker;
+  
+  if (![annotation isKindOfClass:[Contact class]]) {
+    return nil;
+  }
+  MKMarkerAnnotationView *marker = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"reuse" forAnnotation:annotation];
+  
+  if (marker == nil) {
+    marker = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"reuse"];
+  }
+  
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
+  marker.rightCalloutAccessoryView = button;
+  
+  marker.canShowCallout = YES;
+  return marker;
 }
 
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+  [self performSegueWithIdentifier:@"showList" sender:nil];
+}
 
+# pragma mark - Navigation
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([segue.identifier isEqualToString:@"showList"])
+  {
+    ListViewController * lvc = (ListViewController *)segue.destinationViewController;
+    
+    // TODO: Pass in shelter name from selected annotation
+    lvc.title = @"Shelter Name";
+  }
+}
 
 @end
-
