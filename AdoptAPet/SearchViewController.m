@@ -27,6 +27,7 @@
 
 @end
 
+// TODO: Ability to de-select all segments of a segmented control
 
 @implementation SearchViewController
 
@@ -61,7 +62,6 @@
   //      [self.petSearch.options addObject:[NSNumber numberWithInteger:optionsButton.tag]];
   //    }
   //  }
-  // TODO: Figure out how to filter by Options
 }
 
 #pragma mark - Button actions

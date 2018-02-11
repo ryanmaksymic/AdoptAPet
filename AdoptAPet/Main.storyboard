@@ -219,7 +219,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwE-RN-XaM">
-                                <rect key="frame" x="16" y="449" width="343" height="21"/>
+                                <rect key="frame" x="16" y="559" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -233,7 +233,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBJ-V7-2K2" userLabel="SizeTabs">
-                                <rect key="frame" x="16" y="478" width="343" height="30"/>
+                                <rect key="frame" x="16" y="588" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIz-h0-UAp">
@@ -258,16 +258,16 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4f-2b-lg1">
-                                <rect key="frame" x="152" y="577" width="70" height="30"/>
+                                <rect key="frame" x="163" y="467" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Find A Pet"/>
+                                <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="search:" destination="eFT-oy-mf8" eventType="touchUpInside" id="0xS-TF-Fqa"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FNU-RW-W9l">
-                                <rect key="frame" x="177" y="549" width="20" height="20"/>
+                                <rect key="frame" x="177" y="505" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
@@ -277,7 +277,7 @@
                     <navigationItem key="navigationItem" title="🐾 Adopt•A•Pet 🐾" id="OSM-OR-blU">
                         <barButtonItem key="rightBarButtonItem" title="Alerts" id="E0L-a4-3OJ">
                             <connections>
-                                <segue destination="ql1-Tc-Q32" kind="presentation" id="gFf-yS-BdT"/>
+                                <segue destination="ql1-Tc-Q32" kind="presentation" identifier="showAlerts" id="gFf-yS-BdT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -318,7 +318,7 @@
                                     <segue destination="hLC-lv-n5p" kind="embed" identifier="embedList" id="KCy-6X-XJL"/>
                                 </connections>
                             </containerView>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9a-tI-Lt7">
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9a-tI-Lt7">
                                 <rect key="frame" x="0.0" y="64" width="375" height="63"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dogs / Male, Female / Small, Medium, Large, Extra Large / Baby, Young, Adult, Senior / No Claws, Has Shots, Housetrained" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evp-5d-f1P">
@@ -337,7 +337,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.78509500359999995" blue="0.77346194619999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wKB-3X-Jpf" firstAttribute="bottom" secondItem="pCi-nD-VtT" secondAttribute="bottom" id="4Df-KM-STj"/>
                             <constraint firstItem="yJf-si-RQo" firstAttribute="trailing" secondItem="pCi-nD-VtT" secondAttribute="trailing" id="4gJ-An-MxO"/>
@@ -356,18 +355,13 @@
                     <navigationItem key="navigationItem" id="Vpr-cX-7KN">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2yx-Wn-vDZ">
-                            <rect key="frame" x="114" y="7" width="147" height="30"/>
+                            <rect key="frame" x="184.5" y="7" width="147" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="List View"/>
                                 <segment title="Map View"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Create Alert" id="zO3-l8-XNq">
-                            <connections>
-                                <segue destination="ql1-Tc-Q32" kind="presentation" id="DkQ-hi-Pg5"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="listView" destination="wKB-3X-Jpf" id="k8q-Ky-zzU"/>
@@ -402,7 +396,7 @@
         <!--Alerts-->
         <scene sceneID="u76-bE-0Zm">
             <objects>
-                <viewController id="Zg5-0j-4US" sceneMemberID="viewController">
+                <viewController id="Zg5-0j-4US" customClass="AlertsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NxS-LN-Od6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -410,7 +404,12 @@
                         <viewLayoutGuide key="safeArea" id="jQu-vL-C2r"/>
                     </view>
                     <navigationItem key="navigationItem" title="Alerts" id="yiQ-qV-FVt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Yud-vd-hQE"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Yud-vd-hQE">
+                            <connections>
+                                <action selector="done:" destination="Zg5-0j-4US" id="Zmg-NT-dJ0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Wvp-nj-d4e"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8c5-SS-Ixh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -460,8 +459,5 @@
         <image name="search1" width="30" height="30"/>
         <image name="search2" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="gFf-yS-BdT"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.27447596190000001" green="0.27452921870000002" blue="0.27447256450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
