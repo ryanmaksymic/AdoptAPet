@@ -10,12 +10,14 @@
 #import "PetSearch.h"
 #import "NetworkManager.h"
 #import "SearchResultsViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface SearchViewController () <UITextFieldDelegate>
+@interface SearchViewController () <UITextFieldDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic) PetSearch * petSearch;
 @property (nonatomic) NSArray<Pet *> * pets;
 
+@property (nonatomic) CLLocationManager * locationManager;
 @property (weak, nonatomic) IBOutlet UITextField * locationTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petTypeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petSexSegmentedControl;
@@ -36,6 +38,9 @@
   self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
   
   self.locationTextField.delegate = self;
+  
+  self.locationManager = [[CLLocationManager alloc] init];
+  self.locationManager.delegate = self;
 }
 
 - (void)collectSearchTerms
@@ -88,7 +93,7 @@
 
 - (IBAction)getLocation:(UIButton *)sender
 {
-  // TODO: Get user location
+  [self.locationManager requestLocation];
 }
 
 - (IBAction)search:(UIButton *)sender
@@ -121,6 +126,42 @@
   self.petSexSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
   self.petSizeSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
   self.petAgeSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
+}
+
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+{
+  CLLocation * location = locations.firstObject;
+  
+  CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+  
+  [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+    
+    if (error != nil)
+    {
+      NSLog(@"Error: %@", error.localizedDescription);
+    }
+    
+    CLPlacemark * placemark = placemarks.firstObject;
+    
+    NSString * locationZip = placemark.postalCode;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      
+      self.locationTextField.text = locationZip;
+      
+      [self textFieldEditingDidEnd:self.locationTextField];
+      
+    }];
+    
+  }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+  NSLog(@"Error: %@", error.localizedDescription);
 }
 
 
