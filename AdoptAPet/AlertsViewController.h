@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PetSearch;
 
 @interface AlertsViewController : UIViewController
+
+@property (nonatomic) PetSearch * currentSearch;
 
 @end

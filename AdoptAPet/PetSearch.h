@@ -18,6 +18,7 @@
 @property (nonatomic) PetAge age;
 @property (nonatomic) NSMutableSet * options;
 
+- (instancetype)initWithType:(PetType)type sex:(PetSex)sex size:(PetSize)size age:(PetAge)age;
 - (NSURL *)generatePetSearchURL;
 - (NSString *)searchTermsString;
 

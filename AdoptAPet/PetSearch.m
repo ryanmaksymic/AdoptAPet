@@ -22,6 +22,22 @@
   return self;
 }
 
+- (instancetype)initWithType:(PetType)type sex:(PetSex)sex size:(PetSize)size age:(PetAge)age
+{
+  self = [super init];
+  
+  if (self)
+  {
+    _type = type;
+    _sex = sex;
+    _size = size;
+    _age = age;
+  }
+  
+  return self;
+}
+
+
 -(void)setLocationZip:(NSString *)locationZip
 {
   _locationZip = [locationZip stringByReplacingOccurrencesOfString:@" " withString:@""];
