@@ -18,10 +18,11 @@
 
 @property (weak, nonatomic) IBOutlet UITextField * locationTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petTypeSegmentedControl;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * sexButtons;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * sizeButtons;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * ageButtons;
+@property (weak, nonatomic) IBOutlet UISegmentedControl * petSexSegmentedControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl * petSizeSegmentedControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl * petAgeSegmentedControl;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * optionsButtons;
+@property (weak, nonatomic) IBOutlet UIButton * findAPetButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView * activityIndicator;
 
 @end
@@ -34,71 +35,40 @@
   [super viewDidLoad];
   
   self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
-  
-  self.petSearch = [[PetSearch alloc] init];
-  self.petSearch.type = PetTypeDog;
-}
-
-
-- (IBAction)getLocation:(UIButton *)sender
-{
-  // TODO: Get user location
 }
 
 - (void)collectSearchTerms
 {
+  self.petSearch = [[PetSearch alloc] init];
+  
   self.petSearch.locationZip = self.locationTextField.text;
+  // TODO: Check location is non-empty and valid before allowing search to happen
   
-  self.petSearch.type = self.petTypeSegmentedControl.selectedSegmentIndex == 0 ? PetTypeDog : PetTypeCat;
+  self.petSearch.type = self.petTypeSegmentedControl.selectedSegmentIndex;
   
-  [self.petSearch.sexes removeAllObjects];
-  for (UIButton * sexButton in self.sexButtons)
-  {
-    if (sexButton.isSelected)
-    {
-      [self.petSearch.sexes addObject:[NSNumber numberWithInteger:sexButton.tag]];
-    }
-  }
+  self.petSearch.sex = self.petSexSegmentedControl.selectedSegmentIndex;
   
-  [self.petSearch.sizes removeAllObjects];
-  for (UIButton * sizeButton in self.sizeButtons)
-  {
-    if (sizeButton.isSelected)
-    {
-      [self.petSearch.sizes addObject:[NSNumber numberWithInteger:sizeButton.tag]];
-    }
-  }
+  self.petSearch.size = self.petSizeSegmentedControl.selectedSegmentIndex;
   
-  [self.petSearch.ages removeAllObjects];
-  for (UIButton * ageButton in self.ageButtons)
-  {
-    if (ageButton.isSelected)
-    {
-      [self.petSearch.ages addObject:[NSNumber numberWithInteger:ageButton.tag]];
-    }
-  }
+  self.petSearch.age = self.petAgeSegmentedControl.selectedSegmentIndex;
   
-  [self.petSearch.options removeAllObjects];
-  for (UIButton * optionsButton in self.optionsButtons)
-  {
-    if (optionsButton.isSelected)
-    {
-      [self.petSearch.options addObject:[NSNumber numberWithInteger:optionsButton.tag]];
-    }
-  }
   
-  NSLog(@"");
-  NSLog(@"Location: %@", self.petSearch.locationZip);
-  NSLog(@"Type: %@", [self.petSearch typeString]);
-  NSLog(@"Sexes: %@", [self.petSearch sexesString]);
-  NSLog(@"Sizes: %@", [self.petSearch sizesString]);
-  NSLog(@"Ages: %@", [self.petSearch agesString]);
-  NSLog(@"Options: %@", [self.petSearch optionsString]);
+  //  [self.petSearch.options removeAllObjects];
+  //  for (UIButton * optionsButton in self.optionsButtons)
+  //  {
+  //    if (optionsButton.isSelected)
+  //    {
+  //      [self.petSearch.options addObject:[NSNumber numberWithInteger:optionsButton.tag]];
+  //    }
+  //  }
+  // TODO: Figure out how to filter by Options
 }
 
-- (IBAction)buttonToggled:(UIButton *)sender
+#pragma mark - Button actions
+
+- (IBAction)getLocation:(UIButton *)sender
 {
-  sender.selected = !sender.selected;
+  // TODO: Get user location
 }
 
 - (IBAction)search:(UIButton *)sender
@@ -108,11 +78,13 @@
   
   [self collectSearchTerms];
   
-  [NetworkManager fetchPetDataFromURLs:@[[self.petSearch generatePetSearchURLs]] completionHandler:^(NSArray<Pet *> * pets) {
+  [NetworkManager fetchPetDataFromURL:[self.petSearch generatePetSearchURL] completionHandler:^(NSArray<Pet *> * pets) {
     
     self.pets = pets;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      
+      [self.activityIndicator stopAnimating];
       
       [self performSegueWithIdentifier:@"showSearchResults" sender:nil];
       
@@ -121,6 +93,14 @@
   }];
 }
 
+- (IBAction)buttonToggled:(UIButton *)sender
+{
+  sender.selected = !sender.selected;
+}
+
+
+#pragma mark - Navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if ([segue.identifier isEqualToString:@"showSearchResults"])
@@ -128,6 +108,8 @@
     SearchResultsViewController * srvc = (SearchResultsViewController *)segue.destinationViewController;
     
     srvc.pets = self.pets;
+    
+    srvc.searchTerms = [self.petSearch searchTermsString];
   }
 }
 

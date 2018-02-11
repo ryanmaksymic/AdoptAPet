@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *optionsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
 // TODO: Add ageLabel
+// TODO: Add "more..." button to expand extra-long descriptions (?)
 
 @end
 

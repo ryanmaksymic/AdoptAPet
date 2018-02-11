@@ -12,5 +12,6 @@
 @interface SearchResultsViewController : UIViewController
 
 @property (nonatomic) NSArray<Pet *> * pets;
+@property (nonatomic, copy) NSString * searchTerms;
 
 @end

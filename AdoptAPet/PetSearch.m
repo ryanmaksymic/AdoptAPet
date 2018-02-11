@@ -16,9 +16,6 @@
   
   if (self)
   {
-    _sexes = [NSMutableSet setWithCapacity:2];
-    _sizes = [NSMutableSet setWithCapacity:4];
-    _ages = [NSMutableSet setWithCapacity:4];
     _options = [NSMutableSet setWithCapacity:2];
   }
   
@@ -26,29 +23,95 @@
 }
 
 
-- (NSURL *)generatePetSearchURLs
+- (NSURL *)generatePetSearchURL
 {
+  // base URL:
   NSMutableString * urlString = [@"http://api.petfinder.com/pet.find?key=67a4b38197ee28774594388ab415505a&format=json" mutableCopy];
   
+  // count:
   [urlString appendString:@"&count=50"];  // TODO: Sort out how many to retrieve
   
   // location:
   [urlString appendFormat:@"&location=%@", [self.locationZip stringByReplacingOccurrencesOfString:@" " withString:@""]];
   
   // type:
-  NSString * typeArgument = self.type == PetTypeDog ? @"&animal=dog" : @"&animal=cat";
+  NSString * typeArgument;
+  switch (self.type)
+  {
+    case PetTypeDog:
+      typeArgument = @"&animal=dog";
+      break;
+    case PetTypeCat:
+      typeArgument = @"&animal=cat";
+      break;
+    default:
+      typeArgument = @"";
+      break;
+  }
   [urlString appendString:typeArgument];
   
-  // TODO: The rest of this...
-  
   // sex:
-  
+  NSString * sexArgument;
+  switch (self.sex)
+  {
+    case PetSexMale:
+      sexArgument = @"&sex=M";
+      break;
+    case PetSexFemale:
+      sexArgument = @"&sex=F";
+      break;
+    default:
+      sexArgument = @"";
+      break;
+  }
+  [urlString appendString:sexArgument];
   
   // size:
+  NSString * sizeArgument;
+  switch (self.size)
+  {
+    case PetSizeSmall:
+      sizeArgument = @"&size=S";
+      break;
+    case PetSizeMedium:
+      sizeArgument = @"&size=M";
+      break;
+    case PetSizeLarge:
+      sizeArgument = @"&size=L";
+      break;
+    case PetSizeExtraLarge:
+      sizeArgument = @"&size=XL";
+      break;
+    default:
+      sizeArgument = @"";
+      break;
+  }
+  [urlString appendString:sizeArgument];
   
   // age:
+  NSString * ageArgument;
+  switch (self.age)
+  {
+    case PetAgeBaby:
+      ageArgument = @"&age=Baby";
+      break;
+    case PetAgeYoung:
+      ageArgument = @"&age=Young";
+      break;
+    case PetAgeAdult:
+      ageArgument = @"&age=Adult";
+      break;
+    case PetAgeSenior:
+      ageArgument = @"&age=Senior";
+      break;
+    default:
+      ageArgument = @"";
+      break;
+  }
+  [urlString appendString:ageArgument];
   
   // options:
+  // TODO: Figure out how to filter by Options
   
   NSLog(@"Search URL: %@", urlString);
   
@@ -58,117 +121,109 @@
 
 #pragma mark - String output methods
 
+- (NSString *)searchTermsString
+{
+  return [NSString stringWithFormat:@"Type: %@ / Sex: %@ / Size: %@ / Age: %@", [self typeString], [self sexString], [self sizeString], [self ageString]];
+}
+
 - (NSString *)typeString
 {
-  if (self.type == PetTypeDog)
+  switch (self.type)
   {
-    return @"Dog";
+    case PetTypeDog:
+      return @"Dog";
+      break;
+    case PetTypeCat:
+      return @"Cat";
+      break;
+    default:
+      return @"Any";
+      break;
   }
-  
-  return @"Cat";
 }
 
-- (NSString *)sexesString
+- (NSString *)sexString
 {
-  if ([self.sexes count] == 0 || [self.sexes count] == 2)
+  switch (self.sex)
   {
-    return @"Any Sex";
+    case PetSexMale:
+      return @"Male";
+      break;
+    case PetSexFemale:
+      return @"Female";
+      break;
+    default:
+      return @"Any";
+      break;
   }
-  
-  NSMutableString * result = [@"" mutableCopy];
-  
-  if ([self.sexes containsObject:[NSNumber numberWithInteger:PetSexMale]])
-  {
-    [result appendString:@"Male, "];
-  }
-  
-  if ([self.sexes containsObject:[NSNumber numberWithInteger:PetSexFemale]])
-  {
-    [result appendString:@"Female, "];
-  }
-  
-  return result;
 }
 
-- (NSString *)sizesString
+- (NSString *)sizeString
 {
-  if ([self.sizes count] == 0 || [self.sizes count] == 4)
+  switch (self.size)
   {
-    return @"Any Size";
+    case PetSizeSmall:
+      return @"Small";
+      break;
+    case PetSizeMedium:
+      return @"Medium";
+      break;
+    case PetSizeLarge:
+      return @"Large";
+      break;
+    case PetSizeExtraLarge:
+      return @"Large";
+      break;
+    default:
+      return @"Any";
+      break;
   }
-  
-  NSMutableString * result = [@"" mutableCopy];
-  
-  if ([self.sizes containsObject:[NSNumber numberWithInteger:PetSizeSmall]])
-  {
-    [result appendString:@"Small, "];
-  }
-  
-  if ([self.sizes containsObject:[NSNumber numberWithInteger:PetSizeMedium]])
-  {
-    [result appendString:@"Medium, "];
-  }
-  
-  if ([self.sizes containsObject:[NSNumber numberWithInteger:PetSizeLarge]])
-  {
-    [result appendString:@"Large, "];
-  }
-  
-  if ([self.sizes containsObject:[NSNumber numberWithInteger:PetSizeExtraLarge]])
-  {
-    [result appendString:@"Extra Large, "];
-  }
-  
-  return result;
 }
 
-- (NSString *)agesString
+- (NSString *)ageString
 {
-  if ([self.ages count] == 0 || [self.ages count] == 4)
+  switch (self.age)
   {
-    return @"Any Ages";
+    case PetAgeBaby:
+      return @"Baby";
+      break;
+    case PetAgeYoung:
+      return @"Young";
+      break;
+    case PetAgeAdult:
+      return @"Adult";
+      break;
+    case PetAgeSenior:
+      return @"Senior";
+      break;
+    default:
+      return @"Any";
+      break;
   }
-  
-  NSMutableString * result = [@"" mutableCopy];
-  
-  if ([self.ages containsObject:[NSNumber numberWithInteger:PetAgeBaby]])
-  {
-    [result appendString:@"Baby, "];
-  }
-  
-  if ([self.ages containsObject:[NSNumber numberWithInteger:PetAgeYoung]])
-  {
-    [result appendString:@"Young, "];
-  }
-  
-  if ([self.ages containsObject:[NSNumber numberWithInteger:PetAgeAdult]])
-  {
-    [result appendString:@"Adult, "];
-  }
-  
-  if ([self.ages containsObject:[NSNumber numberWithInteger:PetAgeSenior]])
-  {
-    [result appendString:@"Senior, "];
-  }
-  
-  return result;
 }
 
-- (NSString *)optionsString
-{
-  NSMutableString * result = [@"" mutableCopy];
-  
-  if ([self.options containsObject:[NSNumber numberWithInteger:PetOptionHasShots]])
-  {
-    [result appendString:@"Has Shots, "];
-  }
-  
-  if ([self.options containsObject:[NSNumber numberWithInteger:PetOptionHousetrained]])
-  {
-    [result appendString:@"Housetrained, "];
-  }
-  
-  return result;
-}
+/*
+ - (NSString *)optionsString
+ {
+ if ([self.options count] == 0)
+ {
+ return @"No Options";
+ }
+ 
+ NSMutableString * result = [@"" mutableCopy];
+ 
+ if ([self.options containsObject:[NSNumber numberWithInteger:PetOptionHasShots]])
+ {
+ [result appendString:@"Has Shots, "];
+ }
+ 
+ if ([self.options containsObject:[NSNumber numberWithInteger:PetOptionHousetrained]])
+ {
+ [result appendString:@"Housetrained, "];
+ }
+ 
+ return result;
+ }
+ */
 
 @end
