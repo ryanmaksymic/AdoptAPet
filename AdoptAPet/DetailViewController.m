@@ -73,30 +73,22 @@
                                 target:self
                                 action:@selector(favorite)];
   self.navigationItem.rightBarButtonItem = favButton;
-
+  
 }
 
-/*
  #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
   DetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imageCell" forIndexPath:indexPath];
   
   if (self.pet.photos.count-1 < indexPath.item) {
     [NetworkManager fetchImageFileFromURL:self.pet.photoURLs[indexPath.row] completionHandler:^(UIImage * image) {
-      self.pet.photos[indexPath.row] = image;
+      
+      [self.pet.photos addObject:image];
       
       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         
-        cell.photo.image = self.pet.photos[indexPath.item];
-        
+        cell.photo.image = image;
         
       }];
     }];
@@ -108,7 +100,6 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  NSLog(@"TOTAL: %li", self.pet.photoURLs.count ? self.pet.photoURLs.count : 1);
   return self.pet.photoURLs.count ? self.pet.photoURLs.count : 1;
 }
 
