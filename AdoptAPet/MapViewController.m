@@ -38,7 +38,6 @@
   NSString *loc = self.locationZip;
   [self loadFilterLocation:loc];
   [self loadShelters:loc];
-  
 }
 
 - (void)getGeoInformations:(NSString *)location completionHandler:(void (^)(CLLocationCoordinate2D))completion {
@@ -95,8 +94,8 @@
      self.shelters = filteredShelters;
      
      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-       [self.mapView addAnnotations:self.shelters];
-       //[self.mapView showAnnotations:self.shelters animated:YES];
+       //[self.mapView addAnnotations:self.shelters];
+       [self.mapView showAnnotations:self.shelters animated:YES];
      }];
      
    }];
