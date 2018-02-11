@@ -115,7 +115,7 @@
 }
 
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-  [self performSegueWithIdentifier:@"showList" sender:nil];
+  [self performSegueWithIdentifier:@"showList" sender:view];
 }
 
 # pragma mark - Navigation
@@ -125,8 +125,14 @@
   {
     ListViewController * lvc = (ListViewController *)segue.destinationViewController;
     
-    // TODO: Pass in shelter name from selected annotation
-    lvc.title = @"Shelter Name";
+    MKAnnotationView * annotationView = (MKAnnotationView *)sender;
+    
+    Contact * contact = (Contact *)annotationView.annotation;
+    
+    lvc.title = contact.title;
+    
+    // TODO: Pass Pet array from shelter into list view
+    //lvc.pets = 
   }
 }
 
