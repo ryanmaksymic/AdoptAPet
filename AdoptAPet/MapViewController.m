@@ -35,8 +35,6 @@
   [self.locationManager setDelegate:self];
   [self.mapView setDelegate:self];
   [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"reuse"];
-  //NSString *loc = @"M9R3N4";
-  NSLog(@"locationZip = %@", self.locationZip);
   NSString *loc = self.locationZip;
   [self loadFilterLocation:loc];
   [self loadShelters:loc];
@@ -70,17 +68,38 @@
 }
 
 - (void)loadShelters:(NSString *)location {
-  [NetworkManager fetchShelterDataFromLocation:location completionHandler:^(NSArray<Contact *> *contacts) {
-    // TODO: Filter out shelters that don't have animals from search results
-    
-    self.shelters = contacts;
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      [self.mapView addAnnotations:self.shelters];
-      //[self.mapView showAnnotations:self.shelters animated:YES];
-    }];
-    
-  }];
+  [NetworkManager fetchShelterDataFromLocation:location completionHandler:^(NSArray<Contact *> *contacts)
+   {
+     NSMutableSet * petShelters = [NSMutableSet set];
+     
+     for (Pet * pet in self.pets)
+     {
+       [petShelters addObject:pet.shelterID];
+     }
+     
+     NSPredicate * shelterIDInSearchResults = [NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+       
+       Contact * shelter = (Contact *)evaluatedObject;
+       
+       if ([petShelters containsObject:shelter.idNumber])
+       {
+         return YES;
+       }
+       
+       return NO;
+       
+     }];
+     
+     NSArray<Contact *> * filteredShelters = [contacts filteredArrayUsingPredicate:shelterIDInSearchResults];
+     
+     self.shelters = filteredShelters;
+     
+     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+       [self.mapView addAnnotations:self.shelters];
+       //[self.mapView showAnnotations:self.shelters animated:YES];
+     }];
+     
+   }];
 }
 
 # pragma mark - Location Manager
@@ -132,7 +151,7 @@
     
     NSString * shelterID = shelter.idNumber;
     
-    NSPredicate * shelterIDPredicate = [NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+    NSPredicate * petHasShelterID = [NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
       
       Pet * pet = (Pet *)evaluatedObject;
       
@@ -145,7 +164,7 @@
       
     }];
     
-    NSArray * shelterPets = [self.pets filteredArrayUsingPredicate:shelterIDPredicate];
+    NSArray * shelterPets = [self.pets filteredArrayUsingPredicate:petHasShelterID];
     
     lvc.pets = shelterPets;
   }
