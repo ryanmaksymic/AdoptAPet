@@ -14,6 +14,7 @@
 
 @property Pet *pet;
 
-+ (void)savePet:(Pet *)pet;
++ (void)favorite:(Pet *)pet;
++ (BOOL)checkPet:(NSString *)idPet;
 
 @end

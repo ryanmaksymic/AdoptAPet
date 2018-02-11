@@ -9,5 +9,7 @@
 #import "PetRealm.h"
 
 @implementation PetRealm
-
++ (NSString *)primaryKey {
+  return @"idNumber";
+}
 @end

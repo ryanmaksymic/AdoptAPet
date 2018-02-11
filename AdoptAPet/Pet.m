@@ -8,6 +8,7 @@
 
 #import "Pet.h"
 #import "Contact.h"
+#import "DataManager.h"
 
 @implementation Pet
 
@@ -184,6 +185,7 @@
   }
   
   _photos = [@[] mutableCopy];
+  _isFavorite = [DataManager checkPet:json[@"id"][@"$t"]];
   
   return self;
 }
@@ -293,13 +295,13 @@
       [result appendString:@"Housetrained ∙ "];
     }
   }
-
-    if ([result length] > 3) {
-        NSString *resultFormatted = [result substringToIndex:[result length]-3];
-        return resultFormatted;
-    }
-    
-    return result;
+  
+  if ([result length] > 3) {
+    NSString *resultFormatted = [result substringToIndex:[result length]-3];
+    return resultFormatted;
+  }
+  
+  return result;
 }
 
 - (NSString *)contactString
