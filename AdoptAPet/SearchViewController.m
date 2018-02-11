@@ -11,7 +11,7 @@
 #import "NetworkManager.h"
 #import "SearchResultsViewController.h"
 
-@interface SearchViewController ()
+@interface SearchViewController () <UITextFieldDelegate>
 
 @property (nonatomic) PetSearch * petSearch;
 @property (nonatomic) NSArray<Pet *> * pets;
@@ -21,13 +21,11 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petSexSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petSizeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petAgeSegmentedControl;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray * optionsButtons;
-@property (weak, nonatomic) IBOutlet UIButton * findAPetButton;
+@property (weak, nonatomic) IBOutlet UIButton * searchButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView * activityIndicator;
 
 @end
 
-// TODO: Ability to de-select all segments of a segmented control
 
 @implementation SearchViewController
 
@@ -36,6 +34,8 @@
   [super viewDidLoad];
   
   self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+  
+  self.locationTextField.delegate = self;
 }
 
 - (void)collectSearchTerms
@@ -43,7 +43,6 @@
   self.petSearch = [[PetSearch alloc] init];
   
   self.petSearch.locationZip = self.locationTextField.text;
-  // TODO: Check location is non-empty and valid before allowing search to happen
   
   self.petSearch.type = self.petTypeSegmentedControl.selectedSegmentIndex;
   
@@ -52,17 +51,38 @@
   self.petSearch.size = self.petSizeSegmentedControl.selectedSegmentIndex;
   
   self.petSearch.age = self.petAgeSegmentedControl.selectedSegmentIndex;
-  
-  
-  //  [self.petSearch.options removeAllObjects];
-  //  for (UIButton * optionsButton in self.optionsButtons)
-  //  {
-  //    if (optionsButton.isSelected)
-  //    {
-  //      [self.petSearch.options addObject:[NSNumber numberWithInteger:optionsButton.tag]];
-  //    }
-  //  }
 }
+
+
+#pragma mark - Touches
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+  [self.view endEditing:YES];
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (IBAction)textFieldEditingDidEnd:(UITextField *)sender
+{
+  if ([self.locationTextField.text isEqualToString:@""])
+  {
+    [self.searchButton setEnabled:NO];
+  }
+  else
+  {
+    [self.searchButton setEnabled:YES];
+  }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+  [self.view endEditing:YES];
+  
+  return YES;
+}
+
 
 #pragma mark - Button actions
 
@@ -80,6 +100,8 @@
   
   [NetworkManager fetchPetDataFromURL:[self.petSearch generatePetSearchURL] completionHandler:^(NSArray<Pet *> * pets) {
     
+    // TODO: Only proceed if fetched data is valid
+    
     self.pets = pets;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -93,9 +115,12 @@
   }];
 }
 
-- (IBAction)buttonToggled:(UIButton *)sender
+- (IBAction)resetFilters:(UIButton *)sender
 {
-  sender.selected = !sender.selected;
+  self.petTypeSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
+  self.petSexSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
+  self.petSizeSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
+  self.petAgeSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
 }
 
 
