@@ -182,9 +182,9 @@
       }
     }
     _photoURLs = tempPhotoURLs;
+    _photos = [[NSMutableArray alloc] initWithCapacity:tempPhotoURLs.count];
   }
   
-  _photos = [@[] mutableCopy];
   _isFavorite = [DataManager checkPet:json[@"id"][@"$t"]];
   
   return self;
