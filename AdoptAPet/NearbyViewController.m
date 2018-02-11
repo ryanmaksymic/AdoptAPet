@@ -15,6 +15,10 @@
 
 @property (weak, nonatomic) IBOutlet UIView * listView;
 
+@property (nonatomic) NSArray<Pet *> * nearbyDogs;
+@property (nonatomic) NSArray<Pet *> * nearbyCats;
+@property (nonatomic) NSMutableArray<Pet *> * nearbyPets;
+
 @end
 
 
@@ -33,16 +37,36 @@
   {
     ListViewController * lvc = (ListViewController *)segue.destinationViewController;
     
-    // TODO: Get random dog and cat data and load into listView; alternate between dog and cat (?)
-    NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?location=M5T2V4&key=67a4b38197ee28774594388ab415505a&format=json&count=50"];
+    // TODO: Get user location to search nearby
+    
+    NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?key=67a4b38197ee28774594388ab415505a&format=json&location=M5V2H8&animal=dog"];
     
     [NetworkManager fetchPetDataFromURL:url completionHandler:^(NSArray<Pet *> * pets) {
       
-      lvc.pets = pets;
+      self.nearbyDogs = pets;
       
-      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      NSURL * url = [NSURL URLWithString:@"http://api.petfinder.com/pet.find?key=67a4b38197ee28774594388ab415505a&format=json&location=M5V2H8&animal=cat"];
+      
+      [NetworkManager fetchPetDataFromURL:url completionHandler:^(NSArray<Pet *> * pets) {
         
-        [lvc.tableView reloadData];
+        self.nearbyCats = pets;
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          
+          self.nearbyPets = [@[] mutableCopy];
+          
+          for (int i = 0; i < [self.nearbyCats count]; i++)
+          {
+            self.nearbyPets[i * 2] = self.nearbyCats[i];
+            
+            self.nearbyPets[i * 2 + 1] = self.nearbyDogs[i];
+          }
+          
+          lvc.pets = self.nearbyPets;
+          
+          [lvc.tableView reloadData];
+          
+        }];
         
       }];
       
