@@ -110,6 +110,8 @@
     srvc.pets = self.pets;
     
     srvc.searchTerms = [self.petSearch searchTermsString];
+    
+    srvc.locationZip = self.petSearch.locationZip;
   }
 }
 

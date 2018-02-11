@@ -13,5 +13,6 @@
 
 @property (nonatomic) NSArray<Pet *> * pets;
 @property (nonatomic, copy) NSString * searchTerms;
+@property (nonatomic, copy) NSString * locationZip;
 
 @end

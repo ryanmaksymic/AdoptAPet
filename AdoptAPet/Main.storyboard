@@ -312,7 +312,7 @@
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJf-si-RQo">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <connections>
-                                    <segue destination="UIh-uK-seH" kind="embed" id="Uyg-1z-zHv"/>
+                                    <segue destination="UIh-uK-seH" kind="embed" identifier="embedMap" id="Uyg-1z-zHv"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKB-3X-Jpf">

@@ -22,6 +22,11 @@
   return self;
 }
 
+-(void)setLocationZip:(NSString *)locationZip
+{
+  _locationZip = [locationZip stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
 
 - (NSURL *)generatePetSearchURL
 {
@@ -32,7 +37,7 @@
   [urlString appendString:@"&count=50"];  // TODO: Sort out how many to retrieve
   
   // location:
-  [urlString appendFormat:@"&location=%@", [self.locationZip stringByReplacingOccurrencesOfString:@" " withString:@""]];
+  [urlString appendFormat:@"&location=%@", self.locationZip];
   
   // type:
   NSString * typeArgument;

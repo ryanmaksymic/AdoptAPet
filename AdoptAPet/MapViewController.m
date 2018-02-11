@@ -36,7 +36,9 @@
   [self.locationManager setDelegate:self];
   [self.mapView setDelegate:self];
   [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"reuse"];
-  NSString *loc = @"M9R3N4";
+  //NSString *loc = @"M9R3N4";
+  NSLog(@"locationZip = %@", self.locationZip);
+  NSString *loc = self.locationZip;
   [self loadFilterLocation:loc];
   [self loadShelters:loc];
   

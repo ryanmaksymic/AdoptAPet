@@ -10,4 +10,6 @@
 
 @interface MapViewController : UIViewController
 
+@property (nonatomic, copy) NSString * locationZip;
+
 @end
