@@ -60,6 +60,7 @@ typedef NS_ENUM(NSUInteger, PetOption)
 @property (nonatomic, strong) NSArray * options;
 @property (nonatomic, strong) Contact * contact;
 @property (nonatomic, strong) NSString * idNumber;
+@property (nonatomic, strong) NSString * shelterID;
 @property (nonatomic, strong) NSDate * lastUpdated;
 @property (nonatomic, strong) NSArray<NSURL *> * photoURLs;
 @property (nonatomic, strong) NSMutableArray<UIImage *> * photos;

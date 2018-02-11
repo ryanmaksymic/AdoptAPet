@@ -18,16 +18,15 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-//@property (strong, nonatomic) NSArray<Pet *> *pets;
 @property (strong, nonatomic) NSArray<Contact<MKAnnotation> *> *shelters;
 
 @end
+
 
 @implementation MapViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
   
   self.locationManager = [[CLLocationManager alloc] init];
   
@@ -72,6 +71,8 @@
 
 - (void)loadShelters:(NSString *)location {
   [NetworkManager fetchShelterDataFromLocation:location completionHandler:^(NSArray<Contact *> *contacts) {
+    // TODO: Filter out shelters that don't have animals from search results
+    
     self.shelters = contacts;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -123,16 +124,30 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"showList"])
   {
-    ListViewController * lvc = (ListViewController *)segue.destinationViewController;
-    
     MKAnnotationView * annotationView = (MKAnnotationView *)sender;
+    Contact * shelter = (Contact *)annotationView.annotation;
     
-    Contact * contact = (Contact *)annotationView.annotation;
+    ListViewController * lvc = (ListViewController *)segue.destinationViewController;
+    lvc.title = shelter.title;
     
-    lvc.title = contact.title;
+    NSString * shelterID = shelter.idNumber;
     
-    // TODO: Pass Pet array from shelter into list view
-    //lvc.pets = 
+    NSPredicate * shelterIDPredicate = [NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+      
+      Pet * pet = (Pet *)evaluatedObject;
+      
+      if ([pet.shelterID isEqualToString:shelterID])
+      {
+        return YES;
+      }
+      
+      return NO;
+      
+    }];
+    
+    NSArray * shelterPets = [self.pets filteredArrayUsingPredicate:shelterIDPredicate];
+    
+    lvc.pets = shelterPets;
   }
 }
 

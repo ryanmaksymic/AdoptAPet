@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Pet;
 
 @interface MapViewController : UIViewController
 
 @property (nonatomic, copy) NSString * locationZip;
+@property (strong, nonatomic) NSArray<Pet *> * pets;
 
 @end

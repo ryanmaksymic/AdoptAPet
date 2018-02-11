@@ -165,6 +165,9 @@
     // idNUmber:
     _idNumber = json[@"id"][@"$t"];
     
+    // shelterID:
+    _shelterID = json[@"shelterId"][@"$t"];
+    
     // lastUpdated:
     NSString * dateString = [json[@"lastUpdate"][@"$t"] componentsSeparatedByString:@"T"].firstObject;
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
@@ -351,6 +354,7 @@
   [result appendFormat:@"\n\nSex: %@", [self sexString]];
   [result appendFormat:@"\n\nDescription: %@", self.petDescription];
   [result appendFormat:@"\n\nOptions:\n%@", [self optionsString]];
+  [result appendFormat:@"\n\nShelter ID: %@", self.shelterID];
   [result appendFormat:@"\n\nContact:\n%@", [self contactString]];
   [result appendFormat:@"\n\nLast updated: %@", [self lastUpdatedString]];
   [result appendFormat:@"\n\nPhoto URLs:\n%@", [self photoURLsString]];

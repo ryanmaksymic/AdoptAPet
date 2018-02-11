@@ -60,9 +60,8 @@
   {
     MapViewController * mvc = (MapViewController *)segue.destinationViewController;
     
+    mvc.pets = self.pets;
     mvc.locationZip = self.locationZip;
-    
-    // TODO: Load map data here
   }
 }
 
