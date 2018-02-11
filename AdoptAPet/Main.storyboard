@@ -364,6 +364,9 @@
                                 <segment title="List View"/>
                                 <segment title="Map View"/>
                             </segments>
+                            <connections>
+                                <action selector="viewModeSegmentedControlValueChanged:" destination="hJC-Di-KAp" eventType="valueChanged" id="BCc-rF-7xV"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>

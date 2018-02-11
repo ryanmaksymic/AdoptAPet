@@ -9,6 +9,7 @@
 #import "SearchResultsViewController.h"
 #import "Pet.h"
 #import "ListViewController.h"
+#import "MapViewController.h"
 
 @interface SearchResultsViewController ()
 
@@ -27,6 +28,23 @@
   [super viewDidLoad];
   
   self.searchTermsLabel.text = self.searchTerms;
+  
+  [self.listView setHidden:NO];
+  [self.mapView setHidden:YES];
+}
+
+- (IBAction)viewModeSegmentedControlValueChanged:(UISegmentedControl *)sender
+{
+  if (self.viewModeSegmentedControl.selectedSegmentIndex == 0)
+  {
+    [self.listView setHidden:NO];
+    [self.mapView setHidden:YES];
+  }
+  else
+  {
+    [self.listView setHidden:YES];
+    [self.mapView setHidden:NO];
+  }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -40,6 +58,10 @@
   
   if ([segue.identifier isEqualToString:@"embedMap"])
   {
+    MapViewController * mvc = (MapViewController *)segue.destinationViewController;
+    
+    //mvc.location = 
+    
     // TODO: Load map data here
   }
 }
