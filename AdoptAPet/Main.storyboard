@@ -218,7 +218,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwE-RN-XaM">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwE-RN-XaM">
                                 <rect key="frame" x="16" y="449" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -232,7 +232,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBJ-V7-2K2" userLabel="SizeTabs">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBJ-V7-2K2" userLabel="SizeTabs">
                                 <rect key="frame" x="16" y="478" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -258,7 +258,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4f-2b-lg1">
-                                <rect key="frame" x="152" y="536" width="70" height="30"/>
+                                <rect key="frame" x="152" y="577" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Find A Pet"/>
@@ -267,16 +267,15 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FNU-RW-W9l">
-                                <rect key="frame" x="177" y="574" width="20" height="20"/>
+                                <rect key="frame" x="177" y="549" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="FnO-I4-lYr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TEST" image="search" id="rbm-NQ-Pj1"/>
                     <navigationItem key="navigationItem" title="🐾 Adopt•A•Pet 🐾" id="OSM-OR-blU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="E0L-a4-3OJ">
+                        <barButtonItem key="rightBarButtonItem" title="Alerts" id="E0L-a4-3OJ">
                             <connections>
                                 <segue destination="ql1-Tc-Q32" kind="presentation" id="gFf-yS-BdT"/>
                             </connections>
@@ -357,13 +356,18 @@
                     <navigationItem key="navigationItem" id="Vpr-cX-7KN">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2yx-Wn-vDZ">
-                            <rect key="frame" x="184.5" y="7" width="147" height="30"/>
+                            <rect key="frame" x="114" y="7" width="147" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="List View"/>
                                 <segment title="Map View"/>
                             </segments>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="Create Alert" id="zO3-l8-XNq">
+                            <connections>
+                                <segue destination="ql1-Tc-Q32" kind="presentation" id="DkQ-hi-Pg5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="listView" destination="wKB-3X-Jpf" id="k8q-Ky-zzU"/>
@@ -395,7 +399,7 @@
             </objects>
             <point key="canvasLocation" x="-938" y="-122"/>
         </scene>
-        <!--Saved Searches-->
+        <!--Alerts-->
         <scene sceneID="u76-bE-0Zm">
             <objects>
                 <viewController id="Zg5-0j-4US" sceneMemberID="viewController">
@@ -405,11 +409,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jQu-vL-C2r"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Saved Searches" id="yiQ-qV-FVt"/>
+                    <navigationItem key="navigationItem" title="Alerts" id="yiQ-qV-FVt">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Yud-vd-hQE"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8c5-SS-Ixh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="-822"/>
+            <point key="canvasLocation" x="2156" y="-825"/>
         </scene>
         <!--List-->
         <scene sceneID="3mM-NI-Y7S">
@@ -443,7 +449,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppr-cv-BJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="-821"/>
+            <point key="canvasLocation" x="1423" y="-824"/>
         </scene>
     </scenes>
     <resources>
@@ -451,9 +457,11 @@
         <image name="fav_button2" width="25" height="25"/>
         <image name="pin1" width="30" height="30"/>
         <image name="pin2" width="30" height="30"/>
-        <image name="search" width="30" height="30"/>
         <image name="search1" width="30" height="30"/>
         <image name="search2" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gFf-yS-BdT"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.27447596190000001" green="0.27452921870000002" blue="0.27447256450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
