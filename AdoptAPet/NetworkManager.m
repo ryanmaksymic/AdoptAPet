@@ -136,4 +136,44 @@
   [dataTask resume];
 }
 
++ (void)fetchPets:(NSString *)idPet completionHandler:(void (^)(Pet  *pet))completion
+{
+  
+  NSString *urlString = [NSString stringWithFormat:@"http://api.petfinder.com/pet.get?key=67a4b38197ee28774594388ab415505a&format=json&id=%@", idPet];
+  NSURL * url = [NSURL URLWithString:urlString];
+  
+  NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];
+  
+  NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+  
+  NSURLSession * session = [NSURLSession sessionWithConfiguration:configuration];
+  
+  NSURLSessionDataTask * dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    
+    if (error)
+    {
+      NSLog(@"error: %@", error.localizedDescription);
+      return;
+    }
+    
+    NSError * jsonError = nil;
+    
+    NSDictionary * result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError][@"petfinder"][@"pet"];
+    
+    if (jsonError)
+    {
+      NSLog(@"jsonError: %@", jsonError.localizedDescription);
+      return;
+    }
+    
+    Pet * pet = [[Pet alloc] initWithJSON:result];
+    completion(pet);
+    
+    [session invalidateAndCancel];
+  }];
+  [dataTask resume];
+  
+  
+}
+
 @end
