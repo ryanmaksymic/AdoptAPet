@@ -18,7 +18,6 @@
 
 @end
 
-// TODO: Load new batch of pets when user gets to bottom of table
 // TODO: Organized pets array by lastUpdated -- most recent first
 
 @implementation ListViewController
