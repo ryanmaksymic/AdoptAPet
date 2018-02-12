@@ -9,10 +9,11 @@
 #import "SearchViewController.h"
 #import "PetSearch.h"
 #import "NetworkManager.h"
+#import "AlertsViewController.h"
 #import "SearchResultsViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface SearchViewController () <UITextFieldDelegate, CLLocationManagerDelegate>
+@interface SearchViewController () <UITextFieldDelegate, CLLocationManagerDelegate, AlertsDelegate>
 
 @property (nonatomic) PetSearch * petSearch;
 @property (nonatomic) NSArray<Pet *> * pets;
@@ -46,15 +47,10 @@
 - (void)collectSearchTerms
 {
   self.petSearch = [[PetSearch alloc] init];
-  
   self.petSearch.locationZip = self.locationTextField.text;
-  
   self.petSearch.type = self.petTypeSegmentedControl.selectedSegmentIndex;
-  
   self.petSearch.sex = self.petSexSegmentedControl.selectedSegmentIndex;
-  
   self.petSearch.size = self.petSizeSegmentedControl.selectedSegmentIndex;
-  
   self.petSearch.age = self.petAgeSegmentedControl.selectedSegmentIndex;
 }
 
@@ -91,11 +87,6 @@
 
 #pragma mark - Button actions
 
-- (IBAction)getLocation:(UIButton *)sender
-{
-  [self.locationManager requestLocation];
-}
-
 - (IBAction)search:(UIButton *)sender
 {
   [self.activityIndicator startAnimating];
@@ -128,6 +119,11 @@
   self.petAgeSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
 }
 
+- (IBAction)getLocation:(UIButton *)sender
+{
+  [self.locationManager requestLocation];
+}
+
 
 #pragma mark - CLLocationManagerDelegate
 
@@ -135,18 +131,14 @@
 {
   CLLocation * location = locations.firstObject;
   
-  CLGeocoder * geocoder = [[CLGeocoder alloc] init];
-  
-  [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+  [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
     
     if (error != nil)
     {
       NSLog(@"Error: %@", error.localizedDescription);
     }
     
-    CLPlacemark * placemark = placemarks.firstObject;
-    
-    NSString * locationZip = placemark.postalCode;
+    NSString * locationZip = placemarks.firstObject.postalCode;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       
@@ -165,6 +157,17 @@
 }
 
 
+#pragma mark - AlertsDelegate
+
+- (void)alertsViewController:(AlertsViewController *)avc didSelectAlert:(PetSearch *)alert
+{
+  self.petTypeSegmentedControl.selectedSegmentIndex = alert.type;
+  self.petSexSegmentedControl.selectedSegmentIndex = alert.sex;
+  self.petSizeSegmentedControl.selectedSegmentIndex = alert.size;
+  self.petAgeSegmentedControl.selectedSegmentIndex = alert.age;
+}
+
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -176,6 +179,18 @@
     srvc.pets = self.pets;
     srvc.searchTerms = [self.petSearch searchTermsString];
     srvc.locationZip = self.petSearch.locationZip;
+  }
+  if ([segue.identifier isEqualToString:@"showAlerts"])
+  {
+    UINavigationController * nvc = (UINavigationController *)segue.destinationViewController;
+    
+    AlertsViewController * avc = nvc.viewControllers.firstObject;
+    
+    [self collectSearchTerms];
+    
+    avc.currentSearch = self.petSearch;
+    
+    avc.delegate = self;
   }
 }
 

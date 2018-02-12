@@ -8,14 +8,18 @@
 
 #import "AlertsViewController.h"
 #import "PetSearch.h"
+#import "SearchViewController.h"
 
 @interface AlertsViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView * tableView;
 
 @property (nonatomic) NSMutableArray<PetSearch *> * alerts;
 
 @end
 
 // TODO: Add Realm support
+// TODO: Swipe left to delete row
 
 @implementation AlertsViewController
 
@@ -41,9 +45,10 @@
 
 - (IBAction)addAlert:(UIBarButtonItem *)sender
 {
-  // TODO: Create new alert with current filter settings
+  [self.alerts addObject:self.currentSearch];
+  
+  [self.tableView reloadData];
 }
-
 
 
 #pragma mark - UITableViewDataSource
@@ -67,10 +72,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  // TODO: Dismiss view and update search filters with selected alert's settings
+  PetSearch * selectedAlert = self.alerts[indexPath.row];
+  
+  [self.delegate alertsViewController:self didSelectAlert:selectedAlert];
+  
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-// TODO: Swipe left to delete row
-
 
 @end

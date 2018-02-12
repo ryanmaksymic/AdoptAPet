@@ -89,7 +89,7 @@
 + (void)fetchShelterDataFromLocation:(NSString *)location completionHandler:(void (^)(NSArray<Contact *> * contacts))completion
 {
   NSString *urlString = [NSString stringWithFormat:@"http://api.petfinder.com/shelter.find?location=%@&key=67a4b38197ee28774594388ab415505a&format=json", location];
-  NSLog(@"%@", urlString);
+  //NSLog(@"%@", urlString);
   NSURL * url = [NSURL URLWithString:urlString];
   
   NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];
@@ -124,7 +124,7 @@
       
       [contacts addObject:cont];
       
-      NSLog(@"%@", cont);
+      //NSLog(@"%@", cont);
     }
     
     completion(contacts);

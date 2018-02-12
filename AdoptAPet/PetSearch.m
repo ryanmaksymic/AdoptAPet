@@ -50,7 +50,7 @@
   NSMutableString * urlString = [@"http://api.petfinder.com/pet.find?key=67a4b38197ee28774594388ab415505a&format=json" mutableCopy];
   
   // count:
-  [urlString appendString:@"&count=50"];  // TODO: Sort out how many to retrieve
+  [urlString appendString:@"&count=50"];
   
   // location:
   [urlString appendFormat:@"&location=%@", self.locationZip];
@@ -130,9 +130,6 @@
       break;
   }
   [urlString appendString:ageArgument];
-  
-  // options:
-  // TODO: Figure out how to filter by Options
   
   NSLog(@"Search URL: %@", urlString);
   
@@ -222,29 +219,5 @@
       break;
   }
 }
-
-/*
- - (NSString *)optionsString
- {
- if ([self.options count] == 0)
- {
- return @"No Options";
- }
- 
- NSMutableString * result = [@"" mutableCopy];
- 
- if ([self.options containsObject:[NSNumber numberWithInteger:PetOptionHasShots]])
- {
- [result appendString:@"Has Shots, "];
- }
- 
- if ([self.options containsObject:[NSNumber numberWithInteger:PetOptionHousetrained]])
- {
- [result appendString:@"Housetrained, "];
- }
- 
- return result;
- }
- */
 
 @end
