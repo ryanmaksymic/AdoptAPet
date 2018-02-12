@@ -24,7 +24,7 @@
   
   self.favArray = [[NSMutableArray alloc] init];
   
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleDone target:nil action:nil];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleDone target:self action:@selector(clearFavourites)];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -35,9 +35,14 @@
     
     lvc.pets = [NSArray arrayWithArray:[DataManager getFavourites]];
     
-    //[lvc.tableView reloadData];
     
   }
+}
+
+- (void)clearFavourites {
+  [DataManager deleteAllPetsCompletionHandler:^{
+//    [lvc.tableView reloadData];
+  }]
 }
 
 @end

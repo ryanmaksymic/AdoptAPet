@@ -41,7 +41,7 @@
     Pet *pet = [[Pet alloc] init];
     pet.name = petRealm.name;
     pet.type = petRealm.type;
-
+    
     NSMutableArray<NSString *> *breedArray = [[NSMutableArray alloc] initWithCapacity:petRealm.breeds.count];
     for (StringRealm *breed in petRealm.breeds) {
       [breedArray addObject:breed.string];
@@ -53,29 +53,29 @@
     pet.age = petRealm.age;
     pet.sex = petRealm.sex;
     pet.petDescription = petRealm.petDescription;
-
+    
     NSMutableArray *optionsArray = [[NSMutableArray alloc] initWithCapacity:petRealm.options.count];
     for (StringRealm *option in petRealm.options) {
       [optionsArray addObject:[NSNumber numberWithInt:option.integer]];
     }
     pet.options = [optionsArray copy];
-
+    
     pet.contact = contact;
     pet.idNumber = petRealm.idNumber;
     pet.lastUpdated = petRealm.lastUpdated;
-
+    
     NSMutableArray<NSString *> *urlsArray = [[NSMutableArray alloc] initWithCapacity:petRealm.photoURLs.count];
     for (StringRealm *url in petRealm.photoURLs) {
       [urlsArray addObject:url.string];
     }
     pet.photoURLs = [urlsArray copy];
-
+    
     NSMutableArray<UIImage *> *photosArray = [[NSMutableArray alloc] initWithCapacity:petRealm.photos.count];
     for (StringRealm *photo in petRealm.photos) {
       [photosArray addObject:[UIImage imageWithData:photo.image]];
     }
     pet.photos = [photosArray copy];
-
+    
     pet.isFavorite = YES;
     
     [pets addObject:pet];
@@ -169,6 +169,18 @@
     [realm deleteObject:pet];
     [realm commitWriteTransaction];
   }
+}
+
++ (void)deleteAllPetsCompletionHandler:(void (^)(void) )completion {
+  RLMResults *pets = [PetRealm allObjects];
+  RLMResults *contacts = [ContactRealm allObjects];
+  RLMResults *strings = [StringRealm allObjects];
+  RLMRealm *realm = [RLMRealm defaultRealm];
+  [realm beginWriteTransaction];
+  [realm deleteObjects:pets];
+  [realm deleteObjects:contacts];
+  [realm deleteObjects:strings];
+  [realm commitWriteTransaction];
 }
 
 @end

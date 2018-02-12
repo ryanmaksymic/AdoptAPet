@@ -17,5 +17,6 @@
 + (void)favorite:(Pet *)pet;
 + (BOOL)checkPet:(NSString *)idPet;
 + (NSArray<NSString *> *)getFavourites;
++ (void)deleteAllPetsCompletionHandler:(void (^)(void) )completion;
 
 @end
