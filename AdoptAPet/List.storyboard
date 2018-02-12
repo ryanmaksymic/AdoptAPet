@@ -35,7 +35,6 @@
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumb_default_pet" translatesAutoresizingMaskIntoConstraints="NO" id="qAb-AR-YtJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
-                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="qAb-AR-YtJ" secondAttribute="height" multiplier="1:1" id="u4c-jg-qG7"/>
                                             </constraints>

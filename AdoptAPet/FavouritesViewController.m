@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
+  
   self.favArray = [[NSMutableArray alloc] init];
   
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleDone target:self action:@selector(clearFavourites)];
@@ -42,7 +44,7 @@
 - (void)clearFavourites {
   [DataManager deleteAllPetsCompletionHandler:^{
 //    [lvc.tableView reloadData];
-  }]
+  }];
 }
 
 @end
