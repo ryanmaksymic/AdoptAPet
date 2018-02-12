@@ -249,6 +249,9 @@
                                     <action selector="getLocation:" destination="eFT-oy-mf8" eventType="touchUpInside" id="JS0-Gk-33G"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zZk-QS-Pg1">
+                                <rect key="frame" x="52" y="54" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -270,6 +273,7 @@
                             <constraint firstItem="FnO-I4-lYr" firstAttribute="trailing" secondItem="TGY-4d-99u" secondAttribute="trailing" constant="16" id="KQl-hF-tfA"/>
                             <constraint firstItem="feV-qy-CO0" firstAttribute="top" secondItem="gk5-eC-fq9" secondAttribute="bottom" constant="8" id="KYM-CX-EV6"/>
                             <constraint firstItem="vN1-v7-41F" firstAttribute="leading" secondItem="FnO-I4-lYr" secondAttribute="leading" constant="16" id="L3V-OI-sMN"/>
+                            <constraint firstItem="zZk-QS-Pg1" firstAttribute="centerY" secondItem="8ZC-Tr-VeO" secondAttribute="centerY" id="MSX-cP-S2j"/>
                             <constraint firstItem="FnO-I4-lYr" firstAttribute="trailing" secondItem="G89-bX-UaS" secondAttribute="trailing" constant="16" id="Mqe-E8-1yq"/>
                             <constraint firstItem="FnO-I4-lYr" firstAttribute="trailing" secondItem="r4U-cZ-AAz" secondAttribute="trailing" constant="16" id="QIv-Pg-MXQ"/>
                             <constraint firstItem="FNU-RW-W9l" firstAttribute="top" secondItem="A4f-2b-lg1" secondAttribute="bottom" constant="8" id="ROM-ag-jKc"/>
@@ -287,6 +291,7 @@
                             <constraint firstItem="G89-bX-UaS" firstAttribute="top" secondItem="sXf-Jh-Xum" secondAttribute="bottom" constant="8" id="ijl-zu-xM6"/>
                             <constraint firstItem="FnO-I4-lYr" firstAttribute="trailing" secondItem="vN1-v7-41F" secondAttribute="trailing" constant="16" id="kfx-2A-qCL"/>
                             <constraint firstItem="TGY-4d-99u" firstAttribute="leading" secondItem="FnO-I4-lYr" secondAttribute="leading" constant="16" id="lld-Ur-FyP"/>
+                            <constraint firstItem="zZk-QS-Pg1" firstAttribute="leading" secondItem="8ZC-Tr-VeO" secondAttribute="trailing" constant="8" id="nhN-hQ-kab"/>
                             <constraint firstItem="sXf-Jh-Xum" firstAttribute="top" secondItem="feV-qy-CO0" secondAttribute="bottom" constant="18" id="ud8-HY-i1t"/>
                             <constraint firstItem="4Il-vo-ta8" firstAttribute="centerX" secondItem="FnO-I4-lYr" secondAttribute="centerX" id="yWA-ht-RV6"/>
                             <constraint firstItem="FnO-I4-lYr" firstAttribute="trailing" secondItem="jui-Gr-D5a" secondAttribute="trailing" constant="16" id="zVr-0p-SGZ"/>
@@ -302,12 +307,13 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="FNU-RW-W9l" id="wfG-Wn-w4U"/>
+                        <outlet property="locationActivityIndicator" destination="zZk-QS-Pg1" id="OZ4-be-cKZ"/>
                         <outlet property="locationTextField" destination="vN1-v7-41F" id="ZSO-1Q-C4i"/>
                         <outlet property="petAgeSegmentedControl" destination="G89-bX-UaS" id="j99-fj-sNJ"/>
                         <outlet property="petSexSegmentedControl" destination="1mp-ww-A0P" id="IaI-r7-n4L"/>
                         <outlet property="petSizeSegmentedControl" destination="feV-qy-CO0" id="1iX-Lx-wdS"/>
                         <outlet property="petTypeSegmentedControl" destination="r4U-cZ-AAz" id="8ub-WB-pKq"/>
+                        <outlet property="seachActivityIndicator" destination="FNU-RW-W9l" id="5S7-rd-bgL"/>
                         <outlet property="searchButton" destination="A4f-2b-lg1" id="990-jR-jXF"/>
                         <segue destination="hJC-Di-KAp" kind="show" identifier="showSearchResults" id="s4u-Hy-yRL">
                             <nil key="action"/>

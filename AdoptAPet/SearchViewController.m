@@ -20,12 +20,13 @@
 
 @property (nonatomic) CLLocationManager * locationManager;
 @property (weak, nonatomic) IBOutlet UITextField * locationTextField;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView * locationActivityIndicator;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petTypeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petSexSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petSizeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl * petAgeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton * searchButton;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView * activityIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView * seachActivityIndicator;
 
 @end
 
@@ -91,8 +92,8 @@
 
 - (IBAction)search:(UIButton *)sender
 {
-  [self.activityIndicator startAnimating];
-  [self.activityIndicator setHidden:NO];
+  [self.seachActivityIndicator startAnimating];
+  [self.seachActivityIndicator setHidden:NO];
   
   [self collectSearchTerms];
   
@@ -104,7 +105,7 @@
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       
-      [self.activityIndicator stopAnimating];
+      [self.seachActivityIndicator stopAnimating];
       
       [self performSegueWithIdentifier:@"showSearchResults" sender:nil];
       
@@ -123,6 +124,9 @@
 
 - (IBAction)getLocation:(UIButton *)sender
 {
+  [self.locationActivityIndicator startAnimating];
+  [self.locationActivityIndicator setHidden:NO];
+  
   [self.locationManager requestWhenInUseAuthorization];
   
   [self.locationManager requestLocation];
@@ -149,6 +153,8 @@
       self.locationTextField.text = locationZip;
       
       [self textFieldEditingDidEnd:self.locationTextField];
+      
+      [self.locationActivityIndicator stopAnimating];
       
     }];
     
