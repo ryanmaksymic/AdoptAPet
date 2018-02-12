@@ -38,6 +38,13 @@
   [self loadInfo];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.pet.isFavorite = [DataManager checkPet:self.pet.idNumber];
+  [self loadInfo];
+  self.navigationItem.rightBarButtonItem.image = [self imgFavorite:self.pet.isFavorite];
+}
+
 - (void)favorite {
   [DataManager favorite:self.pet];
 //  self.pet.isFavorite = !self.pet.isFavorite;

@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView * listView;
 
+@property (nonatomic) ListViewController * lvc;
 @property (nonatomic) NSArray<Pet *> * nearbyDogs;
 @property (nonatomic) NSArray<Pet *> * nearbyCats;
 @property (nonatomic) NSMutableArray<Pet *> * nearbyPets;
@@ -31,11 +32,17 @@
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+  [self.lvc.tableView setNeedsDisplay];
+  [self.lvc.tableView reloadData];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if ([segue.identifier isEqualToString:@"embedList"])
   {
-    ListViewController * lvc = (ListViewController *)segue.destinationViewController;
+    self.lvc = (ListViewController *)segue.destinationViewController;
     
     // TODO: Get user location to search nearby
     
@@ -62,9 +69,9 @@
             self.nearbyPets[i * 2 + 1] = self.nearbyDogs[i];
           }
           
-          lvc.pets = self.nearbyPets;
+          self.lvc.pets = self.nearbyPets;
           
-          [lvc.tableView reloadData];
+          [self.lvc.tableView reloadData];
           
         }];
         

@@ -202,6 +202,8 @@
   [realm deleteObjects:contacts];
   [realm deleteObjects:strings];
   [realm commitWriteTransaction];
+  
+  completion();
 }
 
 @end
