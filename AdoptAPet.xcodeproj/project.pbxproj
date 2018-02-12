@@ -14,6 +14,7 @@
 		07A5C25C202E81DC003B72DB /* PetRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A5C25B202E81DC003B72DB /* PetRealm.m */; };
 		07A5C25F202F747B003B72DB /* ContactRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A5C25E202F747B003B72DB /* ContactRealm.m */; };
 		07A5C262202F7A15003B72DB /* StringRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A5C261202F7A15003B72DB /* StringRealm.m */; };
+		07A5C26920312B31003B72DB /* FavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A5C26820312B31003B72DB /* FavouritesViewController.m */; };
 		8CA0418558886D7A66580D8A /* libPods-AdoptAPet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F57FCB8A344AD28C89BF98 /* libPods-AdoptAPet.a */; };
 		FE308D2F202CFD180045A811 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308D2E202CFD180045A811 /* SearchResultsViewController.m */; };
 		FE3BFEAC202FC04400C44A61 /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3BFEAB202FC04400C44A61 /* AlertsViewController.m */; };
@@ -49,6 +50,8 @@
 		07A5C25E202F747B003B72DB /* ContactRealm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactRealm.m; sourceTree = "<group>"; };
 		07A5C260202F7A15003B72DB /* StringRealm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringRealm.h; sourceTree = "<group>"; };
 		07A5C261202F7A15003B72DB /* StringRealm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringRealm.m; sourceTree = "<group>"; };
+		07A5C26720312B31003B72DB /* FavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesViewController.h; sourceTree = "<group>"; };
+		07A5C26820312B31003B72DB /* FavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesViewController.m; sourceTree = "<group>"; };
 		07F57FCB8A344AD28C89BF98 /* libPods-AdoptAPet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdoptAPet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B595CD3D3C86D19F110EE0E1 /* Pods-AdoptAPet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdoptAPet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdoptAPet/Pods-AdoptAPet.debug.xcconfig"; sourceTree = "<group>"; };
 		D75628AA57D1886832714F46 /* Pods-AdoptAPet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdoptAPet.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdoptAPet/Pods-AdoptAPet.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				FE7200E7202B88E5003217B9 /* DetailViewController.h */,
 				FE7200E8202B88E5003217B9 /* DetailViewController.m */,
 				FE7200DD202B8538003217B9 /* Detail.storyboard */,
+				07A5C26720312B31003B72DB /* FavouritesViewController.h */,
+				07A5C26820312B31003B72DB /* FavouritesViewController.m */,
 				07929B4A202D029700BBD1FC /* MapViewController.h */,
 				07929B4B202D029700BBD1FC /* MapViewController.m */,
 				07929B48202D01EC00BBD1FC /* Map.storyboard */,
@@ -320,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A5C26920312B31003B72DB /* FavouritesViewController.m in Sources */,
 				FEAEE84E202E25EF00A37593 /* PetSearch.m in Sources */,
 				07A5C259202E79CB003B72DB /* DataManager.m in Sources */,
 				FE7200D7202B7943003217B9 /* NetworkManager.m in Sources */,
