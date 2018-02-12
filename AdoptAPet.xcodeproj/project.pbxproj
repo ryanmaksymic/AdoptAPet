@@ -31,6 +31,7 @@
 		FE7200E9202B88E5003217B9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200E8202B88E5003217B9 /* DetailViewController.m */; };
 		FE7200EC202B8906003217B9 /* PetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200EB202B8906003217B9 /* PetTableViewCell.m */; };
 		FE7200EF202BBCAD003217B9 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7200EE202BBCAD003217B9 /* Contact.m */; };
+		FE871A7320315E58008CD17C /* PetSearchRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = FE871A7220315E58008CD17C /* PetSearchRealm.m */; };
 		FEAEE84B202E209B00A37593 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAEE84A202E209B00A37593 /* List.storyboard */; };
 		FEAEE84E202E25EF00A37593 /* PetSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAEE84D202E25EF00A37593 /* PetSearch.m */; };
 		FEAEE851202E276100A37593 /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAEE850202E276100A37593 /* NearbyViewController.m */; };
@@ -82,6 +83,8 @@
 		FE7200EB202B8906003217B9 /* PetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PetTableViewCell.m; sourceTree = "<group>"; };
 		FE7200ED202BBCAD003217B9 /* Contact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		FE7200EE202BBCAD003217B9 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		FE871A7120315E58008CD17C /* PetSearchRealm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PetSearchRealm.h; sourceTree = "<group>"; };
+		FE871A7220315E58008CD17C /* PetSearchRealm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PetSearchRealm.m; sourceTree = "<group>"; };
 		FEAEE84A202E209B00A37593 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		FEAEE84C202E25EF00A37593 /* PetSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PetSearch.h; sourceTree = "<group>"; };
 		FEAEE84D202E25EF00A37593 /* PetSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PetSearch.m; sourceTree = "<group>"; };
@@ -121,6 +124,8 @@
 				07A5C25E202F747B003B72DB /* ContactRealm.m */,
 				07A5C260202F7A15003B72DB /* StringRealm.h */,
 				07A5C261202F7A15003B72DB /* StringRealm.m */,
+				FE871A7120315E58008CD17C /* PetSearchRealm.h */,
+				FE871A7220315E58008CD17C /* PetSearchRealm.m */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				FE7200CF202B6DD5003217B9 /* main.m in Sources */,
 				FE308D2F202CFD180045A811 /* SearchResultsViewController.m in Sources */,
 				FE7200C1202B6DD5003217B9 /* AppDelegate.m in Sources */,
+				FE871A7320315E58008CD17C /* PetSearchRealm.m in Sources */,
 				FE7200E6202B88B8003217B9 /* SearchViewController.m in Sources */,
 				FE3BFEAC202FC04400C44A61 /* AlertsViewController.m in Sources */,
 				07A55DEE202BD37B00E3D39A /* DetailCollectionViewCell.m in Sources */,

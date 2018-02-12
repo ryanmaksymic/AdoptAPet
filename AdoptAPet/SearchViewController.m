@@ -123,6 +123,8 @@
 
 - (IBAction)getLocation:(UIButton *)sender
 {
+  [self.locationManager requestWhenInUseAuthorization];
+  
   [self.locationManager requestLocation];
 }
 

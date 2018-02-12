@@ -79,4 +79,19 @@
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (editingStyle == UITableViewCellEditingStyleDelete)
+  {
+    [self.alerts removeObjectAtIndex:indexPath.row];
+    
+    [tableView reloadData];
+  }
+}
+
 @end
