@@ -18,6 +18,7 @@
 @property (nonatomic) NSString *state;
 @property (nonatomic) NSString *zip;
 @property (nonatomic) NSString *idNumber;
+@property NSString *idPet;
 
 @end
 

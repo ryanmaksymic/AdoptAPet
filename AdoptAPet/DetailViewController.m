@@ -40,12 +40,12 @@
 
 - (void)favorite {
   [DataManager favorite:self.pet];
-  self.pet.isFavorite = !self.pet.isFavorite;
+//  self.pet.isFavorite = !self.pet.isFavorite;
   self.navigationItem.rightBarButtonItem.image = [self imgFavorite:self.pet.isFavorite];
 }
 
 - (UIImage *)imgFavorite:(BOOL)is {
-  return is ? [UIImage imageNamed:@"fav_button"] : [UIImage imageNamed:@"fav_button2"];
+  return is ? [UIImage imageNamed:@"fav_button2"] : [UIImage imageNamed:@"fav_button"];
 }
 
 - (void)loadInfo {
@@ -65,6 +65,14 @@
 
 - (void)setPet:(Pet *)pet {
   _pet = pet;
+  if (pet.photos.count < pet.photoURLs.count) {
+    for (NSInteger i = pet.photos.count; i < pet.photoURLs.count; i++) {
+      [NetworkManager fetchImageFileFromURL:self.pet.photoURLs[i] completionHandler:^(UIImage * image) {
+        [_pet.photos addObject:image];
+      }];
+
+    }
+  }
   
   self.navigationItem.title = pet.name;
   UIBarButtonItem *favButton = [[UIBarButtonItem alloc]
@@ -81,20 +89,7 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
   DetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imageCell" forIndexPath:indexPath];
   
-  if (self.pet.photos.count-1 < indexPath.item) {
-    [NetworkManager fetchImageFileFromURL:self.pet.photoURLs[indexPath.row] completionHandler:^(UIImage * image) {
-      
-      [self.pet.photos addObject:image];
-      
-      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        
-        cell.photo.image = image;
-        
-      }];
-    }];
-  } else {
-    cell.photo.image = self.pet.photos[indexPath.item];
-  }
+  cell.photo.image = self.pet.photos[indexPath.item];
   
   return cell;
 }

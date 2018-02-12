@@ -42,7 +42,7 @@
 - (void)clearFavourites {
   [DataManager deleteAllPetsCompletionHandler:^{
 //    [lvc.tableView reloadData];
-  }]
+  }];
 }
 
 @end

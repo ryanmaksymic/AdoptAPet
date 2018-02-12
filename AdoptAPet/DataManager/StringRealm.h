@@ -13,6 +13,7 @@
 @property NSString *string;
 @property int integer;
 @property NSData *image;
+@property NSString *idPet;
 
 @end
 RLM_ARRAY_TYPE(StringRealm)

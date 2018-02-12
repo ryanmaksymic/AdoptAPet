@@ -16,10 +16,12 @@
 @implementation DataManager
 
 + (void)favorite:(Pet *)pet {
-  if ([self checkPet:pet.idNumber]) {
+  if (![self checkPet:pet.idNumber]) {
     [self savePet:pet];
+    pet.isFavorite = YES;
   } else {
     [self deletePet:pet.idNumber];
+    pet.isFavorite = NO;
   }
 }
 
@@ -88,10 +90,10 @@
   RLMResults *pet = [PetRealm objectsWhere:filter];
   
   
-  if (pet.count > 0) {
-    return NO;
+  if (pet.count >= 1) {
+    return YES;
   }
-  return YES;
+  return NO;
 }
 
 + (void)savePet:(Pet *)pet {
@@ -107,6 +109,7 @@
   contactRealm.city = pet.contact.city;
   contactRealm.state = pet.contact.state;
   contactRealm.zip = pet.contact.zip;
+  contactRealm.idPet = pet.idNumber;
   
   // Pet
   PetRealm *petRealm = [[PetRealm alloc] init];
@@ -117,6 +120,7 @@
   for (NSString *breed in pet.breeds) {
     StringRealm *strBreed = [[StringRealm alloc] init];
     strBreed.string = breed;
+    strBreed.idPet = pet.idNumber;
     [petRealm.breeds addObject:strBreed];
   }
   
@@ -129,6 +133,7 @@
   for (id opt in pet.options) {
     StringRealm *intOption = [[StringRealm alloc] init];
     intOption.integer = [opt intValue];
+    intOption.idPet = pet.idNumber;
     [petRealm.options addObject:intOption];
   }
   
@@ -140,6 +145,7 @@
   for (NSURL *url in pet.photoURLs) {
     StringRealm *strUrl = [[StringRealm alloc] init];
     strUrl.string = url.absoluteString;
+    strUrl.idPet = pet.idNumber;
     [petRealm.photoURLs addObject:strUrl];
   }
   
@@ -147,6 +153,7 @@
     StringRealm *img = [[StringRealm alloc] init];
     NSData *data = UIImageJPEGRepresentation(image, 0);
     img.image = data;
+    img.idPet = pet.idNumber;
     [petRealm.photos addObject:img];
     
   }
@@ -161,12 +168,26 @@
 + (void)deletePet:(NSString *)idPet {
   
   NSString *filter = [NSString stringWithFormat:@"idNumber = '%@'", idPet];
-  RLMResults *results = [PetRealm objectsWhere:filter];
-  
+  RLMResults *pets = [PetRealm objectsWhere:filter];
+
+  NSString *filter2 = [NSString stringWithFormat:@"idPet = '%@'", idPet];
+  RLMResults *contacts = [ContactRealm objectsWhere:filter2];
+  RLMResults *strings = [StringRealm objectsWhere:filter2];
+
   RLMRealm *realm = [RLMRealm defaultRealm];
-  for (PetRealm *pet in results) {
+  for (PetRealm *pet in pets) {
     [realm beginWriteTransaction];
     [realm deleteObject:pet];
+    [realm commitWriteTransaction];
+  }
+  for (ContactRealm *contact in contacts) {
+    [realm beginWriteTransaction];
+    [realm deleteObject:contact];
+    [realm commitWriteTransaction];
+  }
+  for (StringRealm *string in strings) {
+    [realm beginWriteTransaction];
+    [realm deleteObject:string];
     [realm commitWriteTransaction];
   }
 }
