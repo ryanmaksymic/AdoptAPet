@@ -94,7 +94,6 @@
      self.shelters = filteredShelters;
      
      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-       //[self.mapView addAnnotations:self.shelters];
        [self.mapView showAnnotations:self.shelters animated:YES];
      }];
      

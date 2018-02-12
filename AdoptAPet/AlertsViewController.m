@@ -19,7 +19,6 @@
 @end
 
 // TODO: Add Realm support
-// TODO: Swipe left to delete row
 
 @implementation AlertsViewController
 
