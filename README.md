@@ -18,8 +18,14 @@ An iOS app that displays adoptable pets from nearby shelters
 
 
 
+## Tech Stack
+
+
+
 
 ## Future Directions
+
+
 
 
 ## Contributors
