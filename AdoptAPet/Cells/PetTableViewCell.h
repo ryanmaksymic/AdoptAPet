@@ -12,9 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView * petImageView;
 @property (weak, nonatomic) IBOutlet UILabel * nameLabel;
-//@property (weak, nonatomic) IBOutlet UILabel * sizeLabel;
-//@property (weak, nonatomic) IBOutlet UILabel * ageLabel;
-//@property (weak, nonatomic) IBOutlet UILabel * sexLabel;
 @property (weak, nonatomic) IBOutlet UILabel * sizeAgeSexLabel;
 @property (weak, nonatomic) IBOutlet UILabel * breedsLabel;
 @property (weak, nonatomic) IBOutlet UILabel * locationLabel;

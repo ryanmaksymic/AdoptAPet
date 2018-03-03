@@ -116,16 +116,16 @@
 		07A5C263202F7B0B003B72DB /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				07A5C25D202F747B003B72DB /* ContactRealm.h */,
+				07A5C25E202F747B003B72DB /* ContactRealm.m */,
 				07A5C257202E79CB003B72DB /* DataManager.h */,
 				07A5C258202E79CB003B72DB /* DataManager.m */,
 				07A5C25A202E81DC003B72DB /* PetRealm.h */,
 				07A5C25B202E81DC003B72DB /* PetRealm.m */,
-				07A5C25D202F747B003B72DB /* ContactRealm.h */,
-				07A5C25E202F747B003B72DB /* ContactRealm.m */,
-				07A5C260202F7A15003B72DB /* StringRealm.h */,
-				07A5C261202F7A15003B72DB /* StringRealm.m */,
 				FE871A7120315E58008CD17C /* PetSearchRealm.h */,
 				FE871A7220315E58008CD17C /* PetSearchRealm.m */,
+				07A5C260202F7A15003B72DB /* StringRealm.h */,
+				07A5C261202F7A15003B72DB /* StringRealm.m */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -161,45 +161,77 @@
 			children = (
 				FE7200BF202B6DD5003217B9 /* AppDelegate.h */,
 				FE7200C0202B6DD5003217B9 /* AppDelegate.m */,
-				FE7200ED202BBCAD003217B9 /* Contact.h */,
-				FE7200EE202BBCAD003217B9 /* Contact.m */,
-				FE7200D8202B7978003217B9 /* Pet.h */,
-				FE7200D9202B7978003217B9 /* Pet.m */,
-				FEAEE84C202E25EF00A37593 /* PetSearch.h */,
-				FEAEE84D202E25EF00A37593 /* PetSearch.m */,
-				FE7200D5202B7943003217B9 /* NetworkManager.h */,
-				FE7200D6202B7943003217B9 /* NetworkManager.m */,
-				FE3BFEAA202FC04400C44A61 /* AlertsViewController.h */,
-				FE3BFEAB202FC04400C44A61 /* AlertsViewController.m */,
-				FE308D2D202CFD180045A811 /* SearchResultsViewController.h */,
-				FE308D2E202CFD180045A811 /* SearchResultsViewController.m */,
-				FE7200E4202B88B8003217B9 /* SearchViewController.h */,
-				FE7200E5202B88B8003217B9 /* SearchViewController.m */,
-				FEAEE84F202E276100A37593 /* NearbyViewController.h */,
-				FEAEE850202E276100A37593 /* NearbyViewController.m */,
-				FE7200DB202B852B003217B9 /* Main.storyboard */,
-				FE7200EA202B8906003217B9 /* PetTableViewCell.h */,
-				FE7200EB202B8906003217B9 /* PetTableViewCell.m */,
-				FE7200C2202B6DD5003217B9 /* ListViewController.h */,
-				FE7200C3202B6DD5003217B9 /* ListViewController.m */,
-				FEAEE84A202E209B00A37593 /* List.storyboard */,
-				07A55DED202BD37A00E3D39A /* DetailCollectionViewCell.h */,
-				07A55DEC202BD37A00E3D39A /* DetailCollectionViewCell.m */,
-				FE7200E7202B88E5003217B9 /* DetailViewController.h */,
-				FE7200E8202B88E5003217B9 /* DetailViewController.m */,
-				FE7200DD202B8538003217B9 /* Detail.storyboard */,
-				07A5C26720312B31003B72DB /* FavouritesViewController.h */,
-				07A5C26820312B31003B72DB /* FavouritesViewController.m */,
-				07929B4A202D029700BBD1FC /* MapViewController.h */,
-				07929B4B202D029700BBD1FC /* MapViewController.m */,
-				07929B48202D01EC00BBD1FC /* Map.storyboard */,
+				FEB89386204B5F45008C5967 /* Models */,
 				07A5C263202F7B0B003B72DB /* DataManager */,
+				FEB89387204B5FC6008C5967 /* Views */,
+				FEB89385204B5EDB008C5967 /* Controllers */,
+				FEB89388204B6044008C5967 /* Cells */,
 				FE7200C8202B6DD5003217B9 /* Assets.xcassets */,
 				FE7200CA202B6DD5003217B9 /* LaunchScreen.storyboard */,
 				FE7200CD202B6DD5003217B9 /* Info.plist */,
 				FE7200CE202B6DD5003217B9 /* main.m */,
 			);
 			path = AdoptAPet;
+			sourceTree = "<group>";
+		};
+		FEB89385204B5EDB008C5967 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE3BFEAA202FC04400C44A61 /* AlertsViewController.h */,
+				FE3BFEAB202FC04400C44A61 /* AlertsViewController.m */,
+				FE7200E7202B88E5003217B9 /* DetailViewController.h */,
+				FE7200E8202B88E5003217B9 /* DetailViewController.m */,
+				07A5C26720312B31003B72DB /* FavouritesViewController.h */,
+				07A5C26820312B31003B72DB /* FavouritesViewController.m */,
+				FE7200C2202B6DD5003217B9 /* ListViewController.h */,
+				FE7200C3202B6DD5003217B9 /* ListViewController.m */,
+				07929B4A202D029700BBD1FC /* MapViewController.h */,
+				07929B4B202D029700BBD1FC /* MapViewController.m */,
+				FEAEE84F202E276100A37593 /* NearbyViewController.h */,
+				FEAEE850202E276100A37593 /* NearbyViewController.m */,
+				FE308D2D202CFD180045A811 /* SearchResultsViewController.h */,
+				FE308D2E202CFD180045A811 /* SearchResultsViewController.m */,
+				FE7200E4202B88B8003217B9 /* SearchViewController.h */,
+				FE7200E5202B88B8003217B9 /* SearchViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FEB89386204B5F45008C5967 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FE7200ED202BBCAD003217B9 /* Contact.h */,
+				FE7200EE202BBCAD003217B9 /* Contact.m */,
+				FE7200D5202B7943003217B9 /* NetworkManager.h */,
+				FE7200D6202B7943003217B9 /* NetworkManager.m */,
+				FE7200D8202B7978003217B9 /* Pet.h */,
+				FE7200D9202B7978003217B9 /* Pet.m */,
+				FEAEE84C202E25EF00A37593 /* PetSearch.h */,
+				FEAEE84D202E25EF00A37593 /* PetSearch.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FEB89387204B5FC6008C5967 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE7200DD202B8538003217B9 /* Detail.storyboard */,
+				FEAEE84A202E209B00A37593 /* List.storyboard */,
+				FE7200DB202B852B003217B9 /* Main.storyboard */,
+				07929B48202D01EC00BBD1FC /* Map.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FEB89388204B6044008C5967 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				07A55DED202BD37A00E3D39A /* DetailCollectionViewCell.h */,
+				07A55DEC202BD37A00E3D39A /* DetailCollectionViewCell.m */,
+				FE7200EA202B8906003217B9 /* PetTableViewCell.h */,
+				FE7200EB202B8906003217B9 /* PetTableViewCell.m */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,7 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J29799KDDY;
+				DEVELOPMENT_TEAM = S4M5EG9HS8;
 				INFOPLIST_FILE = AdoptAPet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fernandozanei;
@@ -493,7 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J29799KDDY;
+				DEVELOPMENT_TEAM = S4M5EG9HS8;
 				INFOPLIST_FILE = AdoptAPet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fernandozanei;

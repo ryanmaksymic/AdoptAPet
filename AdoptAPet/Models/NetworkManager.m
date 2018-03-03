@@ -46,8 +46,6 @@
       Pet * pet = [[Pet alloc] initWithJSON:result];
       
       [pets addObject:pet];
-      
-      //NSLog(@"%@", pet);
     }
     
     completion(pets);
@@ -89,7 +87,7 @@
 + (void)fetchShelterDataFromLocation:(NSString *)location completionHandler:(void (^)(NSArray<Contact *> * contacts))completion
 {
   NSString *urlString = [NSString stringWithFormat:@"http://api.petfinder.com/shelter.find?location=%@&key=67a4b38197ee28774594388ab415505a&format=json", location];
-  //NSLog(@"%@", urlString);
+  
   NSURL * url = [NSURL URLWithString:urlString];
   
   NSURLRequest * urlRequest = [[NSURLRequest alloc] initWithURL:url];
@@ -123,8 +121,6 @@
       Contact * cont = [[Contact alloc] initWithJSON:result];
       
       [contacts addObject:cont];
-      
-      //NSLog(@"%@", cont);
     }
     
     completion(contacts);

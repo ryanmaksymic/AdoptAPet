@@ -15,9 +15,7 @@
 
 @interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-//@property (strong, nonatomic) NSArray<NSString *> *detailPhotos;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *breadLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -27,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *optionsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
 // TODO: Add ageLabel
-// TODO: Add "more..." button to expand extra-long descriptions (?)
 
 @end
 

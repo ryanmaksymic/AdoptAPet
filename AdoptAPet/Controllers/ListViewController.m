@@ -18,7 +18,6 @@
 
 @end
 
-// TODO: Organized pets array by lastUpdated -- most recent first
 
 @implementation ListViewController
 

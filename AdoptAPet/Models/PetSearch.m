@@ -50,7 +50,6 @@
   NSMutableString * urlString = [@"http://api.petfinder.com/pet.find?key=67a4b38197ee28774594388ab415505a&format=json" mutableCopy];
   
   // count:
-  //[urlString appendString:@"&count=50"];
   [urlString appendString:@"&count=100"];
   
   // location:
