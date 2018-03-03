@@ -3,6 +3,8 @@
 ## Overview
 AdoptAPet is an iOS app that allows users to browse and search for adoptable pets from local animal shelters. This app was developed using the [Petfinder API](https://www.petfinder.com/developers/api-docs).
 
+![AdoptAPet](Documentation/AdoptAPet_1.png)
+
 
 ## Features
 
