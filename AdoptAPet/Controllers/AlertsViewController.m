@@ -9,6 +9,7 @@
 #import "AlertsViewController.h"
 #import "PetSearch.h"
 #import "SearchViewController.h"
+#import "DataManager.h"
 
 @interface AlertsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -18,7 +19,6 @@
 
 @end
 
-// TODO: Add Realm support
 
 @implementation AlertsViewController
 
@@ -26,12 +26,7 @@
 {
   [super viewDidLoad];
   
-  self.alerts = [@[] mutableCopy];
-  
-  // Demo data:
-  [self.alerts addObject:[[PetSearch alloc] initWithType:PetTypeCat sex:PetSexMale size:PetSizeMedium age:PetAgeAdult]];
-  [self.alerts addObject:[[PetSearch alloc] initWithType:PetTypeDog sex:PetSexFemale size:PetSizeSmall age:PetAgeYoung]];
-  [self.alerts addObject:[[PetSearch alloc] initWithType:PetTypeCat sex:PetSexFemale size:PetSizeLarge age:PetAgeAdult]];
+  self.alerts = [DataManager getSavedSearches];
 }
 
 
@@ -44,9 +39,28 @@
 
 - (IBAction)addAlert:(UIBarButtonItem *)sender
 {
-  [self.alerts addObject:self.currentSearch];
+  if (![self alertAlreadyExists:self.currentSearch])
+  {
+    [self.alerts addObject:self.currentSearch];
+    
+    [self.tableView reloadData];
+    
+    [DataManager saveSearch:self.currentSearch];
+  }
+}
+
+- (BOOL)alertAlreadyExists:(PetSearch *)currentPetSearch
+{
+  for (PetSearch * petSearch in self.alerts)
+  {
+    if ((petSearch.idPetSearch == currentPetSearch.idPetSearch) ||
+        (petSearch.type == currentPetSearch.type && petSearch.sex == currentPetSearch.sex && petSearch.size == currentPetSearch.size && petSearch.age == currentPetSearch.age))
+    {
+      return YES;
+    }
+  }
   
-  [self.tableView reloadData];
+  return NO;
 }
 
 
@@ -87,6 +101,10 @@
 {
   if (editingStyle == UITableViewCellEditingStyleDelete)
   {
+    PetSearch * alert = self.alerts[indexPath.row];
+    
+    [DataManager deleteSearch:alert.idPetSearch];
+    
     [self.alerts removeObjectAtIndex:indexPath.row];
     
     [tableView reloadData];

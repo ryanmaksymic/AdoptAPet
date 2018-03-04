@@ -14,5 +14,6 @@
 @property (nonatomic) int sex;
 @property (nonatomic) int size;
 @property (nonatomic) int age;
+@property (nonatomic) NSString * idPetSearch;
 
 @end

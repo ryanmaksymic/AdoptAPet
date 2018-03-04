@@ -17,6 +17,8 @@
   if (self)
   {
     _options = [NSMutableSet setWithCapacity:2];
+    
+    _idPetSearch = [[NSUUID UUID] UUIDString];
   }
   
   return self;
