@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Realm/Realm.h>
 @class Pet;
+@class PetSearch;
 
 @interface DataManager : NSObject
 
@@ -18,5 +19,9 @@
 + (BOOL)checkPet:(NSString *)idPet;
 + (NSArray<NSString *> *)getFavourites;
 + (void)deleteAllPetsCompletionHandler:(void (^)(void) )completion;
+
++ (NSMutableArray<PetSearch *> *)getSavedSearches;
++ (void)deleteSearch:(NSString *)idPetSearch;
++ (void)saveSearch:(PetSearch *)petSearch;
 
 @end

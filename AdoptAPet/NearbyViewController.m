@@ -90,8 +90,6 @@
         
         [self.lvc.tableView reloadData];
         
-        NSLog(@"List view table data reloaded!");
-        
       }];
       
     }];

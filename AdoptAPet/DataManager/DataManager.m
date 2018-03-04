@@ -9,11 +9,15 @@
 #import "DataManager.h"
 #import "PetRealm.h"
 #import "ContactRealm.h"
+#import "PetSearchRealm.h"
 #import "StringRealm.h"
 #import "Pet.h"
 #import "Contact.h"
+#import "PetSearch.h"
 
 @implementation DataManager
+
+#pragma mark - Favorites
 
 + (void)favorite:(Pet *)pet {
   if (![self checkPet:pet.idNumber]) {
@@ -169,11 +173,11 @@
   
   NSString *filter = [NSString stringWithFormat:@"idNumber = '%@'", idPet];
   RLMResults *pets = [PetRealm objectsWhere:filter];
-
+  
   NSString *filter2 = [NSString stringWithFormat:@"idPet = '%@'", idPet];
   RLMResults *contacts = [ContactRealm objectsWhere:filter2];
   RLMResults *strings = [StringRealm objectsWhere:filter2];
-
+  
   RLMRealm *realm = [RLMRealm defaultRealm];
   for (PetRealm *pet in pets) {
     [realm beginWriteTransaction];
@@ -204,6 +208,63 @@
   [realm commitWriteTransaction];
   
   completion();
+}
+
+
+#pragma mark - Saved searches
+
++ (NSMutableArray<PetSearch *> *)getSavedSearches
+{
+  RLMResults *results = [PetSearchRealm allObjects];
+  
+  NSMutableArray<PetSearch *> * petSearches = [NSMutableArray arrayWithCapacity:results.count];
+  
+  for (PetSearchRealm * petSearchRealm in results)
+  {
+    PetSearch * petSearch = [[PetSearch alloc] init];
+    
+    petSearch.type = petSearchRealm.type;
+    petSearch.sex = petSearchRealm.sex;
+    petSearch.size = petSearchRealm.size;
+    petSearch.age = petSearchRealm.age;
+    petSearch.idPetSearch = petSearchRealm.idPetSearch;
+    
+    [petSearches addObject:petSearch];
+  }
+  
+  return petSearches;
+}
+
++ (void)saveSearch:(PetSearch *)petSearch
+{
+  RLMRealm * realm = [RLMRealm defaultRealm];
+  
+  PetSearchRealm * petSearchRealm = [[PetSearchRealm alloc] init];
+  
+  petSearchRealm.type = petSearch.type;
+  petSearchRealm.sex = petSearch.sex;
+  petSearchRealm.size = petSearch.size;
+  petSearchRealm.age = petSearch.age;
+  petSearchRealm.idPetSearch = petSearch.idPetSearch;
+  
+  [realm transactionWithBlock:^{
+    [realm addObject:petSearchRealm];
+  }];
+}
+
++ (void)deleteSearch:(NSString *)idPetSearch
+{
+  NSString *filter = [NSString stringWithFormat:@"idPetSearch = '%@'", idPetSearch];
+  RLMResults *petSearches = [PetSearchRealm objectsWhere:filter];
+  
+  RLMRealm *realm = [RLMRealm defaultRealm];
+  
+  for (PetSearchRealm * petSearch in petSearches)
+  {
+    [realm beginWriteTransaction];
+    [realm deleteObject:petSearch];
+    [realm commitWriteTransaction];
+  }
 }
 
 @end
